@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/Smart-Knob/pic16f1455_firmware/lib/app_device_joystick.c</file>
+            <file>file:/E:/Smart-Knob/pic16f1455_firmware/lib/usb/usb_events.c</file>
+            <file>file:/E:/Smart-Knob/pic16f1455_firmware/main.c</file>
+            <file>file:/E:/Smart-Knob/pic16f1455_firmware/include/system.h</file>
+            <file>file:/E:/Smart-Knob/pic16f1455_firmware/lib/usb/usb_descriptors.c</file>
+            <file>file:/E:/Smart-Knob/pic16f1455_firmware/lib/usb/usb_device.c</file>
+            <file>file:/E:/Smart-Knob/pic16f1455_firmware/lib/usb/usb_device_hid.c</file>
+        </group>
+    </open-files>
+</project-private>
