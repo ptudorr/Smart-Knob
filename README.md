@@ -2,7 +2,7 @@
 Features/devices:
 * haptic motor
 * angle sensor
-* display
+* display - NodeMCU managed
 * strain gauge
 * ring leds
 * light sensors/display brightness - PIC managed
