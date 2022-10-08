@@ -1,10 +1,10 @@
 # Smart-Knob
 Features/devices:
-* haptic motor
-* angle sensor
-* display - NodeMCU managed
-* strain gauge
-* ring leds
+* haptic motor    - NodeMCU managed
+* angle sensor    - NodeMCU managed
+* display         - NodeMCU managed
+* strain gauge    - PIC managed
+* ring leds       - PIC managed
 * light sensors/display brightness - PIC managed
 
 Useful links:
