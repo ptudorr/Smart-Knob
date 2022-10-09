@@ -15,3 +15,7 @@ Useful links:
 
 <img src="https://user-images.githubusercontent.com/101560676/194729360-bfd04a7e-d6f4-4714-811e-90764046d18d.png" width="400">
 <img src="https://user-images.githubusercontent.com/101560676/194730027-5e8c78ca-7b32-4c9c-a9b2-b4c04a1a92c4.png" width="400">
+
+
+PIC-NodeMCU
+test communication
