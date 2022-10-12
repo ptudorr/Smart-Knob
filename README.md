@@ -4,7 +4,7 @@ Features/devices:
 * angle sensor    - NodeMCU managed
 * display         - NodeMCU managed
 * strain gauge    - PIC managed
-* ring leds       - PIC managed
+* ring leds       - NodeMCU managed
 * light sensors/display brightness - PIC managed
 
 Useful links:
