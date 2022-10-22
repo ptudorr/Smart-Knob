@@ -3,9 +3,10 @@ Features/devices:
 * haptic motor    - NodeMCU managed
 * angle sensor    - NodeMCU managed
 * display         - NodeMCU managed
-* strain gauge    - PIC managed
+* strain gauge    - NodeMCU managed
 * ring leds       - NodeMCU managed
-* light sensors/display brightness - PIC managed
+* light sensors/display brightness - NodeMCU/PIC managed
+* mode change button - PIC managed
 
 Useful links:
 * https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
