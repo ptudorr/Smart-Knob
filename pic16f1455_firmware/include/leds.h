@@ -31,11 +31,11 @@ typedef enum
     LED_NONE,
     LED_D1,
     LED_D2,
-    LED_D3,
-    LED_D4
+    LED_D3//,
+    //LED_D4
 } LED;
 
-#define LED_COUNT 4
+#define LED_COUNT 3
 
 /*********************************************************************
 * Function: void LED_On(LED led);

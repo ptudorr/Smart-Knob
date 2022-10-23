@@ -22,14 +22,23 @@ please contact mla_licensing@microchip.com
 
 #define FIXED_ADDRESS_MEMORY
 
+#define DISPLAY_DATA_ADDRESS_HI 21
+#define DISPLAY_DATA_ADDRESS_LO B0
+
+#define M_CONC(A, B) M_CONC_(A, B)
+#define M_CONC_(A, B) A##B
+#define ADD0X(A) M_CONC(0x,A)
+
+#define DSPL_ADDR_HEX ADD0X(M_CONC(DISPLAY_DATA_ADDRESS_HI,DISPLAY_DATA_ADDRESS_LO))
+
 #if(__XC8_VERSION < 2000)
     #define HAPTIC_IN_DATA_ADDRESS @0x2050
     #define HID_CUSTOM_IN_DATA_BUFFER_ADDRESS @0x20A0
 #else
     #define HAPTIC_IN_DATA_ADDRESS __at(0x2050)//IN 32 bytes
-    #define HAPTIC_OUT_DATA_ADDRESS __at(0x20D0)//OUT 64 bytes
-    #define LEDS_DATA_ADDRESS __at(0x2150)//OUT 64 bytes
-    #define DISPLAY_DATA_ADDRESS __at(0x21D0)//OUT 64 bytes
+    #define HAPTIC_OUT_DATA_ADDRESS __at(0x20B0)//OUT 64 bytes
+    #define LEDS_DATA_ADDRESS __at(0x2130)//OUT 64 bytes
+    #define DISPLAY_DATA_ADDRESS __at(DSPL_ADDR_HEX)//OUT 64 bytes
 
     //#define HID_CUSTOM_IN_DATA_BUFFER_ADDRESS __at(0x20A0)
 #endif

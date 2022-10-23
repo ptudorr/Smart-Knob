@@ -1,4 +1,4 @@
-build/LPCUSBDK_16F1455/production/lib/usb/usb_descriptors.p1:  \
+build/LPCUSBDK_16F1455/debug/lib/usb/usb_descriptors.p1:  \
 lib/usb/usb_descriptors.c  \
 include/usb/usb.h  \
 include/usb/usb_config.h  \

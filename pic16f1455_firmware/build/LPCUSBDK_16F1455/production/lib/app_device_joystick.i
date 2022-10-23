@@ -4740,6 +4740,37 @@ extern const uint8_t configDescriptor1[];
 extern volatile uint8_t CtrlTrfData[8];
 # 25 "lib/app_device_joystick.c" 2
 
+# 1 ".\\include/app_device_joystick.h" 1
+# 39 ".\\include/app_device_joystick.h"
+typedef uint8_t HAPTIC_IN_CONTROLS[16];
+
+
+
+
+
+
+typedef uint8_t HAPTIC_OUT_CONTROLS[64];
+# 64 ".\\include/app_device_joystick.h"
+typedef uint8_t LEDS_CONTROLS[49];
+
+
+
+
+
+typedef uint8_t DISPLAY_CONTROLS[64];
+# 86 ".\\include/app_device_joystick.h"
+        HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
+        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+        LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+        DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
+# 108 ".\\include/app_device_joystick.h"
+void APP_DeviceJoystickInitialize(void);
+# 124 ".\\include/app_device_joystick.h"
+void APP_DeviceJoystickStart(void);
+# 140 ".\\include/app_device_joystick.h"
+void APP_DeviceJoystickTasks(void);
+# 26 "lib/app_device_joystick.c" 2
+
 
 # 1 ".\\include/system.h" 1
 # 26 ".\\include/system.h"
@@ -4763,8 +4794,8 @@ typedef enum
     LED_NONE,
     LED_D1,
     LED_D2,
-    LED_D3,
-    LED_D4
+    LED_D3
+
 } LED;
 # 56 ".\\include/leds.h"
 void LED_On(LED led);
@@ -4793,67 +4824,64 @@ typedef enum
 } SYSTEM_STATE;
 # 67 ".\\include/system.h"
 void SYSTEM_Initialize( SYSTEM_STATE state );
-# 27 "lib/app_device_joystick.c" 2
+# 28 "lib/app_device_joystick.c" 2
 
 
 # 1 ".\\include/app_led_usb_status.h" 1
 # 37 ".\\include/app_led_usb_status.h"
 void APP_LEDUpdateUSBStatus(void);
-# 29 "lib/app_device_joystick.c" 2
-# 46 "lib/app_device_joystick.c"
-typedef union _HAPTIC_IN_CONTROLS_TYPEDEF
+# 30 "lib/app_device_joystick.c" 2
+
+# 1 ".\\include/spi.h" 1
+# 13 ".\\include/spi.h"
+uint8_t TESTB,REGT;
+
+typedef enum
 {
-    struct
-    {
-        int32_t wheel;
-        uint8_t x;
-        uint8_t y;
-        uint8_t button;
-        uint8_t data[9];
-    };
-    uint8_t val[16];
-} HAPTIC_IN_CONTROLS;
+  MASTER_OSC_DIV4 = 0b00100000,
+  MASTER_OSC_DIV16 = 0b00100001,
+  MASTER_OSC_DIV64 = 0b00100010,
+  MASTER_TMR2_DIV2 = 0b00100011,
+  MASTER_OSC_SPADD = 0b00101010,
 
-typedef union _HAPTIC_OUT_CONTROLS_TYPEDEF
+  SLAVE_SS_EN = 0b00100100,
+  SLAVE_SS_DIS = 0b00100101
+}Spi_Mode;
+
+typedef enum
 {
-    uint8_t val[64];
-} HAPTIC_OUT_CONTROLS;
+  SAMPLE_MIDDLE = 0b00000000,
+  SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
 
-
-typedef struct{
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-}RGB;
-typedef union _LEDS_CONTROLS_TYPEDEF
+typedef enum
 {
-    struct{
-        uint8_t command;
-        RGB leds[16];
-    };
-    uint8_t val[49];
-} LEDS_CONTROLS;
+  IDLE_HIGH = 0b00001000,
+  IDLE_LOW = 0b00000000
+}Spi_Clock_Pol;
 
-typedef union _DISPLAY_CONTROLS_TYPEDEF
+typedef enum
 {
-    uint8_t val[64];
-} DISPLAY_CONTROLS;
-# 98 "lib/app_device_joystick.c"
-        HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
-        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20D0)));
-        LEDS_CONTROLS leds_output __attribute__((address(0x2150)));
-        DISPLAY_CONTROLS display_output __attribute__((address(0x21D0)));
+  IDLE_TO_ACTIVE = 0b00000000,
+  ACTIVE_TO_IDLE = 0b01000000
+}Spi_Clock_Edge;
 
 
 
 
 
+void spiRead(void);
+void spiWrite(void);
 
+void MasterinitSPI(void);
+void SlaveinitSPI(void);
+# 31 "lib/app_device_joystick.c" 2
+# 50 "lib/app_device_joystick.c"
              void* last_HAP_IN = 0;
              void* last_HAP_OUT = 0;
              void* last_LED_OUT = 0;
              void* last_DSP_OUT = 0;
-# 126 "lib/app_device_joystick.c"
+# 68 "lib/app_device_joystick.c"
 void APP_DeviceJoystickInitialize(void)
 {
 
@@ -4868,7 +4896,7 @@ void APP_DeviceJoystickInitialize(void)
     USBEnableEndpoint(2 ,0x04|0x02|0x10|0x08);
     USBEnableEndpoint(3 ,0x04|0x02|0x10|0x08);
 }
-# 156 "lib/app_device_joystick.c"
+# 98 "lib/app_device_joystick.c"
 uint8_t cntr=0;
 
 void APP_DeviceJoystickTasks(void)
@@ -4896,13 +4924,14 @@ void APP_DeviceJoystickTasks(void)
     if(!((last_HAP_IN != 0x0000) && ((*(volatile uint8_t*)last_HAP_IN & 0x80) != 0x00)))
     {
 
-        if(BUTTON_IsPressed(BUTTON_S1) == 1)
+        if( 0 == 1)
         {
 
 
 
-            haptic_in.button = 0x2;
 
+
+            haptic_in[1] = TESTB;
 
 
 
@@ -4917,16 +4946,16 @@ void APP_DeviceJoystickTasks(void)
 
 
 
-            haptic_in.val[0] = cntr++;
-            haptic_in.val[1] = 0x00;
-
-
-            haptic_in.val[2] = haptic_out.val[3];
 
 
 
-
-
+            haptic_in[0] = display_output[0];
+            haptic_in[1] = display_output[1];
+            haptic_in[2] = TESTB;
+            haptic_in[3] = SSPCON1;
+            haptic_in[4] = SSPSTAT;
+            haptic_in[5] = display_output[63];
+# 164 "lib/app_device_joystick.c"
             last_HAP_IN = USBTransferOnePacket(1,1,(uint8_t*)&haptic_in,sizeof(haptic_in));
         }
     }
@@ -4938,10 +4967,10 @@ void APP_DeviceJoystickTasks(void)
         last_DSP_OUT = USBTransferOnePacket(3,0,(uint8_t*)&display_output,sizeof(display_output));
     }
     if(!((last_LED_OUT != 0x0000) && ((*(volatile uint8_t*)last_LED_OUT & 0x80) != 0x00))){
-        if(leds_output.val[48] == 0x97)
-            LED_On(LED_D3);
-        else
-            LED_Off(LED_D3);
+
+
+
+
         last_LED_OUT = USBTransferOnePacket(2,0,(uint8_t*)&leds_output,sizeof(leds_output));
     }
 

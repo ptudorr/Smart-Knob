@@ -28,7 +28,8 @@
 int verbose = 0;
 char imageTransfer = 0,rec_trf = 0;
 
-struct timeval t_zero = {.tv_sec = 0, .tv_usec = 00000};
+struct timeval t_zero = { .tv_sec = 0, .tv_usec = 00000 };
+struct timeval t_oned = { .tv_sec = 0, .tv_usec = 100000 };
 
 static void print_endpoint_comp(const struct libusb_ss_endpoint_companion_descriptor* ep_comp)
 {
@@ -259,9 +260,14 @@ struct libusb_transfer* transfer_hap_in = NULL;
 struct libusb_transfer* transfer_led_out = NULL;
 struct libusb_transfer* transfer_hap_out = NULL;
 struct libusb_transfer* dsp_dsp_out = NULL;
-unsigned char buf[64],buf2[64],buf3[64], bufout[65] = {0xff,0xff,0xff};
+unsigned char buf_in[64],buf2[64],buf_dsp[64], bufout[65] = {0xff,0xff,0xff};
 
 int par = 0,nr_hap_in=0,nr_hap_out=0,nr_led_out=0,nr_dsp_out=0;
+
+//TEST
+uint8_t r=0xf0, g=0xf0, b=0xf0;
+int8_t ra=0, ga=1, ba = 0;
+uint16_t crcol;
 
 void cb_HAP_IN(struct libusb_transfer* transfer)
 {
@@ -271,13 +277,16 @@ void cb_HAP_IN(struct libusb_transfer* transfer)
 	
 	benchBytes += transfer->actual_length;
 	//this averages the bandwidth over many transfers
-	if (++benchPackets % 20 == 0) {
+	if (/*++benchPackets % 20 == 0*/1) {
 		par = 1 - par;
 		diff = (t2.tv_sec - t1.tv_sec) * 1000000000L + (t2.tv_nsec - t1.tv_nsec);
 		t1.tv_sec = t2.tv_sec;
 		t1.tv_nsec = t2.tv_nsec;
-		printf("\rreceived %4d transfers and %4d bytes in %4d us, %4.1f B/s|%02x;   h_in:%d;h_out:%d;l_out:%d;d_out:%d", 
-			benchPackets, benchBytes, diff / 1000, benchBytes * 1000000.0 / (diff / 1000),buf2[0],nr_hap_in,nr_hap_out,nr_led_out,nr_dsp_out);
+		/*printf("\rreceived %4d transfers and %4d bytes in %4d us, %4.1f B/s|%02x;%02x;   h_in:%d;h_out:%d;l_out:%d;d_out:%d",
+			benchPackets, benchBytes, diff / 1000, benchBytes * 1000000.0 / (diff / 1000), buf[0], buf[1], nr_hap_in, nr_hap_out, nr_led_out, nr_dsp_out);*/
+		printf("\r|%02x;%02x;%02x;%02x;%02x;%02x;   h_in:%d;h_out:%d;l_out:%d;d_out:%d",
+			 buf_in[0], buf_in[1], buf_in[2], buf_in[3], buf_in[4], buf_in[5], nr_hap_in, nr_hap_out, nr_led_out, nr_dsp_out);
+
 		fflush(stdout);
 		benchPackets = 0;
 		benchBytes = 0;
@@ -290,9 +299,23 @@ void cb_LED_OUT(struct libusb_transfer* transfer)
 	libusb_submit_transfer(transfer_led_out);
 
 }
+
 void cb_DSP_OUT(struct libusb_transfer* transfer)
 {
 	nr_dsp_out++;
+	if (ra == 1) { r++; if (r == 0xff) { ra = 0;ba = -1; } }
+	else if (ba == -1) { b--; if (b == 0x00) { ga = 1;ba = 0; } }
+	else if (ga == 1) { g++; if (g == 0xff) { ra = -1;ga = 0; } }
+	else if (ra == -1) { r--; if (r == 0x00) { ra = 0;ba = 1; } }
+	else if (ba == 1) { b++; if (b == 0xff) { ga = -1;ba = 0; } }
+	else if (ga == -1) { g--; if (g == 0x00) { ga = 0;ra = 1; } }
+
+	for (int i = 0;i < 32;i++) {
+		crcol = ((r << 8) & 0xf800) | ((g << 3) & 0x07E0) | (b >> 3);
+		buf_dsp[2 * i] = 0xff & crcol;
+		buf_dsp[2 * i + 1] = 0xff & (crcol>>8);
+	}
+
 	libusb_submit_transfer(dsp_dsp_out);
 
 }
@@ -305,7 +328,7 @@ void cb_HAP_OUT(struct libusb_transfer* transfer)
 void start_HAP_IN(libusb_device_handle* devh, uint8_t USB_ENDPOINT_IN) {
 	transfer_hap_in = libusb_alloc_transfer(0);
 	libusb_fill_interrupt_transfer(transfer_hap_in, devh, USB_ENDPOINT_IN,
-		buf, 64,  // Note: in_buffer is where input data written.
+		buf_in, 64,  // Note: in_buffer is where input data written.
 		cb_HAP_IN, NULL, 0); // no user data
 	libusb_submit_transfer(transfer_hap_in);
 }
@@ -319,7 +342,7 @@ void start_LED_OUT(libusb_device_handle* devh, uint8_t USB_ENDPOINT_OUT) {
 void start_DSP_OUT(libusb_device_handle* devh, uint8_t USB_ENDPOINT_OUT) {
 	dsp_dsp_out = libusb_alloc_transfer(0);
 	libusb_fill_interrupt_transfer(dsp_dsp_out, devh, USB_ENDPOINT_OUT,
-		buf3, 64,  // Note: in_buffer is where input data written.
+		buf_dsp, 64,  // Note: in_buffer is where input data written.
 		cb_DSP_OUT, NULL, 0); // no user data
 	int r = libusb_submit_transfer(dsp_dsp_out);
 }
@@ -403,11 +426,11 @@ int main(int argc, char* argv[])
 	start_DSP_OUT(handle, adr_DSP_OUT);
 	while (1) {
 		if (!imageTransfer) {
-			Sleep(1);
+			//Sleep(1);
 		}
 		bufout[2] = clock() / 1000;
 		
-		r = libusb_handle_events_timeout_completed(ctx, &t_zero, NULL);
+		r = libusb_handle_events_timeout_completed(ctx, &t_oned, NULL);
 
 		
 		if (r < 0) {   // negative values are errors

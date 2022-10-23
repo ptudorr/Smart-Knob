@@ -23,6 +23,7 @@
       <itemPath>include/leds.h</itemPath>
       <itemPath>include/system.h</itemPath>
       <itemPath>include/system_config.h</itemPath>
+      <itemPath>include/spi.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -43,6 +44,7 @@
       <itemPath>lib/buttons.c</itemPath>
       <itemPath>lib/leds.c</itemPath>
       <itemPath>lib/system.c</itemPath>
+      <itemPath>lib/spi.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -67,7 +69,7 @@
         <targetDevice>PIC16F1455</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.36</languageToolchainVersion>
         <platform>3</platform>

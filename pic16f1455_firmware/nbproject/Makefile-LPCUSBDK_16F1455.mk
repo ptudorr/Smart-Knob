@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=lib/usb/usb_descriptors.c lib/usb/usb_device.c lib/usb/usb_device_hid.c lib/usb/usb_events.c main.c lib/app_device_joystick.c lib/app_led_usb_status.c lib/buttons.c lib/leds.c lib/system.c
+SOURCEFILES_QUOTED_IF_SPACED=lib/usb/usb_descriptors.c lib/usb/usb_device.c lib/usb/usb_device_hid.c lib/usb/usb_events.c main.c lib/app_device_joystick.c lib/app_led_usb_status.c lib/buttons.c lib/leds.c lib/system.c lib/spi.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib/usb/usb_descriptors.p1 ${OBJECTDIR}/lib/usb/usb_device.p1 ${OBJECTDIR}/lib/usb/usb_device_hid.p1 ${OBJECTDIR}/lib/usb/usb_events.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/lib/app_device_joystick.p1 ${OBJECTDIR}/lib/app_led_usb_status.p1 ${OBJECTDIR}/lib/buttons.p1 ${OBJECTDIR}/lib/leds.p1 ${OBJECTDIR}/lib/system.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/lib/usb/usb_descriptors.p1.d ${OBJECTDIR}/lib/usb/usb_device.p1.d ${OBJECTDIR}/lib/usb/usb_device_hid.p1.d ${OBJECTDIR}/lib/usb/usb_events.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/lib/app_device_joystick.p1.d ${OBJECTDIR}/lib/app_led_usb_status.p1.d ${OBJECTDIR}/lib/buttons.p1.d ${OBJECTDIR}/lib/leds.p1.d ${OBJECTDIR}/lib/system.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib/usb/usb_descriptors.p1 ${OBJECTDIR}/lib/usb/usb_device.p1 ${OBJECTDIR}/lib/usb/usb_device_hid.p1 ${OBJECTDIR}/lib/usb/usb_events.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/lib/app_device_joystick.p1 ${OBJECTDIR}/lib/app_led_usb_status.p1 ${OBJECTDIR}/lib/buttons.p1 ${OBJECTDIR}/lib/leds.p1 ${OBJECTDIR}/lib/system.p1 ${OBJECTDIR}/lib/spi.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/lib/usb/usb_descriptors.p1.d ${OBJECTDIR}/lib/usb/usb_device.p1.d ${OBJECTDIR}/lib/usb/usb_device_hid.p1.d ${OBJECTDIR}/lib/usb/usb_events.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/lib/app_device_joystick.p1.d ${OBJECTDIR}/lib/app_led_usb_status.p1.d ${OBJECTDIR}/lib/buttons.p1.d ${OBJECTDIR}/lib/leds.p1.d ${OBJECTDIR}/lib/system.p1.d ${OBJECTDIR}/lib/spi.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/lib/usb/usb_descriptors.p1 ${OBJECTDIR}/lib/usb/usb_device.p1 ${OBJECTDIR}/lib/usb/usb_device_hid.p1 ${OBJECTDIR}/lib/usb/usb_events.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/lib/app_device_joystick.p1 ${OBJECTDIR}/lib/app_led_usb_status.p1 ${OBJECTDIR}/lib/buttons.p1 ${OBJECTDIR}/lib/leds.p1 ${OBJECTDIR}/lib/system.p1
+OBJECTFILES=${OBJECTDIR}/lib/usb/usb_descriptors.p1 ${OBJECTDIR}/lib/usb/usb_device.p1 ${OBJECTDIR}/lib/usb/usb_device_hid.p1 ${OBJECTDIR}/lib/usb/usb_events.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/lib/app_device_joystick.p1 ${OBJECTDIR}/lib/app_led_usb_status.p1 ${OBJECTDIR}/lib/buttons.p1 ${OBJECTDIR}/lib/leds.p1 ${OBJECTDIR}/lib/system.p1 ${OBJECTDIR}/lib/spi.p1
 
 # Source Files
-SOURCEFILES=lib/usb/usb_descriptors.c lib/usb/usb_device.c lib/usb/usb_device_hid.c lib/usb/usb_events.c main.c lib/app_device_joystick.c lib/app_led_usb_status.c lib/buttons.c lib/leds.c lib/system.c
+SOURCEFILES=lib/usb/usb_descriptors.c lib/usb/usb_device.c lib/usb/usb_device_hid.c lib/usb/usb_events.c main.c lib/app_device_joystick.c lib/app_led_usb_status.c lib/buttons.c lib/leds.c lib/system.c lib/spi.c
 
 
 
@@ -174,6 +174,14 @@ ${OBJECTDIR}/lib/system.p1: lib/system.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/lib/system.d ${OBJECTDIR}/lib/system.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/lib/system.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/lib/spi.p1: lib/spi.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/lib" 
+	@${RM} ${OBJECTDIR}/lib/spi.p1.d 
+	@${RM} ${OBJECTDIR}/lib/spi.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -maddrqual=ignore -xassembler-with-cpp -I"../demo_src" -I"../../../../../../framework/usb/inc" -I"../../../../../../bsp/low_pin_count_usb_development_kit/pic16f1459" -I"." -mwarn=0 -Wa,-a -DXPRJ_LPCUSBDK_16F1455=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mosccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mdefault-config-bits $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/lib/spi.p1 lib/spi.c 
+	@-${MV} ${OBJECTDIR}/lib/spi.d ${OBJECTDIR}/lib/spi.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/lib/spi.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/lib/usb/usb_descriptors.p1: lib/usb/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/lib/usb" 
@@ -254,6 +262,14 @@ ${OBJECTDIR}/lib/system.p1: lib/system.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -maddrqual=ignore -xassembler-with-cpp -I"../demo_src" -I"../../../../../../framework/usb/inc" -I"../../../../../../bsp/low_pin_count_usb_development_kit/pic16f1459" -I"." -mwarn=0 -Wa,-a -DXPRJ_LPCUSBDK_16F1455=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mosccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mdefault-config-bits $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/lib/system.p1 lib/system.c 
 	@-${MV} ${OBJECTDIR}/lib/system.d ${OBJECTDIR}/lib/system.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/lib/system.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/lib/spi.p1: lib/spi.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/lib" 
+	@${RM} ${OBJECTDIR}/lib/spi.p1.d 
+	@${RM} ${OBJECTDIR}/lib/spi.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -maddrqual=ignore -xassembler-with-cpp -I"../demo_src" -I"../../../../../../framework/usb/inc" -I"../../../../../../bsp/low_pin_count_usb_development_kit/pic16f1459" -I"." -mwarn=0 -Wa,-a -DXPRJ_LPCUSBDK_16F1455=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mosccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mdefault-config-bits $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/lib/spi.p1 lib/spi.c 
+	@-${MV} ${OBJECTDIR}/lib/spi.d ${OBJECTDIR}/lib/spi.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/lib/spi.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

@@ -23,10 +23,12 @@ please contact mla_licensing@microchip.com
 /** INCLUDES *******************************************************/
 #include "include/usb/usb.h"
 #include "include/usb/usb_device_hid.h"
+#include "include/app_device_joystick.h"
 
 #include "include/system.h"
 
 #include "include/app_led_usb_status.h"
+#include "include/spi.h"
 
 #include "stdint.h"
 
@@ -42,67 +44,7 @@ please contact mla_licensing@microchip.com
 #define HAT_SWITCH_NORTH_WEST       0x7
 #define HAT_SWITCH_NULL             0x8
 
-/** TYPE DEFINITIONS ************************************************/
-typedef union _HAPTIC_IN_CONTROLS_TYPEDEF
-{
-    struct
-    {
-        int32_t wheel;
-        uint8_t x;
-        uint8_t y;
-        uint8_t button;
-        uint8_t data[9];
-    };
-    uint8_t val[16];
-} HAPTIC_IN_CONTROLS;
 
-typedef union _HAPTIC_OUT_CONTROLS_TYPEDEF
-{
-    uint8_t val[64];
-} HAPTIC_OUT_CONTROLS;
-
-
-typedef struct{
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-}RGB;
-typedef union _LEDS_CONTROLS_TYPEDEF
-{
-    struct{
-        uint8_t command;
-        RGB leds[16];
-    };
-    uint8_t val[49];
-} LEDS_CONTROLS;
-
-typedef union _DISPLAY_CONTROLS_TYPEDEF
-{
-    uint8_t val[64];
-} DISPLAY_CONTROLS;
-
-
-
-/** VARIABLES ******************************************************/
-/* Some processors have a limited range of RAM addresses where the USB module
- * is able to access.  The following section is for those devices.  This section
- * assigns the buffers that need to be used by the USB module into those
- * specific areas.
- */
-#if defined(FIXED_ADDRESS_MEMORY)
-    #if defined(COMPILER_MPLAB_C18)
-        #pragma udata JOYSTICK_DATA=HAPTIC_IN_DATA_ADDRESS
-            HAPTIC_IN_CONTROLS haptic_in;
-        #pragma udata
-    #elif defined(__XC8)
-        HAPTIC_IN_CONTROLS  haptic_in HAPTIC_IN_DATA_ADDRESS;//haptic in
-        HAPTIC_OUT_CONTROLS haptic_out HAPTIC_OUT_DATA_ADDRESS;
-        LEDS_CONTROLS leds_output LEDS_DATA_ADDRESS;
-        DISPLAY_CONTROLS display_output DISPLAY_DATA_ADDRESS;
-    #endif
-#else
-    HAPTIC_IN_CONTROLS haptic_in;
-#endif
 
 
 USB_VOLATILE USB_HANDLE last_HAP_IN = 0;
@@ -180,13 +122,14 @@ void APP_DeviceJoystickTasks(void)
     if(!HIDTxHandleBusy(last_HAP_IN))
     {
         //If the button is pressed
-        if(BUTTON_IsPressed(BUTTON_USB_DEVICE_HID_JOYSTICK) == true)
+        if(/*BUTTON_IsPressed(BUTTON_USB_DEVICE_HID_JOYSTICK)*/false == true)
         {
             //Indicate that the "x" button is pressed, but none others
 
             //Move the hat switch to the "east" position
-            haptic_in.button = HAT_SWITCH_EAST;
+            //haptic_in.button = HAT_SWITCH_EAST;
 
+            haptic_in[1] = TESTB;
             //Move the X and Y coordinates to the their extreme values (0x80 is
             //  in the middle - no value).
             //joystick_input.members.analog_stick.X = 0;
@@ -201,11 +144,18 @@ void APP_DeviceJoystickTasks(void)
             //Reset values of the controller to default state
 
             //Buttons
-            haptic_in.val[0] = cntr++;
-            haptic_in.val[1] = 0x00;
+            //haptic_in.val[0] = cntr++;
+            //haptic_in.val[1] = TESTB;
+            
+            haptic_in[0] = display_output[0];
+            haptic_in[1] = display_output[1];
+            haptic_in[2] = TESTB;
+            haptic_in[3] = SSPCON1;
+            haptic_in[4] = SSPSTAT;
+            haptic_in[5] = display_output[63];
 
             //Hat switch
-            haptic_in.val[2] = haptic_out.val[3];
+            //haptic_in.val[2] = haptic_out.val[3];
 
             //Analog sticks
             
@@ -222,10 +172,10 @@ void APP_DeviceJoystickTasks(void)
         last_DSP_OUT = HIDRxPacket(DISPLAY_EP, (uint8_t*)&display_output, sizeof(display_output));
     }
     if(!HIDRxHandleBusy(last_LED_OUT)){
-        if(leds_output.val[48] == 0x97)
+        /*if(leds_output.val[48] == 0x97)
             LED_On(LED_D3);
         else
-            LED_Off(LED_D3);
+            LED_Off(LED_D3);*/
         last_LED_OUT = HIDRxPacket(LEDS_EP, (uint8_t*)&leds_output, sizeof(leds_output));
     }
     

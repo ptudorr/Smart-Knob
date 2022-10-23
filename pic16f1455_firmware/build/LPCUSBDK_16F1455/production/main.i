@@ -7,7 +7,7 @@
 # 1 "E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 21 "main.c"
+# 22 "main.c"
 # 1 "./include/system.h" 1
 # 23 "./include/system.h"
 # 1 "E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 1 3
@@ -3847,8 +3847,8 @@ typedef enum
     LED_NONE,
     LED_D1,
     LED_D2,
-    LED_D3,
-    LED_D4
+    LED_D3
+
 } LED;
 # 56 "./include/leds.h"
 void LED_On(LED led);
@@ -3880,7 +3880,7 @@ typedef enum
 } SYSTEM_STATE;
 # 67 "./include/system.h"
 void SYSTEM_Initialize( SYSTEM_STATE state );
-# 21 "main.c" 2
+# 22 "main.c" 2
 
 
 # 1 "./include/usb/usb.h" 1
@@ -4741,7 +4741,7 @@ _Bool USBHALSetEpConfiguration ( uint8_t ep_num, uint16_t max_pkt_size, uint16_t
 _Bool USBHALInitialize ( unsigned long flags );
 # 2056 "./include/usb/usb_device.h" 2
 # 51 "./include/usb/usb.h" 2
-# 23 "main.c" 2
+# 24 "main.c" 2
 
 # 1 "./include/usb/usb_device_hid.h" 1
 # 98 "./include/usb/usb_device_hid.h"
@@ -4773,37 +4773,110 @@ typedef struct _USB_HID_DSC
 extern volatile CTRL_TRF_SETUP SetupPkt;
 extern const uint8_t configDescriptor1[];
 extern volatile uint8_t CtrlTrfData[8];
-# 24 "main.c" 2
+# 25 "main.c" 2
 
 
 # 1 "./include/app_device_joystick.h" 1
-# 32 "./include/app_device_joystick.h"
-void APP_DeviceJoystickInitialize(void);
-# 48 "./include/app_device_joystick.h"
-void APP_DeviceJoystickStart(void);
+# 39 "./include/app_device_joystick.h"
+typedef uint8_t HAPTIC_IN_CONTROLS[16];
+
+
+
+
+
+
+typedef uint8_t HAPTIC_OUT_CONTROLS[64];
 # 64 "./include/app_device_joystick.h"
+typedef uint8_t LEDS_CONTROLS[49];
+
+
+
+
+
+typedef uint8_t DISPLAY_CONTROLS[64];
+# 86 "./include/app_device_joystick.h"
+        HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
+        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+        LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+        DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
+# 108 "./include/app_device_joystick.h"
+void APP_DeviceJoystickInitialize(void);
+# 124 "./include/app_device_joystick.h"
+void APP_DeviceJoystickStart(void);
+# 140 "./include/app_device_joystick.h"
 void APP_DeviceJoystickTasks(void);
-# 26 "main.c" 2
+# 27 "main.c" 2
 
 # 1 "./include/app_led_usb_status.h" 1
 # 37 "./include/app_led_usb_status.h"
 void APP_LEDUpdateUSBStatus(void);
-# 27 "main.c" 2
+# 28 "main.c" 2
 
 
+# 1 "./include/spi.h" 1
+# 13 "./include/spi.h"
+uint8_t TESTB,REGT;
+
+typedef enum
+{
+  MASTER_OSC_DIV4 = 0b00100000,
+  MASTER_OSC_DIV16 = 0b00100001,
+  MASTER_OSC_DIV64 = 0b00100010,
+  MASTER_TMR2_DIV2 = 0b00100011,
+  MASTER_OSC_SPADD = 0b00101010,
+
+  SLAVE_SS_EN = 0b00100100,
+  SLAVE_SS_DIS = 0b00100101
+}Spi_Mode;
+
+typedef enum
+{
+  SAMPLE_MIDDLE = 0b00000000,
+  SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+  IDLE_HIGH = 0b00001000,
+  IDLE_LOW = 0b00000000
+}Spi_Clock_Pol;
+
+typedef enum
+{
+  IDLE_TO_ACTIVE = 0b00000000,
+  ACTIVE_TO_IDLE = 0b01000000
+}Spi_Clock_Edge;
+
+
+
+
+
+void spiRead(void);
+void spiWrite(void);
+
+void MasterinitSPI(void);
+void SlaveinitSPI(void);
+# 30 "main.c" 2
 
 
 void main(void)
 {
-    SYSTEM_Initialize(SYSTEM_STATE_USB_START);
+
+    TRISC1 = 1;TRISC2 = 0;
+
+    _delay((unsigned long)((200)*(48000000/4000.0)));
+
+    MasterinitSPI();
 
     USBDeviceInit();
                      ;
 
+
     while(1)
     {
+        spiWrite();
                       ;
-# 55 "main.c"
+# 63 "main.c"
             USBDeviceTasks();
 
 
@@ -4828,6 +4901,9 @@ void main(void)
 
 
         APP_DeviceJoystickTasks();
+
+
+
 
     }
 }

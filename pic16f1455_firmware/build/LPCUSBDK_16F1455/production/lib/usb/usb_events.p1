@@ -1,28 +1,28 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "50 lib/usb/usb_events.c
 [; ;lib/usb/usb_events.c: 50: _Bool USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, uint16_t size)
-[c E2427 0 1 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 400 500 600 700 800 900 1000 10000 32767 .. ]
-[n E2427 . EVENT_NONE EVENT_DEVICE_STACK_BASE EVENT_HOST_STACK_BASE EVENT_HUB_ATTACH EVENT_STALL EVENT_VBUS_SES_REQUEST EVENT_VBUS_OVERCURRENT EVENT_VBUS_REQUEST_POWER EVENT_VBUS_RELEASE_POWER EVENT_VBUS_POWER_AVAILABLE EVENT_UNSUPPORTED_DEVICE EVENT_CANNOT_ENUMERATE EVENT_CLIENT_INIT_ERROR EVENT_OUT_OF_MEMORY EVENT_UNSPECIFIED_ERROR EVENT_DETACH EVENT_TRANSFER EVENT_SOF EVENT_RESUME EVENT_SUSPEND EVENT_RESET EVENT_DATA_ISOC_READ EVENT_DATA_ISOC_WRITE EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION EVENT_1MS EVENT_ALT_INTERFACE EVENT_HOLD_BEFORE_CONFIGURATION EVENT_GENERIC_BASE EVENT_MSD_BASE EVENT_HID_BASE EVENT_PRINTER_BASE EVENT_CDC_BASE EVENT_CHARGER_BASE EVENT_AUDIO_BASE EVENT_USER_BASE EVENT_BUS_ERROR  ]
+[c E2426 0 1 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 400 500 600 700 800 900 1000 10000 32767 .. ]
+[n E2426 . EVENT_NONE EVENT_DEVICE_STACK_BASE EVENT_HOST_STACK_BASE EVENT_HUB_ATTACH EVENT_STALL EVENT_VBUS_SES_REQUEST EVENT_VBUS_OVERCURRENT EVENT_VBUS_REQUEST_POWER EVENT_VBUS_RELEASE_POWER EVENT_VBUS_POWER_AVAILABLE EVENT_UNSUPPORTED_DEVICE EVENT_CANNOT_ENUMERATE EVENT_CLIENT_INIT_ERROR EVENT_OUT_OF_MEMORY EVENT_UNSPECIFIED_ERROR EVENT_DETACH EVENT_TRANSFER EVENT_SOF EVENT_RESUME EVENT_SUSPEND EVENT_RESET EVENT_DATA_ISOC_READ EVENT_DATA_ISOC_WRITE EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION EVENT_1MS EVENT_ALT_INTERFACE EVENT_HOLD_BEFORE_CONFIGURATION EVENT_GENERIC_BASE EVENT_MSD_BASE EVENT_HID_BASE EVENT_PRINTER_BASE EVENT_CDC_BASE EVENT_CHARGER_BASE EVENT_AUDIO_BASE EVENT_USER_BASE EVENT_BUS_ERROR  ]
 "37 .\include/app_led_usb_status.h
 [; ;.\include/app_led_usb_status.h: 37: void APP_LEDUpdateUSBStatus(void);
 [v _APP_LEDUpdateUSBStatus `(v ~T0 @X0 0 ef ]
 "73 lib/usb/usb_events.c
 [; ;lib/usb/usb_events.c: 73:             SYSTEM_Initialize(SYSTEM_STATE_USB_SUSPEND);
-[c E2218 0 1 2 .. ]
-[n E2218 . SYSTEM_STATE_USB_START SYSTEM_STATE_USB_SUSPEND SYSTEM_STATE_USB_RESUME  ]
+[c E2217 0 1 2 .. ]
+[n E2217 . SYSTEM_STATE_USB_START SYSTEM_STATE_USB_SUSPEND SYSTEM_STATE_USB_RESUME  ]
 "67 .\include/system.h
 [; ;.\include/system.h: 67: void SYSTEM_Initialize( SYSTEM_STATE state );
-[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef1`E2218 ]
-"32 .\include/app_device_joystick.h
-[; ;.\include/app_device_joystick.h: 32: void APP_DeviceJoystickInitialize(void);
+[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef1`E2217 ]
+"108 .\include/app_device_joystick.h
+[; ;.\include/app_device_joystick.h: 108: void APP_DeviceJoystickInitialize(void);
 [v _APP_DeviceJoystickInitialize `(v ~T0 @X0 0 ef ]
 "98 .\include/usb/usb_device_hid.h
 [; ;.\include/usb/usb_device_hid.h: 98: void USBCheckHIDRequest(void);
 [v _USBCheckHIDRequest `(v ~T0 @X0 0 ef ]
 "110 lib/usb/usb_events.c
 [; ;lib/usb/usb_events.c: 110:     }
-[c E2495 1 2 3 4 5 .. ]
-[n E2495 . EVENT_CONFIGURED EVENT_SET_DESCRIPTOR EVENT_EP0_REQUEST EVENT_ATTACH EVENT_TRANSFER_TERMINATED  ]
+[c E2494 1 2 3 4 5 .. ]
+[n E2494 . EVENT_CONFIGURED EVENT_SET_DESCRIPTOR EVENT_EP0_REQUEST EVENT_ATTACH EVENT_TRANSFER_TERMINATED  ]
 "55 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -431,16 +431,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5734
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 5734: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
+"86 .\include/app_device_joystick.h
+[; ;.\include/app_device_joystick.h: 86:         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
+[v _haptic_in `uc ~T0 @X0 -> 16 `i e@8272 ]
+"87
+[; ;.\include/app_device_joystick.h: 87:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+[v _haptic_out `uc ~T0 @X0 -> 64 `i e@8368 ]
+"88
+[; ;.\include/app_device_joystick.h: 88:         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+[v _leds_output `uc ~T0 @X0 -> 49 `i e@8496 ]
+"89
+[; ;.\include/app_device_joystick.h: 89:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
+[v _display_output `uc ~T0 @X0 -> 64 `i e@8624 ]
 "50 lib/usb/usb_events.c
 [; ;lib/usb/usb_events.c: 50: _Bool USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, uint16_t size)
-[v _USER_USB_CALLBACK_EVENT_HANDLER `(a ~T0 @X0 1 ef3`E2427`*v`us ]
+[v _USER_USB_CALLBACK_EVENT_HANDLER `(a ~T0 @X0 1 ef3`E2426`*v`us ]
 "51
 [; ;lib/usb/usb_events.c: 51: {
 {
 [e :U _USER_USB_CALLBACK_EVENT_HANDLER ]
 "50
 [; ;lib/usb/usb_events.c: 50: _Bool USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, uint16_t size)
-[v _event `E2427 ~T0 @X0 1 r1 ]
+[v _event `E2426 ~T0 @X0 1 r1 ]
 [v _pdata `*v ~T0 @X0 1 r2 ]
 [v _size `us ~T0 @X0 1 r3 ]
 "51
@@ -475,7 +487,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _APP_LEDUpdateUSBStatus ..  ]
 "73
 [; ;lib/usb/usb_events.c: 73:             SYSTEM_Initialize(SYSTEM_STATE_USB_SUSPEND);
-[e ( _SYSTEM_Initialize (1 . `E2218 1 ]
+[e ( _SYSTEM_Initialize (1 . `E2217 1 ]
 "74
 [; ;lib/usb/usb_events.c: 74:             break;
 [e $U 363  ]
@@ -487,7 +499,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _APP_LEDUpdateUSBStatus ..  ]
 "84
 [; ;lib/usb/usb_events.c: 84:             SYSTEM_Initialize(SYSTEM_STATE_USB_RESUME);
-[e ( _SYSTEM_Initialize (1 . `E2218 2 ]
+[e ( _SYSTEM_Initialize (1 . `E2217 2 ]
 "85
 [; ;lib/usb/usb_events.c: 85:             break;
 [e $U 363  ]
@@ -538,15 +550,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 363  ]
 [e :U 364 ]
-[e [\ -> _event `i , $ . `E2427 16 365
- , $ . `E2427 17 366
- , $ . `E2427 19 367
- , $ . `E2427 18 368
- , $ . `E2495 0 369
- , $ . `E2495 1 370
- , $ . `E2495 2 371
- , $ . `E2427 35 372
- , $ . `E2495 4 373
+[e [\ -> _event `i , $ . `E2426 16 365
+ , $ . `E2426 17 366
+ , $ . `E2426 19 367
+ , $ . `E2426 18 368
+ , $ . `E2494 0 369
+ , $ . `E2494 1 370
+ , $ . `E2494 2 371
+ , $ . `E2426 35 372
+ , $ . `E2494 4 373
  374 ]
 [e :U 363 ]
 "111

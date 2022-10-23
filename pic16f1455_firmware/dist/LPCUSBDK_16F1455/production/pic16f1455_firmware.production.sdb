@@ -61,7 +61,7 @@ EVENT_ATTACH 4
 EVENT_TRANSFER_TERMINATED 5
 ]
 "50 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_events.c
-[e E2427 . `ui
+[e E2426 . `ui
 EVENT_NONE 0
 EVENT_DEVICE_STACK_BASE 1
 EVENT_HOST_STACK_BASE 100
@@ -100,27 +100,21 @@ EVENT_USER_BASE 10000
 EVENT_BUS_ERROR 32767
 ]
 "73
-[e E2218 . `uc
+[e E2217 . `uc
 SYSTEM_STATE_USB_START 0
 SYSTEM_STATE_USB_SUSPEND 1
 SYSTEM_STATE_USB_RESUME 2
 ]
 "110
-[e E2495 . `uc
+[e E2494 . `uc
 EVENT_CONFIGURED 1
 EVENT_SET_DESCRIPTOR 2
 EVENT_EP0_REQUEST 3
 EVENT_ATTACH 4
 EVENT_TRANSFER_TERMINATED 5
 ]
-"33 E:\Smart-Knob\pic16f1455_firmware\main.c
-[e E2218 . `uc
-SYSTEM_STATE_USB_START 0
-SYSTEM_STATE_USB_SUSPEND 1
-SYSTEM_STATE_USB_RESUME 2
-]
-"61
-[e E2486 . `uc
+"69 E:\Smart-Knob\pic16f1455_firmware\main.c
+[e E2485 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
 POWERED_STATE 2
@@ -129,7 +123,7 @@ ADR_PENDING_STATE 8
 ADDRESS_STATE 16
 CONFIGURED_STATE 32
 ]
-"163 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"105 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [e E297 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
@@ -139,29 +133,15 @@ ADR_PENDING_STATE 8
 ADDRESS_STATE 16
 CONFIGURED_STATE 32
 ]
-"183
-[e E2864 . `uc
-BUTTON_NONE 0
-BUTTON_S1 1
-]
-"226
-[e E2872 . `uc
-LED_NONE 0
-LED_D1 1
-LED_D2 2
-LED_D3 3
-LED_D4 4
-]
 "56 E:\Smart-Knob\pic16f1455_firmware\lib/app_led_usb_status.c
 [e E2201 . `uc
 LED_NONE 0
 LED_D1 1
 LED_D2 2
 LED_D3 3
-LED_D4 4
 ]
 "95
-[e E2486 . `uc
+[e E2485 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
 POWERED_STATE 2
@@ -181,26 +161,47 @@ LED_NONE 0
 LED_D1 1
 LED_D2 2
 LED_D3 3
-LED_D4 4
 ]
-"81 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
-[e E2218 . `uc
+"85 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
+[e E2217 . `uc
 SYSTEM_STATE_USB_START 0
 SYSTEM_STATE_USB_SUSPEND 1
 SYSTEM_STATE_USB_RESUME 2
 ]
-"92
+"97
 [e E2201 . `uc
 LED_NONE 0
 LED_D1 1
 LED_D2 2
 LED_D3 3
-LED_D4 4
 ]
-"95
+"100
 [e E2193 . `uc
 BUTTON_NONE 0
 BUTTON_S1 1
+]
+"170 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+[e E2204 . `uc
+SAMPLE_MIDDLE 0
+SAMPLE_END 128
+]
+[e E2212 . `uc
+IDLE_TO_ACTIVE 0
+ACTIVE_TO_IDLE 64
+]
+"171
+[e E2195 . `uc
+MASTER_OSC_DIV4 32
+MASTER_OSC_DIV16 33
+MASTER_OSC_DIV64 34
+MASTER_TMR2_DIV2 35
+MASTER_OSC_SPADD 42
+SLAVE_SS_EN 36
+SLAVE_SS_DIS 37
+]
+[e E2208 . `uc
+IDLE_HIGH 8
+IDLE_LOW 0
 ]
 "4 E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memcpy.c
 [v _memcpy memcpy `(*.4v  1 e 1 0 ]
@@ -210,15 +211,13 @@ BUTTON_S1 1
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 E:\Atmel Studio\Comp-istall\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"126 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"68 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _APP_DeviceJoystickInitialize APP_DeviceJoystickInitialize `(v  1 e 1 0 ]
-"158
+"100
 [v _APP_DeviceJoystickTasks APP_DeviceJoystickTasks `(v  1 e 1 0 ]
 "50 E:\Smart-Knob\pic16f1455_firmware\lib/app_led_usb_status.c
 [v _APP_LEDUpdateUSBStatus APP_LEDUpdateUSBStatus `(v  1 e 1 0 ]
-"55 E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
-[v _BUTTON_IsPressed BUTTON_IsPressed `(a  1 e 1 0 ]
-"86
+"86 E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
 [v _BUTTON_Enable BUTTON_Enable `(v  1 e 1 0 ]
 "59 E:\Smart-Knob\pic16f1455_firmware\lib/leds.c
 [v _LED_On LED_On `(v  1 e 1 0 ]
@@ -226,9 +225,15 @@ BUTTON_S1 1
 [v _LED_Off LED_Off `(v  1 e 1 0 ]
 "220
 [v _LED_Enable LED_Enable `(v  1 e 1 0 ]
-"81 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
+"91 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+[v _spwrh spwrh `(v  1 e 1 0 ]
+"141
+[v _spiWrite spiWrite `(v  1 e 1 0 ]
+"164
+[v _MasterinitSPI MasterinitSPI `(v  1 e 1 0 ]
+"85 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"112
+"117
 [v _SYS_InterruptHigh SYS_InterruptHigh `II(v  1 e 1 0 ]
 "281 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBDeviceInit USBDeviceInit `(v  1 e 1 0 ]
@@ -280,9 +285,20 @@ BUTTON_S1 1
 [v _USBCheckHIDRequest USBCheckHIDRequest `(v  1 e 1 0 ]
 "50 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_events.c
 [v _USER_USB_CALLBACK_EVENT_HANDLER USER_USB_CALLBACK_EVENT_HANDLER `(a  1 e 1 0 ]
-"31 E:\Smart-Knob\pic16f1455_firmware\main.c
+"32 E:\Smart-Knob\pic16f1455_firmware\main.c
 [v _main main `(v  1 e 1 0 ]
-[s S2070 . 1 `uc 1 RC0 1 0 :1:0 
+"86 E:\Smart-Knob\pic16f1455_firmware\include/app_device_joystick.h
+[v _haptic_in haptic_in `[16]uc  1 e 16 @160 ]
+"87
+[v _haptic_out haptic_out `[64]uc  1 e 64 @304 ]
+"88
+[v _leds_output leds_output `[49]uc  1 e 49 @8496 ]
+"89
+[v _display_output display_output `[64]uc  1 e 64 @8624 ]
+"13 E:\Smart-Knob\pic16f1455_firmware\include/spi.h
+[v _TESTB TESTB `uc  1 e 1 0 ]
+[v _REGT REGT `uc  1 e 1 0 ]
+[s S2037 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -290,8 +306,8 @@ BUTTON_S1 1
 `uc 1 RC5 1 0 :1:5 
 ]
 "490 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
-[u S2077 . 1 `S2070 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES2077  1 e 1 @14 ]
+[u S2044 . 1 `S2037 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES2044  1 e 1 @14 ]
 [s S380 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ACTIF 1 0 :1:1 
 `uc 1 USBIF 1 0 :1:2 
@@ -304,7 +320,7 @@ BUTTON_S1 1
 "599
 [u S389 . 1 `S380 1 . 1 0 ]
 [v _PIR2bits PIR2bits `VES389  1 e 1 @18 ]
-[s S2120 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S2086 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -312,8 +328,8 @@ BUTTON_S1 1
 `uc 1 TRISC5 1 0 :1:5 
 ]
 "996
-[u S2127 . 1 `S2120 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES2127  1 e 1 @142 ]
+[u S2093 . 1 `S2086 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES2093  1 e 1 @142 ]
 [s S312 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ACTIE 1 0 :1:1 
 `uc 1 USBIE 1 0 :1:2 
@@ -326,7 +342,7 @@ BUTTON_S1 1
 "1105
 [u S321 . 1 `S312 1 . 1 0 ]
 [v _PIE2bits PIE2bits `VES321  1 e 1 @146 ]
-[s S2103 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S2069 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -334,10 +350,20 @@ BUTTON_S1 1
 `uc 1 LATC5 1 0 :1:5 
 ]
 "1807
-[u S2110 . 1 `S2103 1 . 1 0 ]
-[v _LATCbits LATCbits `VES2110  1 e 1 @270 ]
+[u S2076 . 1 `S2069 1 . 1 0 ]
+[v _LATCbits LATCbits `VES2076  1 e 1 @270 ]
 "2417
 [v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"2976
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @529 ]
+"3014
+[v _SSPADD SSPADD `VEuc  1 e 1 @530 ]
+"3090
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @532 ]
+"3212
+[v _SSPCON SSPCON `VEuc  1 e 1 @533 ]
+"3216
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @533 ]
 "4632
 [v _UCON UCON `VEuc  1 e 1 @3726 ]
 [s S340 . 1 `uc 1 . 1 0 :1:0 
@@ -400,31 +426,30 @@ BUTTON_S1 1
 [v _UEP0bits UEP0bits `VES539  1 e 1 @3736 ]
 "5212
 [v _UEP1 UEP1 `VEuc  1 e 1 @3737 ]
-[s S1937 . 16 `l 1 wheel 4 0 `uc 1 x 1 4 `uc 1 y 1 5 `uc 1 button 1 6 `[9]uc 1 data 9 7 ]
-"98 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-[u S1943 _HAPTIC_IN_CONTROLS_TYPEDEF 16 `S1937 1 . 16 0 `[16]uc 1 val 16 0 ]
-[v _haptic_in haptic_in `S1943  1 e 16 @160 ]
-[u S1946 _HAPTIC_OUT_CONTROLS_TYPEDEF 64 `[64]uc 1 val 64 0 ]
-"99
-[v _haptic_out haptic_out `S1946  1 e 64 @8400 ]
-[s S1948 . 3 `uc 1 red 1 0 `uc 1 green 1 1 `uc 1 blue 1 2 ]
-"100
-[s S1952 . 49 `uc 1 command 1 0 `[16]S1948 1 leds 48 1 ]
-[u S1955 _LEDS_CONTROLS_TYPEDEF 49 `S1952 1 . 49 0 `[49]uc 1 val 49 0 ]
-[v _leds_output leds_output `S1955  1 e 49 @560 ]
-[u S1958 _DISPLAY_CONTROLS_TYPEDEF 64 `[64]uc 1 val 64 0 ]
-"101
-[v _display_output display_output `S1958  1 e 64 @8656 ]
-"108
+"5891
+[v _BF BF `VEb  1 e 0 @4256 ]
+"6725
+[v _SSPOV SSPOV `VEb  1 e 0 @4270 ]
+"6875
+[v _TRISC0 TRISC0 `VEb  1 e 0 @1136 ]
+"6878
+[v _TRISC1 TRISC1 `VEb  1 e 0 @1137 ]
+"6881
+[v _TRISC2 TRISC2 `VEb  1 e 0 @1138 ]
+"6884
+[v _TRISC3 TRISC3 `VEb  1 e 0 @1139 ]
+"6980
+[v _WCOL WCOL `VEb  1 e 0 @4271 ]
+"50 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _last_HAP_IN last_HAP_IN `*.39v  1 e 2 0 ]
-"109
+"51
 [v _last_HAP_OUT last_HAP_OUT `*.39v  1 e 2 0 ]
-"110
+"52
 [v _last_LED_OUT last_LED_OUT `*.39v  1 e 2 0 ]
-"111
+"53
 [v _last_DSP_OUT last_DSP_OUT `*.39v  1 e 2 0 ]
-"156
-[v _cntr cntr `uc  1 e 1 0 ]
+"139 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+[v _cnt_tr cnt_tr `i  1 e 2 0 ]
 [s S22 _USB_DEVICE_DESCRIPTOR 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `us 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubClass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `us 1 idVendor 2 8 `us 1 idProduct 2 10 `us 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
 "150 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_descriptors.c
 [v _device_dsc device_dsc `DCS22  1 e 18 0 ]
@@ -631,10 +656,20 @@ BUTTON_S1 1
 [v _idle_rate idle_rate `uc  1 s 1 idle_rate ]
 "88
 [v _active_protocol active_protocol `uc  1 s 1 active_protocol ]
-"31 E:\Smart-Knob\pic16f1455_firmware\main.c
+"32 E:\Smart-Knob\pic16f1455_firmware\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"81
+"92
+} 0
+"141 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+[v _spiWrite spiWrite `(v  1 e 1 0 ]
+{
+"162
+} 0
+"91
+[v _spwrh spwrh `(v  1 e 1 0 ]
+{
+"138
 } 0
 "481 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBDeviceTasks USBDeviceTasks `(v  1 e 1 0 ]
@@ -821,7 +856,7 @@ BUTTON_S1 1
 "50 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_events.c
 [v _USER_USB_CALLBACK_EVENT_HANDLER USER_USB_CALLBACK_EVENT_HANDLER `(a  1 e 1 0 ]
 {
-[v USER_USB_CALLBACK_EVENT_HANDLER@event event `E2427  1 p 2 0 ]
+[v USER_USB_CALLBACK_EVENT_HANDLER@event event `E2426  1 p 2 0 ]
 [v USER_USB_CALLBACK_EVENT_HANDLER@pdata pdata `*.39v  1 p 2 2 ]
 [v USER_USB_CALLBACK_EVENT_HANDLER@size size `us  1 p 2 4 ]
 "112
@@ -831,13 +866,14 @@ BUTTON_S1 1
 {
 "275
 } 0
-"81 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
+"85 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-[v SYSTEM_Initialize@state state `E2218  1 a 1 wreg ]
-[v SYSTEM_Initialize@state state `E2218  1 a 1 wreg ]
-[v SYSTEM_Initialize@state state `E2218  1 a 1 5 ]
-"104
+[v SYSTEM_Initialize@state state `E2217  1 a 1 wreg ]
+[v SYSTEM_Initialize@state state `E2217  1 a 1 wreg ]
+"87
+[v SYSTEM_Initialize@state state `E2217  1 a 1 5 ]
+"109
 } 0
 "220 E:\Smart-Knob\pic16f1455_firmware\lib/leds.c
 [v _LED_Enable LED_Enable `(v  1 e 1 0 ]
@@ -862,10 +898,26 @@ BUTTON_S1 1
 [v APP_LEDUpdateUSBStatus@ledCount ledCount `us  1 s 2 ledCount ]
 "99
 } 0
-"126 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"59 E:\Smart-Knob\pic16f1455_firmware\lib/leds.c
+[v _LED_On LED_On `(v  1 e 1 0 ]
+{
+[v LED_On@led led `E2  1 a 1 wreg ]
+[v LED_On@led led `E2  1 a 1 wreg ]
+[v LED_On@led led `E2  1 a 1 2 ]
+"82
+} 0
+"100
+[v _LED_Off LED_Off `(v  1 e 1 0 ]
+{
+[v LED_Off@led led `E2  1 a 1 wreg ]
+[v LED_Off@led led `E2  1 a 1 wreg ]
+[v LED_Off@led led `E2  1 a 1 2 ]
+"123
+} 0
+"68 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _APP_DeviceJoystickInitialize APP_DeviceJoystickInitialize `(v  1 e 1 0 ]
 {
-"139
+"81
 } 0
 "882 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBEnableEndpoint USBEnableEndpoint `(v  1 e 1 0 ]
@@ -952,10 +1004,15 @@ BUTTON_S1 1
 [v USBCtrlTrfTxService@byteToSend byteToSend `uc  1 a 1 2 ]
 "1829
 } 0
-"158 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"164 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+[v _MasterinitSPI MasterinitSPI `(v  1 e 1 0 ]
+{
+"173
+} 0
+"100 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _APP_DeviceJoystickTasks APP_DeviceJoystickTasks `(v  1 e 1 0 ]
 {
-"232
+"182
 } 0
 "999 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 1 0 ]
@@ -998,33 +1055,8 @@ BUTTON_S1 1
 [v USBTransferOnePacket@ep ep `uc  1 a 1 8 ]
 "1051
 } 0
-"59 E:\Smart-Knob\pic16f1455_firmware\lib/leds.c
-[v _LED_On LED_On `(v  1 e 1 0 ]
-{
-[v LED_On@led led `E2  1 a 1 wreg ]
-[v LED_On@led led `E2  1 a 1 wreg ]
-[v LED_On@led led `E2  1 a 1 2 ]
-"82
-} 0
-"100
-[v _LED_Off LED_Off `(v  1 e 1 0 ]
-{
-[v LED_Off@led led `E2  1 a 1 wreg ]
-[v LED_Off@led led `E2  1 a 1 wreg ]
-[v LED_Off@led led `E2  1 a 1 2 ]
-"123
-} 0
-"55 E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
-[v _BUTTON_IsPressed BUTTON_IsPressed `(a  1 e 1 0 ]
-{
-[v BUTTON_IsPressed@button button `E2193  1 a 1 wreg ]
-[v BUTTON_IsPressed@button button `E2193  1 a 1 wreg ]
-"57
-[v BUTTON_IsPressed@button button `E2193  1 a 1 2 ]
-"68
-} 0
-"112 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
+"117 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 [v _SYS_InterruptHigh SYS_InterruptHigh `II(v  1 e 1 0 ]
 {
-"117
+"122
 } 0

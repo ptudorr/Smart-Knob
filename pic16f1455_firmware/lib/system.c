@@ -60,7 +60,11 @@ please contact mla_licensing@microchip.com
 #pragma config CPUDIV = NOCLKDIV// CPU System Clock Selection Bit (NO CPU system divide)
 #pragma config USBLSCLK = 48MHz // USB Low SPeed Clock Selection bit (System clock expects 48 MHz, FS/LS USB CLKENs divide-by is set to 8.)
 #pragma config PLLMULT = 4x     // PLL Multipler Selection Bit (4x Output Frequency Selected)
-#pragma config PLLEN = ENABLED  // PLL Enable Bit (3x or 4x PLL Enabled)
+#pragma config PLLEN = ENABLED/*********!!!!!!!!!!!!!!!
+
+
+
+!*/  // PLL Enable Bit (3x or 4x PLL Enabled)
 #pragma config STVREN = ON      // Stack Overflow/Underflow Reset Enable (Stack Overflow or Underflow will cause a Reset)
 #pragma config BORV = LO        // Brown-out Reset Voltage Selection (Brown-out Reset Voltage (Vbor), low trip point selected.)
 #pragma config LPBOR = OFF      // Low-Power Brown Out Reset (Low-Power BOR is disabled)
@@ -80,6 +84,7 @@ please contact mla_licensing@microchip.com
 ********************************************************************/
 void SYSTEM_Initialize( SYSTEM_STATE state )
 {
+    ANSELC = 0;
     switch(state)
     {
         case SYSTEM_STATE_USB_START:
@@ -90,7 +95,7 @@ void SYSTEM_Initialize( SYSTEM_STATE state )
                 ACTCON = 0x90;  //Active clock tuning enabled for USB
             #endif
             LED_Enable(LED_USB_DEVICE_STATE);
-            LED_Enable(LED_D3);
+            //LED_Enable(LED_D3);
             
             BUTTON_Enable(BUTTON_USB_DEVICE_HID_JOYSTICK);
             break;

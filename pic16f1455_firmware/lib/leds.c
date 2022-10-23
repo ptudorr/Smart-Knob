@@ -27,12 +27,12 @@
 #define LED_D1_LAT LATCbits.LATC4
 #define LED_D2_LAT LATCbits.LATC1
 #define LED_D3_LAT LATCbits.LATC2
-#define LED_D4_LAT LATCbits.LATC3
+//#define LED_D4_LAT LATCbits.LATC3
 
 #define LED_D1_TRIS TRISCbits.TRISC4
 #define LED_D2_TRIS TRISCbits.TRISC1
 #define LED_D3_TRIS TRISCbits.TRISC2
-#define LED_D4_TRIS TRISCbits.TRISC3
+//#define LED_D4_TRIS TRISCbits.TRISC3
 
 #define LED_ON  1
 #define LED_OFF 0
@@ -72,9 +72,9 @@ void LED_On(LED led)
             LED_D3_LAT = LED_ON;
             break;
 			
-        case LED_D4:
+        /*case LED_D4:
             LED_D4_LAT = LED_ON;
-            break;
+            break;*/
 
         case LED_NONE:
             break;
@@ -113,9 +113,9 @@ void LED_Off(LED led)
             LED_D3_LAT = LED_OFF;
             break;
 			
-        case LED_D4:
+        /*case LED_D4:
             LED_D4_LAT = LED_OFF;
-            break;
+            break;*/
 
         case LED_NONE:
             break;
@@ -154,9 +154,9 @@ void LED_Toggle(LED led)
             //LED_D3_LAT ^= 1;
             break;
 			
-        case LED_D4:
+        /*case LED_D4:
             LED_D4_LAT ^= 1;
-            break;
+            break;*/
 
         case LED_NONE:
             break;
@@ -192,8 +192,8 @@ bool LED_Get(LED led)
         case LED_D3:
             return ( (LED_D3_LAT == LED_ON) ? true : false );
 			
-        case LED_D4:
-            return ( (LED_D4_LAT == LED_ON) ? true : false );
+        /*case LED_D4:
+            return ( (LED_D4_LAT == LED_ON) ? true : false );*/
 
         case LED_NONE:
             return false;
@@ -233,9 +233,9 @@ void LED_Enable(LED led)
             LED_D3_TRIS = PIN_OUTPUT;
             break;
 			
-        case LED_D4:
+        /*case LED_D4:
             LED_D4_TRIS = PIN_OUTPUT;
-            break;
+            break;*/
 
         case LED_NONE:
             break;

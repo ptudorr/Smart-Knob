@@ -18,6 +18,7 @@ please contact mla_licensing@microchip.com
 *******************************************************************************/
 
 /** INCLUDES *******************************************************/
+#define _XTAL_FREQ 48000000
 #include "include/system.h"
 
 #include "include/usb/usb.h"
@@ -26,17 +27,24 @@ please contact mla_licensing@microchip.com
 #include "include/app_device_joystick.h"
 #include "include/app_led_usb_status.h"
 
-
+#include "include/spi.h"
 
 MAIN_RETURN main(void)
 {
-    SYSTEM_Initialize(SYSTEM_STATE_USB_START);
-
+    
+    TRIS_MOSI_SDI_PIN = 1;TRIS_MISO_SDO_PIN = 0;
+    //SYSTEM_Initialize(SYSTEM_STATE_USB_START);
+    __delay_ms(200);
+    
+    MasterinitSPI();
+    
     USBDeviceInit();
     USBDeviceAttach();
 
+    
     while(1)
     {
+        spiWrite();
         SYSTEM_Tasks();
 
         #if defined(USB_POLLING)
@@ -55,27 +63,30 @@ MAIN_RETURN main(void)
             USBDeviceTasks();
         #endif
 
-        /* If the USB device isn't configured yet, we can't really do anything
-         * else since we don't have a host to talk to.  So jump back to the
-         * top of the while loop. */
+        // If the USB device isn't configured yet, we can't really do anything
+        // else since we don't have a host to talk to.  So jump back to the
+        // top of the while loop. 
         if( USBGetDeviceState() < CONFIGURED_STATE )
         {
-            /* Jump back to the top of the while loop. */
+            // Jump back to the top of the while loop. 
             continue;
         }
 
-        /* If we are currently suspended, then we need to see if we need to
-         * issue a remote wakeup.  In either case, we shouldn't process any
-         * keyboard commands since we aren't currently communicating to the host
-         * thus just continue back to the start of the while loop. */
+        // If we are currently suspended, then we need to see if we need to
+        // issue a remote wakeup.  In either case, we shouldn't process any
+        // keyboard commands since we aren't currently communicating to the host
+        // thus just continue back to the start of the while loop. 
         if( USBIsDeviceSuspended() == true )
         {
-            /* Jump back to the top of the while loop. */
+            // Jump back to the top of the while loop. 
             continue;
         }
 
         //Application specific tasks
         APP_DeviceJoystickTasks();
+        
+        
+        //endfor
 
     }//end while
 }//end main

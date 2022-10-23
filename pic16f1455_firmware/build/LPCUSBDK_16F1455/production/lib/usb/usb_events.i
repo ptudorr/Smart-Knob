@@ -3847,8 +3847,8 @@ typedef enum
     LED_NONE,
     LED_D1,
     LED_D2,
-    LED_D3,
-    LED_D4
+    LED_D3
+
 } LED;
 # 56 ".\\include/leds.h"
 void LED_On(LED led);
@@ -4777,11 +4777,33 @@ extern volatile uint8_t CtrlTrfData[8];
 
 
 # 1 ".\\include/app_device_joystick.h" 1
-# 32 ".\\include/app_device_joystick.h"
-void APP_DeviceJoystickInitialize(void);
-# 48 ".\\include/app_device_joystick.h"
-void APP_DeviceJoystickStart(void);
+# 39 ".\\include/app_device_joystick.h"
+typedef uint8_t HAPTIC_IN_CONTROLS[16];
+
+
+
+
+
+
+typedef uint8_t HAPTIC_OUT_CONTROLS[64];
 # 64 ".\\include/app_device_joystick.h"
+typedef uint8_t LEDS_CONTROLS[49];
+
+
+
+
+
+typedef uint8_t DISPLAY_CONTROLS[64];
+# 86 ".\\include/app_device_joystick.h"
+        HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
+        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+        LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+        DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
+# 108 ".\\include/app_device_joystick.h"
+void APP_DeviceJoystickInitialize(void);
+# 124 ".\\include/app_device_joystick.h"
+void APP_DeviceJoystickStart(void);
+# 140 ".\\include/app_device_joystick.h"
 void APP_DeviceJoystickTasks(void);
 # 26 "lib/usb/usb_events.c" 2
 

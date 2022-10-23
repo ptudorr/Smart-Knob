@@ -14,4 +14,5 @@ include/usb/usb_hal.h  \
 include/usb/usb_hal_pic16f1.h  \
 include/usb/usb_device_hid.h  \
 include/app_device_joystick.h  \
-include/app_led_usb_status.h 
+include/app_led_usb_status.h  \
+include/spi.h 
