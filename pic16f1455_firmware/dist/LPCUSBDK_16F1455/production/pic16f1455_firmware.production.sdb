@@ -123,7 +123,7 @@ ADR_PENDING_STATE 8
 ADDRESS_STATE 16
 CONFIGURED_STATE 32
 ]
-"105 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"101 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [e E297 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
@@ -211,9 +211,9 @@ IDLE_LOW 0
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 E:\Atmel Studio\Comp-istall\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"68 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"58 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _APP_DeviceJoystickInitialize APP_DeviceJoystickInitialize `(v  1 e 1 0 ]
-"100
+"96
 [v _APP_DeviceJoystickTasks APP_DeviceJoystickTasks `(v  1 e 1 0 ]
 "50 E:\Smart-Knob\pic16f1455_firmware\lib/app_led_usb_status.c
 [v _APP_LEDUpdateUSBStatus APP_LEDUpdateUSBStatus `(v  1 e 1 0 ]
@@ -298,7 +298,7 @@ IDLE_LOW 0
 "13 E:\Smart-Knob\pic16f1455_firmware\include/spi.h
 [v _TESTB TESTB `uc  1 e 1 0 ]
 [v _REGT REGT `uc  1 e 1 0 ]
-[s S2037 . 1 `uc 1 RC0 1 0 :1:0 
+[s S2041 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -306,8 +306,8 @@ IDLE_LOW 0
 `uc 1 RC5 1 0 :1:5 
 ]
 "490 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
-[u S2044 . 1 `S2037 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES2044  1 e 1 @14 ]
+[u S2048 . 1 `S2041 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES2048  1 e 1 @14 ]
 [s S380 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ACTIF 1 0 :1:1 
 `uc 1 USBIF 1 0 :1:2 
@@ -320,7 +320,7 @@ IDLE_LOW 0
 "599
 [u S389 . 1 `S380 1 . 1 0 ]
 [v _PIR2bits PIR2bits `VES389  1 e 1 @18 ]
-[s S2086 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S2090 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -328,8 +328,8 @@ IDLE_LOW 0
 `uc 1 TRISC5 1 0 :1:5 
 ]
 "996
-[u S2093 . 1 `S2086 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES2093  1 e 1 @142 ]
+[u S2097 . 1 `S2090 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES2097  1 e 1 @142 ]
 [s S312 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ACTIE 1 0 :1:1 
 `uc 1 USBIE 1 0 :1:2 
@@ -342,7 +342,7 @@ IDLE_LOW 0
 "1105
 [u S321 . 1 `S312 1 . 1 0 ]
 [v _PIE2bits PIE2bits `VES321  1 e 1 @146 ]
-[s S2069 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S2073 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -350,8 +350,8 @@ IDLE_LOW 0
 `uc 1 LATC5 1 0 :1:5 
 ]
 "1807
-[u S2076 . 1 `S2069 1 . 1 0 ]
-[v _LATCbits LATCbits `VES2076  1 e 1 @270 ]
+[u S2080 . 1 `S2073 1 . 1 0 ]
+[v _LATCbits LATCbits `VES2080  1 e 1 @270 ]
 "2417
 [v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
 "2976
@@ -440,14 +440,19 @@ IDLE_LOW 0
 [v _TRISC3 TRISC3 `VEb  1 e 0 @1139 ]
 "6980
 [v _WCOL WCOL `VEb  1 e 0 @4271 ]
-"50 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"37 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _last_HAP_IN last_HAP_IN `*.39v  1 e 2 0 ]
-"51
+"38
 [v _last_HAP_OUT last_HAP_OUT `*.39v  1 e 2 0 ]
-"52
+"39
 [v _last_LED_OUT last_LED_OUT `*.39v  1 e 2 0 ]
-"53
+"40
 [v _last_DSP_OUT last_DSP_OUT `*.39v  1 e 2 0 ]
+"56
+[v _display_pkt_ready display_pkt_ready `uc  1 e 1 0 ]
+[v _LED_pkt_ready LED_pkt_ready `uc  1 e 1 0 ]
+[v _hap_IN_pkt_ready hap_IN_pkt_ready `uc  1 e 1 0 ]
+[v _hap_OUT_pkt_ready hap_OUT_pkt_ready `uc  1 e 1 0 ]
 "139 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _cnt_tr cnt_tr `i  1 e 2 0 ]
 [s S22 _USB_DEVICE_DESCRIPTOR 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `us 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubClass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `us 1 idVendor 2 8 `us 1 idProduct 2 10 `us 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
@@ -914,10 +919,10 @@ IDLE_LOW 0
 [v LED_Off@led led `E2  1 a 1 2 ]
 "123
 } 0
-"68 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"58 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _APP_DeviceJoystickInitialize APP_DeviceJoystickInitialize `(v  1 e 1 0 ]
 {
-"81
+"77
 } 0
 "882 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBEnableEndpoint USBEnableEndpoint `(v  1 e 1 0 ]
@@ -1009,10 +1014,10 @@ IDLE_LOW 0
 {
 "173
 } 0
-"100 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+"96 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _APP_DeviceJoystickTasks APP_DeviceJoystickTasks `(v  1 e 1 0 ]
 {
-"182
+"147
 } 0
 "999 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 1 0 ]

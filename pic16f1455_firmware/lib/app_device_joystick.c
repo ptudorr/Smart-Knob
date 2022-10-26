@@ -33,19 +33,6 @@ please contact mla_licensing@microchip.com
 #include "stdint.h"
 
 /** DECLARATIONS ***************************************************/
-//http://www.microsoft.com/whdc/archive/hidgame.mspx
-#define HAT_SWITCH_NORTH            0x0
-#define HAT_SWITCH_NORTH_EAST       0x1
-#define HAT_SWITCH_EAST             0x2
-#define HAT_SWITCH_SOUTH_EAST       0x3
-#define HAT_SWITCH_SOUTH            0x4
-#define HAT_SWITCH_SOUTH_WEST       0x5
-#define HAT_SWITCH_WEST             0x6
-#define HAT_SWITCH_NORTH_WEST       0x7
-#define HAT_SWITCH_NULL             0x8
-
-
-
 
 USB_VOLATILE USB_HANDLE last_HAP_IN = 0;
 USB_VOLATILE USB_HANDLE last_HAP_OUT = 0;
@@ -65,6 +52,9 @@ USB_VOLATILE USB_HANDLE last_DSP_OUT = 0;
 * Output: None
 *
 ********************************************************************/
+
+uint8_t display_pkt_ready,LED_pkt_ready,hap_IN_pkt_sent,hap_OUT_pkt_ready;
+
 void APP_DeviceJoystickInitialize(void)
 {  
     //initialize the variable holding the handle for the last
@@ -73,6 +63,12 @@ void APP_DeviceJoystickInitialize(void)
     last_HAP_OUT = 0;
     last_LED_OUT = 0;
     last_DSP_OUT = 0;
+
+    
+    display_pkt_ready=0;
+    LED_pkt_ready=0;
+    hap_IN_pkt_sent=1;
+    hap_OUT_pkt_ready=0;
 
     //enable the HID endpoint
     USBEnableEndpoint(HAPTIC_EP,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
@@ -119,63 +115,32 @@ void APP_DeviceJoystickTasks(void)
     }
 
     //If the last transmission is complete
-    if(!HIDTxHandleBusy(last_HAP_IN))
+    if(!HIDTxHandleBusy(last_HAP_IN) && (hap_IN_pkt_sent == 0))
     {
-        //If the button is pressed
-        if(/*BUTTON_IsPressed(BUTTON_USB_DEVICE_HID_JOYSTICK)*/false == true)
-        {
-            //Indicate that the "x" button is pressed, but none others
-
-            //Move the hat switch to the "east" position
-            //haptic_in.button = HAT_SWITCH_EAST;
-
-            haptic_in[1] = TESTB;
-            //Move the X and Y coordinates to the their extreme values (0x80 is
-            //  in the middle - no value).
-            //joystick_input.members.analog_stick.X = 0;
-            //joystick_input.members.analog_stick.Y = 0;
-
-            //Send the packet over USB to the host.
-            last_HAP_IN = HIDTxPacket(HAPTIC_EP, (uint8_t*)&haptic_in, sizeof(haptic_in));
-
-        }
-        else
-        {
-            //Reset values of the controller to default state
-
-            //Buttons
-            //haptic_in.val[0] = cntr++;
-            //haptic_in.val[1] = TESTB;
+        
             
-            haptic_in[0] = display_output[0];
-            haptic_in[1] = display_output[1];
-            haptic_in[2] = TESTB;
-            haptic_in[3] = SSPCON1;
-            haptic_in[4] = SSPSTAT;
-            haptic_in[5] = display_output[63];
-
-            //Hat switch
-            //haptic_in.val[2] = haptic_out.val[3];
-
-            //Analog sticks
-            
-
+        haptic_in[0] = display_output[0];
+        haptic_in[1] = display_output[1];
+        haptic_in[2] = TESTB;
+        haptic_in[3] = SSPCON1;
+        haptic_in[4] = SSPSTAT;
+        haptic_in[5] = display_output[63];
+        hap_IN_pkt_sent = 1;
             //Send the 8 byte packet over USB to the host.
-            last_HAP_IN = HIDTxPacket(HAPTIC_EP, (uint8_t*)&haptic_in, sizeof(haptic_in));
-        }
+        last_HAP_IN = HIDTxPacket(HAPTIC_EP, (uint8_t*)&haptic_in, sizeof(haptic_in));
+        
     }
     
-    if(!HIDRxHandleBusy(last_HAP_OUT)){
+    if(!HIDRxHandleBusy(last_HAP_OUT) && hap_OUT_pkt_ready){
+        hap_OUT_pkt_ready = 0;
         last_HAP_OUT = HIDRxPacket(HAPTIC_EP, (uint8_t*)&haptic_out, sizeof(haptic_out));
     }
-    if(!HIDRxHandleBusy(last_DSP_OUT)){
+    if(!HIDRxHandleBusy(last_DSP_OUT) && display_pkt_ready){
+        display_pkt_ready = 0;
         last_DSP_OUT = HIDRxPacket(DISPLAY_EP, (uint8_t*)&display_output, sizeof(display_output));
     }
-    if(!HIDRxHandleBusy(last_LED_OUT)){
-        /*if(leds_output.val[48] == 0x97)
-            LED_On(LED_D3);
-        else
-            LED_Off(LED_D3);*/
+    if(!HIDRxHandleBusy(last_LED_OUT) && LED_pkt_ready){
+        LED_pkt_ready = 0;
         last_LED_OUT = HIDRxPacket(LEDS_EP, (uint8_t*)&leds_output, sizeof(leds_output));
     }
     

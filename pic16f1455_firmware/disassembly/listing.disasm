@@ -1,7 +1,7 @@
 Disassembly Listing for USB_Device_-_HID_-_Joystick
 Generated From:
 E:/Smart-Knob/pic16f1455_firmware/dist/LPCUSBDK_16F1455/production/pic16f1455_firmware.production.elf
-Oct 22, 2022 2:27:25 AM
+Oct 25, 2022 9:50:43 PM
 
 ---  E:/Smart-Knob/pic16f1455_firmware/main.c  ----------------------------------------------------------
 1:             /*******************************************************************************
@@ -2328,7 +2328,7 @@ Oct 22, 2022 2:27:25 AM
 880:               None
 881:             *****************************************************************************/
 882:           void USBEnableEndpoint(uint8_t ep, uint8_t options)
-0874  00FC     MOVWF ep
+0874  00FC     MOVWF s
 883:           {
 884:               unsigned char* p;
 885:           
@@ -2342,7 +2342,7 @@ Oct 22, 2022 2:27:25 AM
 889:               {
 890:                   USBConfigureEndpoint(ep, OUT_FROM_HOST);
 0879  01F0     CLRF __pcstackCOMMON
-087A  087C     MOVF ep, W
+087A  087C     MOVF s, W
 087B  3189     MOVLP 0x9
 087C  2180     CALL 0x180
 087D  3188     MOVLP 0x8
@@ -2356,7 +2356,7 @@ Oct 22, 2022 2:27:25 AM
 894:                   USBConfigureEndpoint(ep, IN_TO_HOST);
 0882  01F0     CLRF __pcstackCOMMON
 0883  0AF0     INCF __pcstackCOMMON, F
-0884  087C     MOVF ep, W
+0884  087C     MOVF s, W
 0885  3189     MOVLP 0x9
 0886  2180     CALL 0x180
 0887  3188     MOVLP 0x8
@@ -2369,19 +2369,19 @@ Oct 22, 2022 2:27:25 AM
 901:                   p = (unsigned char*)(&U1EP0+(4*ep));
 902:               #else
 903:                   p = (unsigned char*)(&U1EP0+ep);
-0888  087C     MOVF ep, W
+0888  087C     MOVF s, W
 0889  3E98     ADDLW 0x98
 088A  00F8     MOVWF ep
 088B  01F9     CLRF handle
 088C  300E     MOVLW 0xE
 088D  3DF9     ADDWFC handle, F
 088E  0878     MOVF ep, W
-088F  00FA     MOVWF p
+088F  00FA     MOVWF k
 0890  0879     MOVF handle, W
 0891  00FB     MOVWF 0x7B
 904:               #endif
 905:               *p = options;
-0892  087A     MOVF p, W
+0892  087A     MOVF k, W
 0893  0086     MOVWF FSR1
 0894  087B     MOVF 0x7B, W
 0895  0087     MOVWF FSR1H
@@ -2503,7 +2503,7 @@ Oct 22, 2022 2:27:25 AM
 0770  3F40     MOVIW 0[FSR1]
 0771  00F9     MOVWF handle
 0772  3F41     MOVIW 1[FSR1]
-0773  00FA     MOVWF p
+0773  00FA     MOVWF k
 1008:              }
 0774  2F7E     GOTO 0x77E
 1009:              else
@@ -2518,14 +2518,14 @@ Oct 22, 2022 2:27:25 AM
 077A  3F40     MOVIW 0[FSR1]
 077B  00F9     MOVWF handle
 077C  3F41     MOVIW 1[FSR1]
-077D  00FA     MOVWF p
+077D  00FA     MOVWF k
 1013:              }
 1014:          
 1015:              //Error checking code.  Make sure the handle (pBDTEntryIn[ep] or
 1016:              //pBDTEntryOut[ep]) is initialized before using it.
 1017:              if(handle == 0)
 077E  0879     MOVF handle, W
-077F  047A     IORWF p, W
+077F  047A     IORWF k, W
 0780  1D03     BTFSS STATUS, 0x2
 0781  2F83     GOTO 0x783
 0782  2F84     GOTO 0x784
@@ -2551,51 +2551,51 @@ Oct 22, 2022 2:27:25 AM
 1033:              handle->ADR = ConvertToPhysicalAddress(data);
 0787  30FF     MOVLW 0xFF
 0788  0571     ANDWF p, W
-0789  00F4     MOVWF i
+0789  00F4     MOVWF n
 078A  307F     MOVLW 0x7F
-078B  0572     ANDWF button, W
-078C  00F5     MOVWF state
+078B  0572     ANDWF c, W
+078C  00F5     MOVWF EPNum
 078D  0879     MOVF handle, W
 078E  0086     MOVWF FSR1
-078F  087A     MOVF p, W
+078F  087A     MOVF k, W
 0790  0087     MOVWF FSR1H
 0791  3142     ADDFSR 1, 2
-0792  0874     MOVF i, W
+0792  0874     MOVF n, W
 0793  3FC0     MOVWI 0[FSR1]
-0794  0875     MOVF state, W
+0794  0875     MOVF EPNum, W
 0795  3FC1     MOVWI 1[FSR1]
 1034:              handle->CNT = len;
 0796  0879     MOVF handle, W
 0797  3E01     ADDLW 0x1
-0798  00F4     MOVWF i
+0798  00F4     MOVWF n
 0799  3000     MOVLW 0x0
-079A  3D7A     ADDWFC p, W
-079B  00F5     MOVWF state
-079C  0874     MOVF i, W
+079A  3D7A     ADDWFC k, W
+079B  00F5     MOVWF EPNum
+079C  0874     MOVF n, W
 079D  0086     MOVWF FSR1
-079E  0875     MOVF state, W
+079E  0875     MOVF EPNum, W
 079F  0087     MOVWF FSR1H
 07A0  0873     MOVF i, W
 07A1  0081     MOVWF INDF1
 1035:              handle->STAT.Val &= _DTSMASK;
 07A2  3040     MOVLW 0x40
-07A3  00F4     MOVWF i
+07A3  00F4     MOVWF n
 07A4  0879     MOVF handle, W
 07A5  0086     MOVWF FSR1
-07A6  087A     MOVF p, W
+07A6  087A     MOVF k, W
 07A7  0087     MOVWF FSR1H
-07A8  0874     MOVF i, W
+07A8  0874     MOVF n, W
 07A9  0581     ANDWF INDF1, F
 1036:              handle->STAT.Val |= (_DTSEN & _DTS_CHECKING_ENABLED);
 07AA  0879     MOVF handle, W
 07AB  0086     MOVWF FSR1
-07AC  087A     MOVF p, W
+07AC  087A     MOVF k, W
 07AD  0087     MOVWF FSR1H
 07AE  1581     BSF INDF1, 0x3
 1037:              handle->STAT.Val |= _USIE;
 07AF  0879     MOVF handle, W
 07B0  0086     MOVWF FSR1
-07B1  087A     MOVF p, W
+07B1  087A     MOVF k, W
 07B2  0087     MOVWF FSR1H
 07B3  1781     BSF INDF1, 0x7
 1038:          
@@ -2614,14 +2614,14 @@ Oct 22, 2022 2:27:25 AM
 07BB  0086     MOVWF FSR1
 07BC  0187     CLRF FSR1H
 07BD  3F40     MOVIW 0[FSR1]
-07BE  00F4     MOVWF i
+07BE  00F4     MOVWF n
 07BF  3F41     MOVIW 1[FSR1]
-07C0  00F5     MOVWF state
+07C0  00F5     MOVWF EPNum
 07C1  3004     MOVLW 0x4
-07C2  0674     XORWF i, W
+07C2  0674     XORWF n, W
 07C3  00F6     MOVWF handle
 07C4  3000     MOVLW 0x0
-07C5  0675     XORWF state, W
+07C5  0675     XORWF EPNum, W
 07C6  00F7     MOVWF options
 07C7  3578     LSLF ep, W
 07C8  3EB0     ADDLW 0xB0
@@ -2643,14 +2643,14 @@ Oct 22, 2022 2:27:25 AM
 07D3  3001     MOVLW 0x1
 07D4  0087     MOVWF FSR1H
 07D5  3F40     MOVIW 0[FSR1]
-07D6  00F4     MOVWF i
+07D6  00F4     MOVWF n
 07D7  3F41     MOVIW 1[FSR1]
-07D8  00F5     MOVWF state
+07D8  00F5     MOVWF EPNum
 07D9  3004     MOVLW 0x4
-07DA  0674     XORWF i, W
+07DA  0674     XORWF n, W
 07DB  00F6     MOVWF handle
 07DC  3000     MOVLW 0x0
-07DD  0675     XORWF state, W
+07DD  0675     XORWF EPNum, W
 07DE  00F7     MOVWF options
 07DF  3578     LSLF ep, W
 07E0  3EA0     ADDLW 0xA0
@@ -2663,7 +2663,7 @@ Oct 22, 2022 2:27:25 AM
 07E7  3FC1     MOVWI 1[FSR1]
 1049:              }
 1050:              return (USB_HANDLE)handle;
-07E8  087A     MOVF p, W
+07E8  087A     MOVF k, W
 07E9  00F1     MOVWF p
 07EA  0879     MOVF handle, W
 07EB  00F0     MOVWF __pcstackCOMMON
@@ -4818,7 +4818,7 @@ Oct 22, 2022 2:27:25 AM
 0B8B  3001     MOVLW 0x1
 0B8C  0087     MOVWF FSR1H
 0B8D  3F40     MOVIW 0[FSR1]
-0B8E  00F2     MOVWF button
+0B8E  00F2     MOVWF c
 0B8F  3F41     MOVIW 1[FSR1]
 0B90  00F3     MOVWF i
 2171:                          }
@@ -4833,13 +4833,13 @@ Oct 22, 2022 2:27:25 AM
 0B96  0086     MOVWF FSR1
 0B97  0187     CLRF FSR1H
 0B98  3F40     MOVIW 0[FSR1]
-0B99  00F2     MOVWF button
+0B99  00F2     MOVWF c
 0B9A  3F41     MOVIW 1[FSR1]
 0B9B  00F3     MOVWF i
 2175:                          }
 2176:          
 2177:                          if((p->STAT.UOWN == 1) && (p->STAT.BSTALL == 1))
-0B9C  0872     MOVF button, W
+0B9C  0872     MOVF c, W
 0B9D  0086     MOVWF FSR1
 0B9E  0873     MOVF i, W
 0B9F  0087     MOVWF FSR1H
@@ -4847,7 +4847,7 @@ Oct 22, 2022 2:27:25 AM
 0BA1  2BA3     GOTO 0x3A3
 0BA2  2BA4     GOTO 0x3A4
 0BA3  2BC5     GOTO 0x3C5
-0BA4  0872     MOVF button, W
+0BA4  0872     MOVF c, W
 0BA5  0086     MOVWF FSR1
 0BA6  0873     MOVF i, W
 0BA7  0087     MOVWF FSR1H
@@ -8184,58 +8184,45 @@ Oct 22, 2022 2:27:25 AM
 33:            #include "stdint.h"
 34:            
 35:            /** DECLARATIONS ***************************************************/
-36:            //http://www.microsoft.com/whdc/archive/hidgame.mspx
-37:            #define HAT_SWITCH_NORTH            0x0
-38:            #define HAT_SWITCH_NORTH_EAST       0x1
-39:            #define HAT_SWITCH_EAST             0x2
-40:            #define HAT_SWITCH_SOUTH_EAST       0x3
-41:            #define HAT_SWITCH_SOUTH            0x4
-42:            #define HAT_SWITCH_SOUTH_WEST       0x5
-43:            #define HAT_SWITCH_WEST             0x6
-44:            #define HAT_SWITCH_NORTH_WEST       0x7
-45:            #define HAT_SWITCH_NULL             0x8
-46:            
-47:            
-48:            
-49:            
-50:            USB_VOLATILE USB_HANDLE last_HAP_IN = 0;
-51:            USB_VOLATILE USB_HANDLE last_HAP_OUT = 0;
-52:            USB_VOLATILE USB_HANDLE last_LED_OUT = 0;
-53:            USB_VOLATILE USB_HANDLE last_DSP_OUT = 0;
-54:            
-55:            
-56:            /*********************************************************************
-57:            * Function: void APP_DeviceJoystickInitialize(void);
-58:            *
-59:            * Overview: Initializes the demo code
-60:            *
-61:            * PreCondition: None
-62:            *
-63:            * Input: None
-64:            *
-65:            * Output: None
-66:            *
-67:            ********************************************************************/
-68:            void APP_DeviceJoystickInitialize(void)
-69:            {  
-70:                //initialize the variable holding the handle for the last
-71:                // transmission
-72:                last_HAP_IN = 0;
+36:            
+37:            USB_VOLATILE USB_HANDLE last_HAP_IN = 0;
+38:            USB_VOLATILE USB_HANDLE last_HAP_OUT = 0;
+39:            USB_VOLATILE USB_HANDLE last_LED_OUT = 0;
+40:            USB_VOLATILE USB_HANDLE last_DSP_OUT = 0;
+41:            
+42:            
+43:            /*********************************************************************
+44:            * Function: void APP_DeviceJoystickInitialize(void);
+45:            *
+46:            * Overview: Initializes the demo code
+47:            *
+48:            * PreCondition: None
+49:            *
+50:            * Input: None
+51:            *
+52:            * Output: None
+53:            *
+54:            ********************************************************************/
+55:            void APP_DeviceJoystickInitialize(void)
+56:            {  
+57:                //initialize the variable holding the handle for the last
+58:                // transmission
+59:                last_HAP_IN = 0;
 17DE  0022     MOVLB 0x2
 17DF  01AD     CLRF last_HAP_IN
 17E0  01AE     CLRF 0x12E
-73:                last_HAP_OUT = 0;
+60:                last_HAP_OUT = 0;
 17E1  01AB     CLRF last_HAP_OUT
 17E2  01AC     CLRF 0x12C
-74:                last_LED_OUT = 0;
+61:                last_LED_OUT = 0;
 17E3  01A9     CLRF last_LED_OUT
 17E4  01AA     CLRF 0x12A
-75:                last_DSP_OUT = 0;
+62:                last_DSP_OUT = 0;
 17E5  01A7     CLRF last_DSP_OUT
 17E6  01A8     CLRF 0x128
-76:            
-77:                //enable the HID endpoint
-78:                USBEnableEndpoint(HAPTIC_EP,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
+63:            
+64:                //enable the HID endpoint
+65:                USBEnableEndpoint(HAPTIC_EP,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
 17E7  301E     MOVLW 0x1E
 17E8  00FD     MOVWF 0x17D
 17E9  087D     MOVF 0x17D, W
@@ -8244,7 +8231,7 @@ Oct 22, 2022 2:27:25 AM
 17EC  3188     MOVLP 0x8
 17ED  2074     CALL 0x74
 17EE  3197     MOVLP 0x17
-79:                USBEnableEndpoint(LEDS_EP  ,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
+66:                USBEnableEndpoint(LEDS_EP  ,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
 17EF  301E     MOVLW 0x1E
 17F0  00FD     MOVWF 0x17D
 17F1  087D     MOVF 0x17D, W
@@ -8253,7 +8240,7 @@ Oct 22, 2022 2:27:25 AM
 17F4  3188     MOVLP 0x8
 17F5  2074     CALL 0x74
 17F6  3197     MOVLP 0x17
-80:                USBEnableEndpoint(DISPLAY_EP  ,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
+67:                USBEnableEndpoint(DISPLAY_EP  ,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
 17F7  301E     MOVLW 0x1E
 17F8  00FD     MOVWF 0x17D
 17F9  087D     MOVF 0x17D, W
@@ -8262,32 +8249,32 @@ Oct 22, 2022 2:27:25 AM
 17FC  3188     MOVLP 0x8
 17FD  2074     CALL 0x74
 17FE  3197     MOVLP 0x17
-81:            }//end UserInit
+68:            }//end UserInit
 17FF  0008     RETURN
-82:            
-83:            /*********************************************************************
-84:            * Function: void APP_DeviceJoystickTasks(void);
-85:            *
-86:            * Overview: Keeps the demo running.
-87:            *
-88:            * PreCondition: The demo should have been initialized and started via
-89:            *   the APP_DeviceJoystickInitialize() and APP_DeviceJoystickStart() demos
-90:            *   respectively.
-91:            *
-92:            * Input: None
-93:            *
-94:            * Output: None
-95:            *
-96:            ********************************************************************/
-97:            
-98:            uint8_t cntr=0;
-99:            
-100:           void APP_DeviceJoystickTasks(void)
-101:           {  
-102:               /* If the USB device isn't configured yet, we can't really do anything
-103:                * else since we don't have a host to talk to.  So jump back to the
-104:                * top of the while loop. */
-105:               if( USBGetDeviceState() < CONFIGURED_STATE )
+69:            
+70:            /*********************************************************************
+71:            * Function: void APP_DeviceJoystickTasks(void);
+72:            *
+73:            * Overview: Keeps the demo running.
+74:            *
+75:            * PreCondition: The demo should have been initialized and started via
+76:            *   the APP_DeviceJoystickInitialize() and APP_DeviceJoystickStart() demos
+77:            *   respectively.
+78:            *
+79:            * Input: None
+80:            *
+81:            * Output: None
+82:            *
+83:            ********************************************************************/
+84:            
+85:            uint8_t cntr=0;
+86:            
+87:            void APP_DeviceJoystickTasks(void)
+88:            {  
+89:                /* If the USB device isn't configured yet, we can't really do anything
+90:                 * else since we don't have a host to talk to.  So jump back to the
+91:                 * top of the while loop. */
+92:                if( USBGetDeviceState() < CONFIGURED_STATE )
 0601  3020     MOVLW 0x20
 0602  0021     MOVLB 0x1
 0603  0253     SUBWF USBDeviceState, W
@@ -8296,29 +8283,29 @@ Oct 22, 2022 2:27:25 AM
 0606  2E08     GOTO 0x608
 0607  2E09     GOTO 0x609
 0608  2EBB     GOTO 0x6BB
-106:               {
-107:                   /* Jump back to the top of the while loop. */
-108:                   return;
-109:               }
-110:           
-111:               /* If we are currently suspended, then we need to see if we need to
-112:                * issue a remote wakeup.  In either case, we shouldn't process any
-113:                * keyboard commands since we aren't currently communicating to the host
-114:                * thus just continue back to the start of the while loop. */
-115:               if( USBIsDeviceSuspended() == true )
+93:                {
+94:                    /* Jump back to the top of the while loop. */
+95:                    return;
+96:                }
+97:            
+98:                /* If we are currently suspended, then we need to see if we need to
+99:                 * issue a remote wakeup.  In either case, we shouldn't process any
+100:                * keyboard commands since we aren't currently communicating to the host
+101:                * thus just continue back to the start of the while loop. */
+102:               if( USBIsDeviceSuspended() == true )
 0609  003D     MOVLB 0x1D
 060A  1C8E     BTFSS UCON, 0x1
 060B  2E0D     GOTO 0x60D
 060C  2E0E     GOTO 0x60E
 060D  2E0F     GOTO 0x60F
 060E  2EBB     GOTO 0x6BB
-116:               {
-117:                   /* Jump back to the top of the while loop. */
-118:                   return;
-119:               }
-120:           
-121:               //If the last transmission is complete
-122:               if(!HIDTxHandleBusy(last_HAP_IN))
+103:               {
+104:                   /* Jump back to the top of the while loop. */
+105:                   return;
+106:               }
+107:           
+108:               //If the last transmission is complete
+109:               if(!HIDTxHandleBusy(last_HAP_IN))
 060F  0022     MOVLB 0x2
 0610  082D     MOVF last_HAP_IN, W
 0611  042E     IORWF 0x12E, W
@@ -8334,34 +8321,34 @@ Oct 22, 2022 2:27:25 AM
 061B  2E1D     GOTO 0x61D
 061C  2E1E     GOTO 0x61E
 061D  2E5B     GOTO 0x65B
-123:               {
-124:                   //If the button is pressed
-125:                   if(/*BUTTON_IsPressed(BUTTON_USB_DEVICE_HID_JOYSTICK)*/false == true)
-126:                   {
-127:                       //Indicate that the "x" button is pressed, but none others
-128:           
-129:                       //Move the hat switch to the "east" position
-130:                       //haptic_in.button = HAT_SWITCH_EAST;
-131:           
-132:                       haptic_in[1] = TESTB;
-133:                       //Move the X and Y coordinates to the their extreme values (0x80 is
-134:                       //  in the middle - no value).
-135:                       //joystick_input.members.analog_stick.X = 0;
-136:                       //joystick_input.members.analog_stick.Y = 0;
-137:           
-138:                       //Send the packet over USB to the host.
-139:                       last_HAP_IN = HIDTxPacket(HAPTIC_EP, (uint8_t*)&haptic_in, sizeof(haptic_in));
-140:           
-141:                   }
-142:                   else
-143:                   {
-144:                       //Reset values of the controller to default state
-145:           
-146:                       //Buttons
-147:                       //haptic_in.val[0] = cntr++;
-148:                       //haptic_in.val[1] = TESTB;
-149:                       
-150:                       haptic_in[0] = display_output[0];
+110:               {
+111:                   //If the button is pressed
+112:                   if(/*BUTTON_IsPressed(BUTTON_USB_DEVICE_HID_JOYSTICK)*/false == true)
+113:                   {
+114:                       //Indicate that the "x" button is pressed, but none others
+115:           
+116:                       //Move the hat switch to the "east" position
+117:                       //haptic_in.button = HAT_SWITCH_EAST;
+118:           
+119:                       haptic_in[1] = TESTB;
+120:                       //Move the X and Y coordinates to the their extreme values (0x80 is
+121:                       //  in the middle - no value).
+122:                       //joystick_input.members.analog_stick.X = 0;
+123:                       //joystick_input.members.analog_stick.Y = 0;
+124:           
+125:                       //Send the packet over USB to the host.
+126:                       last_HAP_IN = HIDTxPacket(HAPTIC_EP, (uint8_t*)&haptic_in, sizeof(haptic_in));
+127:           
+128:                   }
+129:                   else
+130:                   {
+131:                       //Reset values of the controller to default state
+132:           
+133:                       //Buttons
+134:                       //haptic_in.val[0] = cntr++;
+135:                       //haptic_in.val[1] = TESTB;
+136:                       
+137:                       haptic_in[0] = display_output[0];
 061E  30B0     MOVLW 0xB0
 061F  0086     MOVWF FSR1L
 0620  3021     MOVLW 0x21
@@ -8371,7 +8358,7 @@ Oct 22, 2022 2:27:25 AM
 0624  087B     MOVF 0x17B, W
 0625  0021     MOVLB 0x1
 0626  00A0     MOVWF haptic_in
-151:                       haptic_in[1] = display_output[1];
+138:                       haptic_in[1] = display_output[1];
 0627  30B0     MOVLW 0xB0
 0628  0086     MOVWF FSR1L
 0629  3021     MOVLW 0x21
@@ -8381,26 +8368,26 @@ Oct 22, 2022 2:27:25 AM
 062D  00FB     MOVWF 0xFB
 062E  087B     MOVF 0xFB, W
 062F  00A1     MOVWF 0xA1
-152:                       haptic_in[2] = TESTB;
+139:                       haptic_in[2] = TESTB;
 0630  0843     MOVF TESTB, W
 0631  00FB     MOVWF 0xFB
 0632  087B     MOVF 0xFB, W
 0633  00A2     MOVWF 0xA2
-153:                       haptic_in[3] = SSPCON1;
+140:                       haptic_in[3] = SSPCON1;
 0634  0024     MOVLB 0x4
 0635  0815     MOVF SSP1CON1, W
 0636  00FB     MOVWF 0x27B
 0637  087B     MOVF 0x27B, W
 0638  0021     MOVLB 0x1
 0639  00A3     MOVWF 0xA3
-154:                       haptic_in[4] = SSPSTAT;
+141:                       haptic_in[4] = SSPSTAT;
 063A  0024     MOVLB 0x4
 063B  0814     MOVF SSP1STAT, W
 063C  00FB     MOVWF 0x27B
 063D  087B     MOVF 0x27B, W
 063E  0021     MOVLB 0x1
 063F  00A4     MOVWF 0xA4
-155:                       haptic_in[5] = display_output[63];
+142:                       haptic_in[5] = display_output[63];
 0640  30EF     MOVLW 0xEF
 0641  0086     MOVWF FSR1L
 0642  3021     MOVLW 0x21
@@ -8409,15 +8396,15 @@ Oct 22, 2022 2:27:25 AM
 0645  00FB     MOVWF 0xFB
 0646  087B     MOVF 0xFB, W
 0647  00A5     MOVWF 0xA5
-156:           
-157:                       //Hat switch
-158:                       //haptic_in.val[2] = haptic_out.val[3];
-159:           
-160:                       //Analog sticks
-161:                       
-162:           
-163:                       //Send the 8 byte packet over USB to the host.
-164:                       last_HAP_IN = HIDTxPacket(HAPTIC_EP, (uint8_t*)&haptic_in, sizeof(haptic_in));
+143:           
+144:                       //Hat switch
+145:                       //haptic_in.val[2] = haptic_out.val[3];
+146:           
+147:                       //Analog sticks
+148:                       
+149:           
+150:                       //Send the 8 byte packet over USB to the host.
+151:                       last_HAP_IN = HIDTxPacket(HAPTIC_EP, (uint8_t*)&haptic_in, sizeof(haptic_in));
 0648  01F0     CLRF 0xF0
 0649  0AF0     INCF 0xF0, F
 064A  30A0     MOVLW 0xA0
@@ -8437,10 +8424,10 @@ Oct 22, 2022 2:27:25 AM
 0658  00AE     MOVWF 0x12E
 0659  0870     MOVF 0x170, W
 065A  00AD     MOVWF last_HAP_IN
-165:                   }
-166:               }
-167:               
-168:               if(!HIDRxHandleBusy(last_HAP_OUT)){
+152:                   }
+153:               }
+154:               
+155:               if(!HIDRxHandleBusy(last_HAP_OUT)){
 065B  082B     MOVF last_HAP_OUT, W
 065C  042C     IORWF 0x12C, W
 065D  1903     BTFSC STATUS, 0x2
@@ -8455,7 +8442,7 @@ Oct 22, 2022 2:27:25 AM
 0666  2E68     GOTO 0x668
 0667  2E69     GOTO 0x669
 0668  2E7B     GOTO 0x67B
-169:                   last_HAP_OUT = HIDRxPacket(HAPTIC_EP, (uint8_t*)&haptic_out, sizeof(haptic_out));
+156:                   last_HAP_OUT = HIDRxPacket(HAPTIC_EP, (uint8_t*)&haptic_out, sizeof(haptic_out));
 0669  01F0     CLRF 0x170
 066A  3030     MOVLW 0x30
 066B  00F1     MOVWF 0x171
@@ -8474,8 +8461,8 @@ Oct 22, 2022 2:27:25 AM
 0678  00AC     MOVWF 0x12C
 0679  0870     MOVF 0x170, W
 067A  00AB     MOVWF last_HAP_OUT
-170:               }
-171:               if(!HIDRxHandleBusy(last_DSP_OUT)){
+157:               }
+158:               if(!HIDRxHandleBusy(last_DSP_OUT)){
 067B  0827     MOVF last_DSP_OUT, W
 067C  0428     IORWF 0x128, W
 067D  1903     BTFSC STATUS, 0x2
@@ -8490,7 +8477,7 @@ Oct 22, 2022 2:27:25 AM
 0686  2E88     GOTO 0x688
 0687  2E89     GOTO 0x689
 0688  2E9B     GOTO 0x69B
-172:                   last_DSP_OUT = HIDRxPacket(DISPLAY_EP, (uint8_t*)&display_output, sizeof(display_output));
+159:                   last_DSP_OUT = HIDRxPacket(DISPLAY_EP, (uint8_t*)&display_output, sizeof(display_output));
 0689  01F0     CLRF 0x170
 068A  30B0     MOVLW 0xB0
 068B  00F1     MOVWF 0x171
@@ -8509,8 +8496,8 @@ Oct 22, 2022 2:27:25 AM
 0698  00A8     MOVWF 0x128
 0699  0870     MOVF 0x170, W
 069A  00A7     MOVWF last_DSP_OUT
-173:               }
-174:               if(!HIDRxHandleBusy(last_LED_OUT)){
+160:               }
+161:               if(!HIDRxHandleBusy(last_LED_OUT)){
 069B  0829     MOVF last_LED_OUT, W
 069C  042A     IORWF 0x12A, W
 069D  1903     BTFSC STATUS, 0x2
@@ -8525,11 +8512,11 @@ Oct 22, 2022 2:27:25 AM
 06A6  2EA8     GOTO 0x6A8
 06A7  2EA9     GOTO 0x6A9
 06A8  2EBB     GOTO 0x6BB
-175:                   /*if(leds_output.val[48] == 0x97)
-176:                       LED_On(LED_D3);
-177:                   else
-178:                       LED_Off(LED_D3);*/
-179:                   last_LED_OUT = HIDRxPacket(LEDS_EP, (uint8_t*)&leds_output, sizeof(leds_output));
+162:                   /*if(leds_output.val[48] == 0x97)
+163:                       LED_On(LED_D3);
+164:                   else
+165:                       LED_Off(LED_D3);*/
+166:                   last_LED_OUT = HIDRxPacket(LEDS_EP, (uint8_t*)&leds_output, sizeof(leds_output));
 06A9  01F0     CLRF 0x170
 06AA  3030     MOVLW 0x30
 06AB  00F1     MOVWF 0x171
@@ -8548,12 +8535,12 @@ Oct 22, 2022 2:27:25 AM
 06B8  00AA     MOVWF 0x12A
 06B9  0870     MOVF 0x170, W
 06BA  00A9     MOVWF last_LED_OUT
-180:               }
-181:               
-182:           }//end ProcessIO
+167:               }
+168:               
+169:           }//end ProcessIO
 06BB  0008     RETURN
-183:           
-184:           #endif
+170:           
+171:           #endif
 ---  E:/Atmel Studio/Comp-istall/pic/sources/c99/common/memset.c  ---------------------------------------
 1:             #include <string.h>
 2:             #include <stdint.h>
@@ -8925,7 +8912,7 @@ Oct 22, 2022 2:27:25 AM
 18:            }
 0917  0008     RETURN
 19:            
----  C:/Users/Dutu/AppData/Local/Temp/xcAs24hg.s  -------------------------------------------------------
+---  C:/Users/Dutu/AppData/Local/Temp/xcAs12fg.s  -------------------------------------------------------
 000A  3050     MOVLW 0x50
 000B  0084     MOVWF FSR0L
 000C  3097     MOVLW 0x97
