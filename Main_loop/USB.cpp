@@ -3,7 +3,7 @@
 #include "USB.h"
 #include <SPI.h>
 
-#define DEBUG_TRANSACTION
+//#define DEBUG_TRANSACTION
 #define USB_WAIT_MICROS 25
 #define BEGIN_TRANSFER 0x55
 #define ACK1 0x76
@@ -20,7 +20,7 @@ void USB(){
     pu=!pu;digitalWrite(4,pu);
   #endif
   
-  SPI.begin();//make sure SPI.begin() has been called
+  //SPI.begin();//make sure SPI.begin() has been called
   SPI.beginTransaction(SPISettings(6000000, MSBFIRST, SPI_MODE0));//lower SPI bitrate
   GPOC = (1<<PIC_CS_PIN); //CS = LOW; select the PIC
   int nr=0;

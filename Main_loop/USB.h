@@ -1,6 +1,17 @@
 #ifndef __USB_H_INCLUDED
 #define __USB_H_INCLUDED
 
+/**
+ * ******************** PINOUT ********************
+ * PIC                                    NodeMCU
+ * CS                                     CS(GPIO15)
+ * SCK                                    SCK(GPIO14)
+ * MISO                                   MOSI(GPIO13)
+ * MOSI                                   MISO(GPIO12)
+ * 
+ */
+
+
 #include "pins.h"
 #include <Arduino.h>
 

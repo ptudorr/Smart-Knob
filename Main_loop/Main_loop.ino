@@ -7,12 +7,22 @@
 #include "pins.h"
 #include <SPI.h>
 #include "USB.h"
+#include "GC_display.h"
 
 
 uint8_t action;
 uint32_t LED_last=0,strain_last=0,light_last=0,LED_reset=0;//micros() overflows once an hour
 uint32_t pm,pu,ps,pd,pl,pa;
 
+void initPins(){
+  ///PIN 16 is special
+  
+  GPOS = (1<<PIC_CS_PIN)|(1<<DISPLAY_CS_PIN);//set HIGH
+  GPOC = 0;//set LOW
+  
+  GPES = (1<<PIC_CS_PIN)|(1<<DISPLAY_CS_PIN);//outputs
+  GPEC = 0;//inputs
+}
 
 void motor(){
   //read the angle sensor
@@ -24,10 +34,7 @@ void motor(){
 
 ///USB included
 
-void updateDisplay(){
-  pd=!pd;digitalWrite(0,pd);
-  delayMicroseconds(300);
-}
+///GC_display included
 
 void measureStrain(){
   strain_last = micros();
@@ -57,9 +64,8 @@ void setup() {
   #ifdef DEBUG_TIMING
     pinMode(5,OUTPUT);pinMode(4,OUTPUT);pinMode(0,OUTPUT);pinMode(2,OUTPUT);pinMode(14,OUTPUT);pinMode(12,OUTPUT);
   #endif
-  //we don't care that the setup uses the slow digitalWrite and pinMode
-  digitalWrite(PIC_CS_PIN,HIGH);
-  pinMode(PIC_CS_PIN,OUTPUT);
+  initPins();
+  initializeDisplay();
   action = 0;
   Serial.begin(500000);
 }
