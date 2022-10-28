@@ -4760,9 +4760,9 @@ typedef uint8_t LEDS_CONTROLS[49];
 typedef uint8_t DISPLAY_CONTROLS[64];
 # 86 ".\\include/app_device_joystick.h"
         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
-        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20D0)));
-        LEDS_CONTROLS leds_output __attribute__((address(0x2150)));
-        DISPLAY_CONTROLS display_output __attribute__((address(0x21D0)));
+        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+        LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+        DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
 # 108 ".\\include/app_device_joystick.h"
 void APP_DeviceJoystickInitialize(void);
 # 124 ".\\include/app_device_joystick.h"
@@ -4836,6 +4836,12 @@ void APP_LEDUpdateUSBStatus(void);
 # 13 ".\\include/spi.h"
 uint8_t TESTB,REGT;
 
+extern uint8_t luminosity;
+extern uint8_t errors_ctr2_to_PIC;
+
+extern uint8_t pkt_requests;
+extern uint8_t ctrl2_from_PIC;
+
 typedef enum
 {
   MASTER_OSC_DIV4 = 0b00100000,
@@ -4870,18 +4876,25 @@ typedef enum
 
 
 
-void spiRead(void);
-void spiWrite(void);
+
+void spiTask(void);
 
 void MasterinitSPI(void);
 void SlaveinitSPI(void);
 # 31 "lib/app_device_joystick.c" 2
-# 50 "lib/app_device_joystick.c"
+
+
+
+
+
+
              void* last_HAP_IN = 0;
              void* last_HAP_OUT = 0;
              void* last_LED_OUT = 0;
              void* last_DSP_OUT = 0;
-# 68 "lib/app_device_joystick.c"
+# 56 "lib/app_device_joystick.c"
+uint8_t display_pkt_ready,LED_pkt_ready,hap_IN_pkt_sent,hap_OUT_pkt_ready;
+
 void APP_DeviceJoystickInitialize(void)
 {
 
@@ -4892,11 +4905,17 @@ void APP_DeviceJoystickInitialize(void)
     last_DSP_OUT = 0;
 
 
+    display_pkt_ready=0;
+    LED_pkt_ready=0;
+    hap_IN_pkt_sent=1;
+    hap_OUT_pkt_ready=0;
+
+
     USBEnableEndpoint(1,0x04|0x02|0x10|0x08);
     USBEnableEndpoint(2 ,0x04|0x02|0x10|0x08);
     USBEnableEndpoint(3 ,0x04|0x02|0x10|0x08);
 }
-# 98 "lib/app_device_joystick.c"
+# 94 "lib/app_device_joystick.c"
 uint8_t cntr=0;
 
 void APP_DeviceJoystickTasks(void)
@@ -4921,56 +4940,32 @@ void APP_DeviceJoystickTasks(void)
     }
 
 
-    if(!((last_HAP_IN != 0x0000) && ((*(volatile uint8_t*)last_HAP_IN & 0x80) != 0x00)))
+    if(!((last_HAP_IN != 0x0000) && ((*(volatile uint8_t*)last_HAP_IN & 0x80) != 0x00)) && (hap_IN_pkt_sent == 0))
     {
 
-        if( 0 == 1)
-        {
 
+        haptic_in[0] = display_output[0];
+        haptic_in[1] = display_output[1];
+        haptic_in[2] = TESTB;
+        haptic_in[3] = SSPCON1;
+        haptic_in[4] = SSPSTAT;
+        haptic_in[5] = display_output[63];
+        hap_IN_pkt_sent = 1;
 
+        last_HAP_IN = USBTransferOnePacket(1,1,(uint8_t*)&haptic_in,sizeof(haptic_in));
 
-
-
-            haptic_in[1] = TESTB;
-
-
-
-
-
-
-            last_HAP_IN = USBTransferOnePacket(1,1,(uint8_t*)&haptic_in,sizeof(haptic_in));
-
-        }
-        else
-        {
-
-
-
-
-
-
-            haptic_in[0] = display_output[0];
-            haptic_in[1] = display_output[1];
-            haptic_in[2] = TESTB;
-            haptic_in[3] = SSPCON1;
-            haptic_in[4] = SSPSTAT;
-            haptic_in[5] = REGT;
-# 164 "lib/app_device_joystick.c"
-            last_HAP_IN = USBTransferOnePacket(1,1,(uint8_t*)&haptic_in,sizeof(haptic_in));
-        }
     }
 
-    if(!((last_HAP_OUT != 0x0000) && ((*(volatile uint8_t*)last_HAP_OUT & 0x80) != 0x00))){
+    if(!((last_HAP_OUT != 0x0000) && ((*(volatile uint8_t*)last_HAP_OUT & 0x80) != 0x00)) && hap_OUT_pkt_ready){
+        hap_OUT_pkt_ready = 0;
         last_HAP_OUT = USBTransferOnePacket(1,0,(uint8_t*)&haptic_out,sizeof(haptic_out));
     }
-    if(!((last_DSP_OUT != 0x0000) && ((*(volatile uint8_t*)last_DSP_OUT & 0x80) != 0x00))){
+    if(!((last_DSP_OUT != 0x0000) && ((*(volatile uint8_t*)last_DSP_OUT & 0x80) != 0x00)) && display_pkt_ready){
+        display_pkt_ready = 0;
         last_DSP_OUT = USBTransferOnePacket(3,0,(uint8_t*)&display_output,sizeof(display_output));
     }
-    if(!((last_LED_OUT != 0x0000) && ((*(volatile uint8_t*)last_LED_OUT & 0x80) != 0x00))){
-
-
-
-
+    if(!((last_LED_OUT != 0x0000) && ((*(volatile uint8_t*)last_LED_OUT & 0x80) != 0x00)) && LED_pkt_ready){
+        LED_pkt_ready = 0;
         last_LED_OUT = USBTransferOnePacket(2,0,(uint8_t*)&leds_output,sizeof(leds_output));
     }
 

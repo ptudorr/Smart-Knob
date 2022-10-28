@@ -21,6 +21,8 @@ please contact mla_licensing@microchip.com
 #define USBJOYSTICK_H
 
 #include <xc.h>
+#include "include/usb/usb.h"
+#include "include/usb/usb_device_hid.h"
 #include "fixed_address_memory.h"
 /** TYPE DEFINITIONS ************************************************/
 /*typedef union _HAPTIC_IN_CONTROLS_TYPEDEF
@@ -44,6 +46,14 @@ typedef uint8_t HAPTIC_IN_CONTROLS[16];
 } HAPTIC_OUT_CONTROLS;*/
 
 typedef uint8_t HAPTIC_OUT_CONTROLS[64];
+
+
+extern uint8_t display_pkt_ready,LED_pkt_ready,hap_IN_pkt_sent,hap_OUT_pkt_ready;
+
+extern USB_VOLATILE USB_HANDLE last_HAP_IN;
+extern USB_VOLATILE USB_HANDLE last_HAP_OUT;
+extern USB_VOLATILE USB_HANDLE last_LED_OUT;
+extern USB_VOLATILE USB_HANDLE last_DSP_OUT;
 
 /*typedef struct{
     uint8_t red;

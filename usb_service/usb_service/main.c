@@ -284,8 +284,8 @@ void cb_HAP_IN(struct libusb_transfer* transfer)
 		t1.tv_nsec = t2.tv_nsec;
 		/*printf("\rreceived %4d transfers and %4d bytes in %4d us, %4.1f B/s|%02x;%02x;   h_in:%d;h_out:%d;l_out:%d;d_out:%d",
 			benchPackets, benchBytes, diff / 1000, benchBytes * 1000000.0 / (diff / 1000), buf[0], buf[1], nr_hap_in, nr_hap_out, nr_led_out, nr_dsp_out);*/
-		printf("\r|%02x;%02x;%02x;%02x;%02x;%02x;   h_in:%d;h_out:%d;l_out:%d;d_out:%d",
-			 buf_in[0], buf_in[1], buf_in[2], buf_in[3], buf_in[4], buf_in[5], nr_hap_in, nr_hap_out, nr_led_out, nr_dsp_out);
+		//printf("\r|%02x;%02x;%02x;%02x;%02x;%02x;   h_in:%d;h_out:%d;l_out:%d;d_out:%d",
+			 //buf_in[0], buf_in[1], buf_in[2], buf_in[3], buf_in[4], buf_in[5], nr_hap_in, nr_hap_out, nr_led_out, nr_dsp_out);
 
 		fflush(stdout);
 		benchPackets = 0;
@@ -431,7 +431,8 @@ int main(int argc, char* argv[])
 		bufout[2] = clock() / 1000;
 		
 		r = libusb_handle_events_timeout_completed(ctx, &t_oned, NULL);
-
+		printf("\r|%02x;%02x;%02x;%02x;%02x;%02x;%02x;%02x;   h_in:%d;h_out:%d;l_out:%d;d_out:%d",
+			buf_in[0], buf_in[1], buf_in[2], buf_in[3], buf_in[4], buf_in[5], buf_in[6], buf_in[7], nr_hap_in, nr_hap_out, nr_led_out, nr_dsp_out);
 		
 		if (r < 0) {   // negative values are errors
 			break;

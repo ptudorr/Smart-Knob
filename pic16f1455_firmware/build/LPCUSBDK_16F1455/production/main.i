@@ -4777,7 +4777,7 @@ extern volatile uint8_t CtrlTrfData[8];
 
 
 # 1 "./include/app_device_joystick.h" 1
-# 39 "./include/app_device_joystick.h"
+# 41 "./include/app_device_joystick.h"
 typedef uint8_t HAPTIC_IN_CONTROLS[16];
 
 
@@ -4786,7 +4786,15 @@ typedef uint8_t HAPTIC_IN_CONTROLS[16];
 
 
 typedef uint8_t HAPTIC_OUT_CONTROLS[64];
-# 64 "./include/app_device_joystick.h"
+
+
+extern uint8_t display_pkt_ready,LED_pkt_ready,hap_IN_pkt_sent,hap_OUT_pkt_ready;
+
+extern void* last_HAP_IN;
+extern void* last_HAP_OUT;
+extern void* last_LED_OUT;
+extern void* last_DSP_OUT;
+# 74 "./include/app_device_joystick.h"
 typedef uint8_t LEDS_CONTROLS[49];
 
 
@@ -4794,16 +4802,16 @@ typedef uint8_t LEDS_CONTROLS[49];
 
 
 typedef uint8_t DISPLAY_CONTROLS[64];
-# 86 "./include/app_device_joystick.h"
+# 96 "./include/app_device_joystick.h"
         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
-# 108 "./include/app_device_joystick.h"
+# 118 "./include/app_device_joystick.h"
 void APP_DeviceJoystickInitialize(void);
-# 124 "./include/app_device_joystick.h"
+# 134 "./include/app_device_joystick.h"
 void APP_DeviceJoystickStart(void);
-# 140 "./include/app_device_joystick.h"
+# 150 "./include/app_device_joystick.h"
 void APP_DeviceJoystickTasks(void);
 # 27 "main.c" 2
 
@@ -4814,8 +4822,14 @@ void APP_LEDUpdateUSBStatus(void);
 
 
 # 1 "./include/spi.h" 1
-# 13 "./include/spi.h"
+# 17 "./include/spi.h"
 uint8_t TESTB,REGT;
+
+extern uint8_t luminosity;
+extern uint8_t errors_ctr2_to_PIC;
+
+extern uint8_t pkt_requests;
+extern uint8_t ctrl2_from_PIC;
 
 typedef enum
 {
@@ -4851,8 +4865,8 @@ typedef enum
 
 
 
-void spiRead(void);
-void spiWrite(void);
+
+void spiTask(void);
 
 void MasterinitSPI(void);
 void SlaveinitSPI(void);
@@ -4866,17 +4880,19 @@ void main(void)
 
     _delay((unsigned long)((200)*(48000000/4000.0)));
 
-    MasterinitSPI();
+    SlaveinitSPI();
 
     USBDeviceInit();
                      ;
 
+    TRISCbits.TRISC4 = 0;
 
     while(1)
     {
-        spiWrite();
+        spiTask();
                       ;
-# 63 "main.c"
+        LATCbits.LATC4 = ~LATCbits.LATC4;
+# 64 "main.c"
             USBDeviceTasks();
 
 

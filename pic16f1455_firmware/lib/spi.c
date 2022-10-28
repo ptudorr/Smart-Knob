@@ -45,7 +45,10 @@
     asm("MOVWI FSR0++");/*save received byte*/
     
 
-
+#define writeByteOnlyRead asm("BTFSS SSP1STAT, 0x0"); /*if ready continue*/   \
+                asm("BRA -2");              /*else go back*/                  \
+                asm("MOVF SSP1BUF,W");      /*read the received byte into W*/ \
+                asm("MOVWI FSR0++");        /*save received byte*/  
 
     //TO DO OUT VECTOR
 #define REP8(x) x x x x x x x x
@@ -56,34 +59,94 @@
 
 
 #define _XTAL_FREQ 48000000
-void spiRead(void){
-    if(BF){
-        TESTB=SSPBUF;
-        REGT=0x22;
-        if(TESTB == 0x55){
-            //service transfer
-            SSPBUF = 0x76;
-            while(WCOL){    //write the SYNC RECEIVED CODE(0x76)
-                WCOL=0;
-                SSPBUF = 0x76;
-            }
-            while(!BF);
+
+
+
+uint8_t garbage;
+
+uint8_t luminosity;//first control byte to receive
+uint8_t errors_ctr2_to_PIC;//second control byte to send
+
+uint8_t pkt_requests;//bitmask for each packet type
+uint8_t ctrl2_from_PIC;//second ctrl byte
+
+void spiTask(void){
+    pkt_requests = 0;
+    if(!HIDTxHandleBusy(last_HAP_IN)){
+        //rady to send another to PC
+        pkt_requests = REQUEST_HAPTIC_IN;
+    }
+    //in case we have received a start command 
+    //from previous unserviced transaction
+    garbage = SSPBUF;
+    SSPOV = 0;
+    //wait for a new byte, only for 3 microseconds
+    
+    asm("MOVLB 4");
+    REP8(asm("BTFSS SSP1STAT, 0x0"); asm("BRA OUTOFWAITSPI");)
+    REP8(asm("BTFSS SSP1STAT, 0x0"); asm("BRA OUTOFWAITSPI");)
+    asm("OUTOFWAITSPI: NOP");                /*read the received byte into W*/
+    
+    ///we have waited for a "fresh" request
+    if(BF && SSPBUF == BEGIN_TRANSFER){
+        //if we have a request(we have received BEGIN_TRANSFER)
+        //service transfer
+        SSPBUF = ACK1;
+        //in case we write exactly during a receive the WCOL will be set
+        while(WCOL){    //write the SYNC RECEIVED CODE(0x76)
+            WCOL=0;
+            SSPBUF = ACK1;
+        }
+        while(!BF);//wait for response
+        if(SSPBUF == BEGIN_TRANSFER){
+            //we haven't just missed the NodeMCU's interval
+            //it sends 0x00 to indicate it timed out
+            //else it sends another BEGIN_TRANSFER to read the ACK1
+            SSPBUF = pkt_requests;
+            //we surely don't have overflow; NodeMCU waits 1us
+            asm("BTFSS SSP1STAT, 0x0");            /*if ready continue*/
+            asm("BRA -2");                         /*else go back*/
+            luminosity = SSPBUF;
             
-            SSPBUF = 0x00;
-            while(WCOL){    //write the SYNC RECEIVED CODE(0x76)
-                WCOL=0;
+            SSPBUF = ctrl2_from_PIC;
+            //we surely don't have overflow; NodeMCU waits 1us
+            asm("BTFSS SSP1STAT, 0x0");            /*if ready continue*/
+            asm("BRA -2");                         /*else go back*/
+            errors_ctr2_to_PIC = SSPBUF;
+            //we have transmitted and received control bytes
+            
+            if(pkt_requests & REQUEST_HAPTIC_IN){
+                hap_IN_pkt_sent=0;
+                //read 16 bytes
+                MOVLW_ADR(HAPTIC_IN_ADDRESS_LO)
+                asm("MOVWF FSR0L");
+                MOVLW_ADR(HAPTIC_IN_ADDRESS_HI)
+                asm("MOVWF FSR0H");
+                asm("MOVLB 4");//go to bank 4, where the spbuf/stat is
+                
+                
+                REP8(writeByteOnlyRead)
+                REP8(writeByteOnlyRead)
+                
+                        
+                asm("BTFSS SSP1STAT, 0x0"); /*if ready continue*/   
+                asm("BRA -2");              /*else go back*/                  
+                asm("MOVF SSP1BUF,W");      /*read the received byte into W*/
                 SSPBUF = 0x00;
             }
-            while(!BF);
-            REGT=0x11;
+            
+        }else{
+            //we don't need to send another 0x00
+            //since BUF is already 0(or at least not BEGIN_TRANSFERs)
+            return;
         }
-        
-        //SSPBUF=0xff-TESTB;
-        //REGT=SSPCON1;
-        WCOL=0;
-        SSPOV=0;
+            
         
     }
+    //make sure no ACK1 byte is left in BUF
+    SSPBUF = 0x00;
+    WCOL=0;
+    SSPOV=0;
 }
 
 char v[8]="ABCDEFGH";

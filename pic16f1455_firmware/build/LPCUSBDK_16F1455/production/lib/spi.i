@@ -3821,8 +3821,14 @@ extern __bank0 __bit __timeout;
 # 1 "lib/spi.c" 2
 
 # 1 ".\\include/spi.h" 1
-# 13 ".\\include/spi.h"
+# 17 ".\\include/spi.h"
 uint8_t TESTB,REGT;
+
+extern uint8_t luminosity;
+extern uint8_t errors_ctr2_to_PIC;
+
+extern uint8_t pkt_requests;
+extern uint8_t ctrl2_from_PIC;
 
 typedef enum
 {
@@ -3858,8 +3864,8 @@ typedef enum
 
 
 
-void spiRead(void);
-void spiWrite(void);
+
+void spiTask(void);
 
 void MasterinitSPI(void);
 void SlaveinitSPI(void);
@@ -3868,9 +3874,906 @@ void SlaveinitSPI(void);
 
 # 1 ".\\include/app_device_joystick.h" 1
 # 24 ".\\include/app_device_joystick.h"
+# 1 ".\\include/usb/usb.h" 1
+# 45 ".\\include/usb/usb.h"
+# 1 ".\\include/usb/usb_config.h" 1
+# 27 ".\\include/usb/usb_config.h"
+# 1 ".\\include/usb/usb_ch9.h" 1
+# 71 ".\\include/usb/usb_ch9.h"
+typedef struct _USB_DEVICE_DESCRIPTOR
+{
+    uint8_t bLength;
+    uint8_t bDescriptorType;
+    uint16_t bcdUSB;
+    uint8_t bDeviceClass;
+    uint8_t bDeviceSubClass;
+    uint8_t bDeviceProtocol;
+    uint8_t bMaxPacketSize0;
+    uint16_t idVendor;
+    uint16_t idProduct;
+    uint16_t bcdDevice;
+    uint8_t iManufacturer;
+    uint8_t iProduct;
+    uint8_t iSerialNumber;
+    uint8_t bNumConfigurations;
+} USB_DEVICE_DESCRIPTOR;
+
+
+
+
+
+
+
+typedef struct _USB_CONFIGURATION_DESCRIPTOR
+{
+    uint8_t bLength;
+    uint8_t bDescriptorType;
+    uint16_t wTotalLength;
+    uint8_t bNumInterfaces;
+    uint8_t bConfigurationValue;
+    uint8_t iConfiguration;
+    uint8_t bmAttributes;
+    uint8_t bMaxPower;
+} USB_CONFIGURATION_DESCRIPTOR;
+# 118 ".\\include/usb/usb_ch9.h"
+typedef struct _USB_INTERFACE_DESCRIPTOR
+{
+    uint8_t bLength;
+    uint8_t bDescriptorType;
+    uint8_t bInterfaceNumber;
+    uint8_t bAlternateSetting;
+    uint8_t bNumEndpoints;
+    uint8_t bInterfaceClass;
+    uint8_t bInterfaceSubClass;
+    uint8_t bInterfaceProtocol;
+    uint8_t iInterface;
+} USB_INTERFACE_DESCRIPTOR;
+
+
+
+
+
+
+
+typedef struct _USB_ENDPOINT_DESCRIPTOR
+{
+    uint8_t bLength;
+    uint8_t bDescriptorType;
+    uint8_t bEndpointAddress;
+    uint8_t bmAttributes;
+    uint16_t wMaxPacketSize;
+    uint8_t bInterval;
+} USB_ENDPOINT_DESCRIPTOR;
+# 187 ".\\include/usb/usb_ch9.h"
+typedef struct
+{
+    uint8_t index;
+    uint8_t type;
+    uint16_t language_id;
+
+} DESCRIPTOR_ID;
+# 202 ".\\include/usb/usb_ch9.h"
+typedef struct _USB_OTG_DESCRIPTOR
+{
+    uint8_t bLength;
+    uint8_t bDescriptorType;
+    uint8_t bmAttributes;
+} USB_OTG_DESCRIPTOR;
+# 226 ".\\include/usb/usb_ch9.h"
+typedef struct _USB_STRING_DSC
+{
+    uint8_t bLength;
+    uint8_t bDescriptorType;
+
+} USB_STRING_DESCRIPTOR;
+# 245 ".\\include/usb/usb_ch9.h"
+typedef struct _USB_DEVICE_QUALIFIER_DESCRIPTOR
+{
+    uint8_t bLength;
+    uint8_t bType;
+    uint16_t bcdUSB;
+    uint8_t bDeviceClass;
+    uint8_t bDeviceSubClass;
+    uint8_t bDeviceProtocol;
+    uint8_t bMaxPacketSize0;
+    uint8_t bNumConfigurations;
+    uint8_t bReserved;
+
+} USB_DEVICE_QUALIFIER_DESCRIPTOR;
+# 268 ".\\include/usb/usb_ch9.h"
+typedef union
+{
+
+    struct
+    {
+        uint8_t bmRequestType;
+        uint8_t bRequest;
+        uint16_t wValue;
+        uint16_t wIndex;
+        uint16_t wLength;
+    };
+    struct
+    {
+        unsigned :8;
+        unsigned :8;
+        union
+        {
+            uint16_t Val;
+            uint8_t v[2];
+            struct
+            {
+                uint8_t LB;
+                uint8_t HB;
+            } byte;
+        } W_Value;
+
+        union
+        {
+            uint16_t Val;
+            uint8_t v[2];
+            struct
+            {
+                uint8_t LB;
+                uint8_t HB;
+            } byte;
+        } W_Index;
+
+        union
+        {
+            uint16_t Val;
+            uint8_t v[2];
+            struct
+            {
+                uint8_t LB;
+                uint8_t HB;
+            } byte;
+        } W_Length;
+    };
+    struct
+    {
+        unsigned Recipient:5;
+        unsigned RequestType:2;
+        unsigned DataDir:1;
+        unsigned :8;
+        uint8_t bFeature;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+    };
+    struct
+    {
+        union
+        {
+            uint8_t bmRequestType;
+            struct
+            {
+                uint8_t recipient: 5;
+                uint8_t type: 2;
+                uint8_t direction: 1;
+            };
+        }requestInfo;
+    };
+    struct
+    {
+        unsigned :8;
+        unsigned :8;
+        uint8_t bDscIndex;
+        uint8_t bDescriptorType;
+        uint16_t wLangID;
+        unsigned :8;
+        unsigned :8;
+    };
+    struct
+    {
+        unsigned :8;
+        unsigned :8;
+        uint8_t bDevADR;
+        uint8_t bDevADRH;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+    };
+    struct
+    {
+        unsigned :8;
+        unsigned :8;
+        uint8_t bConfigurationValue;
+        uint8_t bCfgRSD;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+    };
+    struct
+    {
+        unsigned :8;
+        unsigned :8;
+        uint8_t bAltID;
+        uint8_t bAltID_H;
+        uint8_t bIntfID;
+        uint8_t bIntfID_H;
+        unsigned :8;
+        unsigned :8;
+    };
+    struct
+    {
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+        uint8_t bEPID;
+        uint8_t bEPID_H;
+        unsigned :8;
+        unsigned :8;
+    };
+    struct
+    {
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+        unsigned EPNum:4;
+        unsigned :3;
+        unsigned EPDir:1;
+        unsigned :8;
+        unsigned :8;
+        unsigned :8;
+    };
+
+
+
+} CTRL_TRF_SETUP, SETUP_PKT, *PSETUP_PKT;
+# 27 ".\\include/usb/usb_config.h" 2
+# 45 ".\\include/usb/usb.h" 2
+
+
+# 1 ".\\include/usb/usb_common.h" 1
+# 46 ".\\include/usb/usb_common.h"
+# 1 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\limits.h" 1 3
+# 10 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\limits.h" 3
+# 1 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\bits/limits.h" 1 3
+# 10 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\limits.h" 2 3
+# 46 ".\\include/usb/usb_common.h" 2
+
+# 1 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\stdbool.h" 1 3
+# 47 ".\\include/usb/usb_common.h" 2
+# 132 ".\\include/usb/usb_common.h"
+typedef union
+{
+    uint8_t bitmap;
+    struct
+    {
+        uint8_t ep_num: 4;
+        uint8_t zero_pkt: 1;
+        uint8_t dts: 1;
+        uint8_t force_dts: 1;
+        uint8_t direction: 1;
+    }field;
+
+} TRANSFER_FLAGS;
+# 206 ".\\include/usb/usb_common.h"
+typedef enum
+{
+
+    EVENT_NONE = 0,
+
+    EVENT_DEVICE_STACK_BASE = 1,
+
+    EVENT_HOST_STACK_BASE = 100,
+
+
+    EVENT_HUB_ATTACH,
+
+
+    EVENT_STALL,
+
+
+    EVENT_VBUS_SES_REQUEST,
+
+
+
+
+    EVENT_VBUS_OVERCURRENT,
+
+
+
+
+
+    EVENT_VBUS_REQUEST_POWER,
+
+
+
+
+    EVENT_VBUS_RELEASE_POWER,
+# 247 ".\\include/usb/usb_common.h"
+    EVENT_VBUS_POWER_AVAILABLE,
+
+
+
+    EVENT_UNSUPPORTED_DEVICE,
+
+
+
+    EVENT_CANNOT_ENUMERATE,
+
+
+
+    EVENT_CLIENT_INIT_ERROR,
+
+
+
+
+
+    EVENT_OUT_OF_MEMORY,
+
+
+    EVENT_UNSPECIFIED_ERROR,
+
+
+
+    EVENT_DETACH,
+
+
+
+
+    EVENT_TRANSFER,
+
+
+
+    EVENT_SOF,
+
+
+    EVENT_RESUME,
+
+
+
+    EVENT_SUSPEND,
+
+
+
+    EVENT_RESET,
+
+
+
+
+
+    EVENT_DATA_ISOC_READ,
+
+
+
+
+
+    EVENT_DATA_ISOC_WRITE,
+# 314 ".\\include/usb/usb_common.h"
+    EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION,
+
+
+
+
+
+
+
+    EVENT_1MS,
+
+
+
+
+
+    EVENT_ALT_INTERFACE,
+
+
+
+
+
+
+    EVENT_HOLD_BEFORE_CONFIGURATION,
+
+
+    EVENT_GENERIC_BASE = 400,
+
+    EVENT_MSD_BASE = 500,
+
+    EVENT_HID_BASE = 600,
+
+    EVENT_PRINTER_BASE = 700,
+
+    EVENT_CDC_BASE = 800,
+
+    EVENT_CHARGER_BASE = 900,
+
+    EVENT_AUDIO_BASE = 1000,
+
+ EVENT_USER_BASE = 10000,
+
+
+
+
+    EVENT_BUS_ERROR = 0x7fff
+
+} USB_EVENT;
+# 371 ".\\include/usb/usb_common.h"
+typedef struct _transfer_event_data
+{
+    TRANSFER_FLAGS flags;
+    uint32_t size;
+    uint8_t pid;
+
+} USB_TRANSFER_EVENT_DATA;
+# 388 ".\\include/usb/usb_common.h"
+typedef struct _vbus_power_data
+{
+    uint8_t port;
+    uint8_t current;
+} USB_VBUS_POWER_EVENT_DATA;
+# 401 ".\\include/usb/usb_common.h"
+typedef struct _override_client_driver_data
+{
+    uint16_t idVendor;
+    uint16_t idProduct;
+    uint8_t bDeviceClass;
+    uint8_t bDeviceSubClass;
+    uint8_t bDeviceProtocol;
+} USB_OVERRIDE_CLIENT_DRIVER_EVENT_DATA;
+# 463 ".\\include/usb/usb_common.h"
+typedef _Bool (*USB_EVENT_HANDLER) ( USB_EVENT event, void *data, unsigned int size );
+# 47 ".\\include/usb/usb.h" 2
+
+
+
+
+# 1 ".\\include/usb/usb_device.h" 1
+# 77 ".\\include/usb/usb_device.h"
+typedef enum
+{
+
+
+
+    DETACHED_STATE
+                            = 0x00 ,
+
+
+    ATTACHED_STATE
+                            = 0x01 ,
+
+
+    POWERED_STATE
+                            = 0x02 ,
+
+
+    DEFAULT_STATE
+                            = 0x04 ,
+
+
+
+
+
+    ADR_PENDING_STATE
+                            = 0x08 ,
+
+
+    ADDRESS_STATE
+                            = 0x10 ,
+
+
+
+
+
+    CONFIGURED_STATE
+                            = 0x20
+} USB_DEVICE_STATE;
+
+
+
+typedef enum
+{
+
+    EVENT_CONFIGURED
+                            = EVENT_DEVICE_STACK_BASE ,
+
+
+    EVENT_SET_DESCRIPTOR,
+
+
+
+
+
+    EVENT_EP0_REQUEST,
+# 160 ".\\include/usb/usb_device.h"
+    EVENT_ATTACH,
+
+
+
+
+    EVENT_TRANSFER_TERMINATED
+
+} USB_DEVICE_STACK_EVENTS;
+# 199 ".\\include/usb/usb_device.h"
+void USBDeviceInit(void);
+# 303 ".\\include/usb/usb_device.h"
+void USBDeviceTasks(void);
+# 355 ".\\include/usb/usb_device.h"
+void USBEnableEndpoint(uint8_t ep, uint8_t options);
+# 448 ".\\include/usb/usb_device.h"
+void* USBTransferOnePacket(uint8_t ep,uint8_t dir,uint8_t* data,uint8_t len);
+# 473 ".\\include/usb/usb_device.h"
+void USBStallEndpoint(uint8_t ep, uint8_t dir);
+# 497 ".\\include/usb/usb_device.h"
+void USBCancelIO(uint8_t endpoint);
+# 594 ".\\include/usb/usb_device.h"
+void USBDeviceDetach(void);
+# 639 ".\\include/usb/usb_device.h"
+void USBDeviceAttach(void);
+# 678 ".\\include/usb/usb_device.h"
+void USBCtrlEPAllowStatusStage(void);
+# 708 ".\\include/usb/usb_device.h"
+void USBCtrlEPAllowDataStage(void);
+# 784 ".\\include/usb/usb_device.h"
+void USBDeferOUTDataStage(void);
+extern volatile _Bool USBDeferOUTDataStagePackets;
+# 854 ".\\include/usb/usb_device.h"
+void USBDeferStatusStage(void);
+extern volatile _Bool USBDeferStatusStagePacket;
+# 906 ".\\include/usb/usb_device.h"
+_Bool USBOUTDataStageDeferred(void);
+# 989 ".\\include/usb/usb_device.h"
+void USBDeferINDataStage(void);
+extern volatile _Bool USBDeferINDataStagePackets;
+# 1043 ".\\include/usb/usb_device.h"
+_Bool USBINDataStageDeferred(void);
+# 1113 ".\\include/usb/usb_device.h"
+_Bool USBGetRemoteWakeupStatus(void);
+# 1170 ".\\include/usb/usb_device.h"
+USB_DEVICE_STATE USBGetDeviceState(void);
+# 1226 ".\\include/usb/usb_device.h"
+_Bool USBGetSuspendState(void);
+# 1261 ".\\include/usb/usb_device.h"
+_Bool USBIsDeviceSuspended(void);
+# 1304 ".\\include/usb/usb_device.h"
+_Bool USBIsBusSuspended(void);
+# 1330 ".\\include/usb/usb_device.h"
+void USBSoftDetach(void);
+# 1368 ".\\include/usb/usb_device.h"
+_Bool USBHandleBusy(void* handle);
+# 1406 ".\\include/usb/usb_device.h"
+uint16_t USBHandleGetLength(void* handle);
+# 1438 ".\\include/usb/usb_device.h"
+uint16_t USBHandleGetAddr(void*);
+# 1538 ".\\include/usb/usb_device.h"
+void* USBGetNextHandle(uint8_t ep_num, uint8_t ep_dir);
+# 1571 ".\\include/usb/usb_device.h"
+void USBEP0Transmit(uint8_t options);
+# 1599 ".\\include/usb/usb_device.h"
+void USBEP0SendRAMPtr(uint8_t* src, uint16_t size, uint8_t Options);
+# 1631 ".\\include/usb/usb_device.h"
+void USBEP0SendROMPtr(uint8_t* src, uint16_t size, uint8_t Options);
+# 1659 ".\\include/usb/usb_device.h"
+void USBEP0Receive(uint8_t* dest, uint16_t size, void (*function));
+# 1694 ".\\include/usb/usb_device.h"
+void* USBTxOnePacket(uint8_t ep, uint8_t* data, uint16_t len);
+# 1731 ".\\include/usb/usb_device.h"
+void* USBRxOnePacket(uint8_t ep, uint8_t* data, uint16_t len);
+# 1763 ".\\include/usb/usb_device.h"
+_Bool USB_APPLICATION_EVENT_HANDLER(uint8_t address, USB_EVENT event, void *pdata, uint16_t size);
+# 1808 ".\\include/usb/usb_device.h"
+void USBIncrement1msInternalTimers(void);
+# 1867 ".\\include/usb/usb_device.h"
+uint32_t USBGet1msTickCount(void);
+# 1908 ".\\include/usb/usb_device.h"
+uint8_t USBGetTicksSinceSuspendEnd(void);
+# 1980 ".\\include/usb/usb_device.h"
+typedef union
+{
+    uint16_t Val;
+    uint8_t v[2];
+    struct
+    {
+        uint8_t LB;
+        uint8_t HB;
+    } byte;
+} uint16_t_VAL;
+
+
+
+
+typedef struct
+{
+    union
+    {
+
+
+        uint8_t *bRam;
+        const uint8_t *bRom;
+        uint16_t *wRam;
+        const uint16_t *wRom;
+    }pSrc;
+    union
+    {
+        struct
+        {
+
+            uint8_t ctrl_trf_mem :1;
+            uint8_t reserved :5;
+
+
+            uint8_t includeZero :1;
+
+            uint8_t busy :1;
+        }bits;
+        uint8_t Val;
+    }info;
+    uint16_t_VAL wCount;
+}IN_PIPE;
+
+extern IN_PIPE inPipes[];
+
+typedef struct
+{
+    union
+    {
+
+
+        uint8_t *bRam;
+        uint16_t *wRam;
+    }pDst;
+    union
+    {
+        struct
+        {
+            uint8_t reserved :7;
+
+            uint8_t busy :1;
+        }bits;
+        uint8_t Val;
+    }info;
+    uint16_t_VAL wCount;
+    void (*pFunc)(void);
+}OUT_PIPE;
+
+extern _Bool RemoteWakeup;
+extern _Bool USBBusIsSuspended;
+extern USB_DEVICE_STATE USBDeviceState;
+extern uint8_t USBActiveConfiguration;
+extern uint8_t USBTicksSinceSuspendEnd;
+
+
+
+
+# 1 ".\\include/usb/usb_hal.h" 1
+# 34 ".\\include/usb/usb_hal.h"
+# 1 ".\\include/usb/usb_hal_pic16f1.h" 1
+# 33 ".\\include/usb/usb_hal_pic16f1.h"
+# 1 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\string.h" 1 3
+# 25 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\string.h" 3
+# 1 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 411 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 25 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\string.h" 2 3
+
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+# 65 "E:\\Atmel Studio\\Comp-istall\\pic\\include\\c99\\string.h" 3
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 33 ".\\include/usb/usb_hal_pic16f1.h" 2
+
+
+
 # 1 ".\\include/fixed_address_memory.h" 1
+# 36 ".\\include/usb/usb_hal_pic16f1.h" 2
+# 232 ".\\include/usb/usb_hal_pic16f1.h"
+typedef union _BD_STAT
+{
+    uint8_t Val;
+    struct{
+
+        unsigned BC8:1;
+        unsigned BC9:1;
+        unsigned BSTALL:1;
+        unsigned DTSEN:1;
+        unsigned INCDIS:1;
+        unsigned KEN:1;
+        unsigned DTS:1;
+        unsigned UOWN:1;
+    };
+    struct{
+
+
+        unsigned :2;
+        unsigned PID0:1;
+        unsigned PID1:1;
+        unsigned PID2:1;
+        unsigned PID3:1;
+        unsigned :1;
+    };
+    struct{
+        unsigned :2;
+        unsigned PID:4;
+        unsigned :2;
+    };
+} BD_STAT;
+
+
+typedef union __BDT
+{
+    struct
+    {
+        BD_STAT STAT;
+        uint8_t CNT;
+        uint8_t ADRL;
+        uint8_t ADRH;
+    };
+    struct
+    {
+        unsigned filler1:8;
+        unsigned filler2:8;
+        uint16_t ADR;
+    };
+    uint32_t Val;
+    uint8_t v[4];
+} BDT_ENTRY;
+
+
+typedef union __USTAT
+{
+    struct
+    {
+        unsigned char filler1:1;
+        unsigned char ping_pong:1;
+        unsigned char direction:1;
+        unsigned char endpoint_number:4;
+    };
+    uint8_t Val;
+} USTAT_FIELDS;
+
+
+
+
+
+
+
+typedef union _POINTER
+{
+    struct
+    {
+        uint8_t bLow;
+        uint8_t bHigh;
+
+    };
+    uint16_t _word;
+
+
+
+    uint8_t* bRam;
+
+    uint16_t* wRam;
+
+
+    const uint8_t* bRom;
+    const uint16_t* wRom;
+
+
+
+
+} POINTER;
+# 520 ".\\include/usb/usb_hal_pic16f1.h"
+    extern uint8_t USBActiveConfiguration;
+    extern IN_PIPE inPipes[1];
+    extern OUT_PIPE outPipes[1];
+
+
+extern volatile BDT_ENTRY* pBDTEntryOut[3 +1];
+extern volatile BDT_ENTRY* pBDTEntryIn[3 +1];
+# 34 ".\\include/usb/usb_hal.h" 2
+# 167 ".\\include/usb/usb_hal.h"
+void OTGCORE_SetDeviceAddr( uint8_t addr );
+# 203 ".\\include/usb/usb_hal.h"
+    void USBHALControlUsbResistors( uint8_t flags );
+# 237 ".\\include/usb/usb_hal.h"
+_Bool USBHALSessionIsValid( void );
+# 263 ".\\include/usb/usb_hal.h"
+_Bool USBHALControlBusPower( uint8_t cmd );
+# 293 ".\\include/usb/usb_hal.h"
+unsigned long USBHALGetLastError( void );
+# 326 ".\\include/usb/usb_hal.h"
+void USBHALHandleBusEvent ( void );
+# 367 ".\\include/usb/usb_hal.h"
+_Bool OTGCORE_StallPipe( TRANSFER_FLAGS pipe );
+# 404 ".\\include/usb/usb_hal.h"
+_Bool OTGCORE_UnstallPipe( TRANSFER_FLAGS pipe );
+# 438 ".\\include/usb/usb_hal.h"
+uint16_t OTGCORE_GetStalledEndpoints ( void );
+# 475 ".\\include/usb/usb_hal.h"
+_Bool USBHALFlushPipe( TRANSFER_FLAGS pipe );
+# 535 ".\\include/usb/usb_hal.h"
+_Bool USBHALTransferData ( TRANSFER_FLAGS flags,
+                          void *buffer,
+                          unsigned int size );
+# 575 ".\\include/usb/usb_hal.h"
+_Bool USBHALSetEpConfiguration ( uint8_t ep_num, uint16_t max_pkt_size, uint16_t flags );
+# 603 ".\\include/usb/usb_hal.h"
+_Bool USBHALInitialize ( unsigned long flags );
+# 2056 ".\\include/usb/usb_device.h" 2
+# 51 ".\\include/usb/usb.h" 2
 # 24 ".\\include/app_device_joystick.h" 2
-# 39 ".\\include/app_device_joystick.h"
+
+# 1 ".\\include/usb/usb_device_hid.h" 1
+# 98 ".\\include/usb/usb_device_hid.h"
+void USBCheckHIDRequest(void);
+# 280 ".\\include/usb/usb_device_hid.h"
+typedef struct _USB_HID_DSC_HEADER
+{
+    uint8_t bDescriptorType;
+    uint16_t wDscLength;
+} USB_HID_DSC_HEADER;
+
+
+
+typedef struct _USB_HID_DSC
+{
+    uint8_t bLength;
+ uint8_t bDescriptorType;
+ uint16_t bcdHID;
+    uint8_t bCountryCode;
+ uint8_t bNumDsc;
+
+
+
+
+
+} USB_HID_DSC;
+
+
+extern volatile CTRL_TRF_SETUP SetupPkt;
+extern const uint8_t configDescriptor1[];
+extern volatile uint8_t CtrlTrfData[8];
+# 25 ".\\include/app_device_joystick.h" 2
+# 41 ".\\include/app_device_joystick.h"
 typedef uint8_t HAPTIC_IN_CONTROLS[16];
 
 
@@ -3879,7 +4782,15 @@ typedef uint8_t HAPTIC_IN_CONTROLS[16];
 
 
 typedef uint8_t HAPTIC_OUT_CONTROLS[64];
-# 64 ".\\include/app_device_joystick.h"
+
+
+extern uint8_t display_pkt_ready,LED_pkt_ready,hap_IN_pkt_sent,hap_OUT_pkt_ready;
+
+extern void* last_HAP_IN;
+extern void* last_HAP_OUT;
+extern void* last_LED_OUT;
+extern void* last_DSP_OUT;
+# 74 ".\\include/app_device_joystick.h"
 typedef uint8_t LEDS_CONTROLS[49];
 
 
@@ -3887,62 +4798,119 @@ typedef uint8_t LEDS_CONTROLS[49];
 
 
 typedef uint8_t DISPLAY_CONTROLS[64];
-# 86 ".\\include/app_device_joystick.h"
+# 96 ".\\include/app_device_joystick.h"
         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
-# 108 ".\\include/app_device_joystick.h"
+# 118 ".\\include/app_device_joystick.h"
 void APP_DeviceJoystickInitialize(void);
-# 124 ".\\include/app_device_joystick.h"
+# 134 ".\\include/app_device_joystick.h"
 void APP_DeviceJoystickStart(void);
-# 140 ".\\include/app_device_joystick.h"
+# 150 ".\\include/app_device_joystick.h"
 void APP_DeviceJoystickTasks(void);
 # 4 "lib/spi.c" 2
-# 59 "lib/spi.c"
-void spiRead(void){
-    if(BF){
-        TESTB=SSPBUF;
-        REGT=0x22;
-        if(TESTB == 0x55){
+# 65 "lib/spi.c"
+uint8_t garbage;
 
+uint8_t luminosity;
+uint8_t errors_ctr2_to_PIC;
+
+uint8_t pkt_requests;
+uint8_t ctrl2_from_PIC;
+
+void spiTask(void){
+    pkt_requests = 0;
+    if(!((last_HAP_IN != 0x0000) && ((*(volatile uint8_t*)last_HAP_IN & 0x80) != 0x00))){
+
+        pkt_requests = 0x01;
+    }
+
+
+    garbage = SSPBUF;
+    SSPOV = 0;
+
+
+    __asm("MOVLB 4");
+    __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI");
+    __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI");
+    __asm("OUTOFWAITSPI: NOP");
+
+
+    if(BF && SSPBUF == 0x55){
+
+
+        SSPBUF = 0x76;
+
+        while(WCOL){
+            WCOL=0;
             SSPBUF = 0x76;
-            while(WCOL){
-                WCOL=0;
-                SSPBUF = 0x76;
-            }
-            while(!BF);
+        }
+        while(!BF);
+        if(SSPBUF == 0x55){
 
-            SSPBUF = 0x00;
-            while(WCOL){
-                WCOL=0;
+
+
+            SSPBUF = pkt_requests;
+
+            __asm("BTFSS SSP1STAT, 0x0");
+            __asm("BRA -2");
+            luminosity = SSPBUF;
+
+            SSPBUF = ctrl2_from_PIC;
+
+            __asm("BTFSS SSP1STAT, 0x0");
+            __asm("BRA -2");
+            errors_ctr2_to_PIC = SSPBUF;
+
+
+            if(pkt_requests & 0x01){
+                hap_IN_pkt_sent=0;
+
+                __asm("MOVLW 0x50");
+                __asm("MOVWF FSR0L");
+                __asm("MOVLW 0x20");
+                __asm("MOVWF FSR0H");
+                __asm("MOVLB 4");
+
+
+                __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++");
+                __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++");
+
+
+                __asm("BTFSS SSP1STAT, 0x0");
+                __asm("BRA -2");
+                __asm("MOVF SSP1BUF,W");
                 SSPBUF = 0x00;
             }
-            while(!BF);
-            REGT=0x11;
+
+        }else{
+
+
+            return;
         }
 
 
-
-        WCOL=0;
-        SSPOV=0;
-
     }
+
+    SSPBUF = 0x00;
+    WCOL=0;
+    SSPOV=0;
 }
 
 char v[8]="ABCDEFGH";
 
 void spwrh(){
-# 111 "lib/spi.c"
+# 174 "lib/spi.c"
     __asm("MOVLW 0xB0");
     __asm("MOVWF FSR1L");
     __asm("MOVLW 0x21");
     __asm("MOVWF FSR1H");
-# 124 "lib/spi.c"
+# 187 "lib/spi.c"
     __asm("MOVLB 4");
 
     __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W");
-# 138 "lib/spi.c"
+# 201 "lib/spi.c"
 }
 int cnt_tr=0;
 
@@ -3956,7 +4924,7 @@ void spiWrite(){
 
 
     spwrh();
-# 160 "lib/spi.c"
+# 223 "lib/spi.c"
     SSPBUF = ' ';while(!BF);
     PORTCbits.RC3 = 1;
 }

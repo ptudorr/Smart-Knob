@@ -4796,9 +4796,9 @@ typedef uint8_t LEDS_CONTROLS[49];
 typedef uint8_t DISPLAY_CONTROLS[64];
 # 86 ".\\include/app_device_joystick.h"
         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
-        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20D0)));
-        LEDS_CONTROLS leds_output __attribute__((address(0x2150)));
-        DISPLAY_CONTROLS display_output __attribute__((address(0x21D0)));
+        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+        LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+        DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
 # 108 ".\\include/app_device_joystick.h"
 void APP_DeviceJoystickInitialize(void);
 # 124 ".\\include/app_device_joystick.h"

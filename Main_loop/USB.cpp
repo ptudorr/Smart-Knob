@@ -3,8 +3,8 @@
 #include "USB.h"
 #include <SPI.h>
 
-//#define DEBUG_TRANSACTION
-#define USB_WAIT_MICROS 25
+#define DEBUG_TRANSACTION
+#define USB_WAIT_MICROS 50
 #define BEGIN_TRANSFER 0x55
 #define ACK1 0x76
 
@@ -23,9 +23,12 @@ void USB(){
   //SPI.begin();//make sure SPI.begin() has been called
   SPI.beginTransaction(SPISettings(6000000, MSBFIRST, SPI_MODE0));//lower SPI bitrate
   GPOC = (1<<PIC_CS_PIN); //CS = LOW; select the PIC
+  pinMode(MCU_MISO_PIN,SPECIAL); //MISO is input
   int nr=0;
   while(1){
     uint8_t rec = SPI.transfer(BEGIN_TRANSFER);//send a byte announcing a request
+    
+    
     if(rec == ACK1){             //response from PIC - ACK1
       #ifdef DEBUG_TRANSACTION
         Serial.print("GOT RESPONSE ");Serial.print(rec,HEX);Serial.println("|");
@@ -65,10 +68,11 @@ void USB(){
         SPI.transfer(haptic_IN_buffer[i]);
       }*/
       //same as above but with pointers
+      delayMicroseconds(1);
       for(uint8_t *p=haptic_IN_buffer; p < haptic_IN_buffer+HAPTIC_IN_BUFFER_SIZE; p++){
         delayMicroseconds(1);
         //we can wait 16us total since the packet is 4 times smaller than the others
-        SPI.transfer(*p);
+        SPI.transfer(0x04);//*p
       }
       //empty the send/receive buffer
       delayMicroseconds(1);

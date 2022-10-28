@@ -104,6 +104,6 @@ void loop() {
       
     }
   }
-
+  
   action = (action+1)%4;
 }

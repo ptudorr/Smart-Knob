@@ -4796,9 +4796,9 @@ typedef uint8_t LEDS_CONTROLS[49];
 typedef uint8_t DISPLAY_CONTROLS[64];
 # 86 "./include/app_device_joystick.h"
         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
-        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20D0)));
-        LEDS_CONTROLS leds_output __attribute__((address(0x2150)));
-        DISPLAY_CONTROLS display_output __attribute__((address(0x21D0)));
+        HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+        LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+        DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
 # 108 "./include/app_device_joystick.h"
 void APP_DeviceJoystickInitialize(void);
 # 124 "./include/app_device_joystick.h"
@@ -4816,6 +4816,12 @@ void APP_LEDUpdateUSBStatus(void);
 # 1 "./include/spi.h" 1
 # 13 "./include/spi.h"
 uint8_t TESTB,REGT;
+
+extern uint8_t luminosity;
+extern uint8_t errors_ctr2_to_PIC;
+
+extern uint8_t pkt_requests;
+extern uint8_t ctrl2_from_PIC;
 
 typedef enum
 {
@@ -4851,8 +4857,8 @@ typedef enum
 
 
 
-void spiRead(void);
-void spiWrite(void);
+
+void spiTask(void);
 
 void MasterinitSPI(void);
 void SlaveinitSPI(void);
@@ -4863,20 +4869,22 @@ void main(void)
 {
 
     TRISC1 = 1;TRISC2 = 0;
-    SYSTEM_Initialize(SYSTEM_STATE_USB_START);
+
     _delay((unsigned long)((200)*(48000000/4000.0)));
 
-    MasterinitSPI();
+    SlaveinitSPI();
 
     USBDeviceInit();
                      ;
 
+    TRISCbits.TRISC4 = 0;
 
     while(1)
     {
-        spiWrite();
+        spiTask();
                       ;
-# 63 "main.c"
+        LATCbits.LATC4 = ~LATCbits.LATC4;
+# 64 "main.c"
             USBDeviceTasks();
 
 

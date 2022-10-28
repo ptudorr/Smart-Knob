@@ -1,5 +1,6 @@
 build/LPCUSBDK_16F1455/production/lib/app_device_joystick.p1:  \
 lib/app_device_joystick.c  \
+include/app_device_joystick.h  \
 include/usb/usb.h  \
 include/usb/usb_config.h  \
 include/usb/usb_ch9.h  \
@@ -9,7 +10,6 @@ include/usb/usb_hal.h  \
 include/usb/usb_hal_pic16f1.h  \
 include/fixed_address_memory.h  \
 include/usb/usb_device_hid.h  \
-include/app_device_joystick.h  \
 include/system.h  \
 include/buttons.h  \
 include/leds.h  \

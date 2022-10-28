@@ -435,14 +435,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;.\include/app_device_joystick.h: 86:         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
 [v _haptic_in `uc ~T0 @X0 -> 16 `i e@8272 ]
 "87
-[; ;.\include/app_device_joystick.h: 87:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20D0)));
-[v _haptic_out `uc ~T0 @X0 -> 64 `i e@8400 ]
+[; ;.\include/app_device_joystick.h: 87:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+[v _haptic_out `uc ~T0 @X0 -> 64 `i e@8368 ]
 "88
-[; ;.\include/app_device_joystick.h: 88:         LEDS_CONTROLS leds_output __attribute__((address(0x2150)));
-[v _leds_output `uc ~T0 @X0 -> 49 `i e@8528 ]
+[; ;.\include/app_device_joystick.h: 88:         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+[v _leds_output `uc ~T0 @X0 -> 49 `i e@8496 ]
 "89
-[; ;.\include/app_device_joystick.h: 89:         DISPLAY_CONTROLS display_output __attribute__((address(0x21D0)));
-[v _display_output `uc ~T0 @X0 -> 64 `i e@8656 ]
+[; ;.\include/app_device_joystick.h: 89:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
+[v _display_output `uc ~T0 @X0 -> 64 `i e@8624 ]
 "50 lib/usb/usb_events.c
 [; ;lib/usb/usb_events.c: 50: _Bool USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, uint16_t size)
 [v _USER_USB_CALLBACK_EVENT_HANDLER `(a ~T0 @X0 1 ef3`E2426`*v`us ]

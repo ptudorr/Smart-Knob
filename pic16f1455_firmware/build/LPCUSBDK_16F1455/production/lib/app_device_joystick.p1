@@ -2,24 +2,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "355 .\include/usb/usb_device.h
 [; ;.\include/usb/usb_device.h: 355: void USBEnableEndpoint(uint8_t ep, uint8_t options);
 [v _USBEnableEndpoint `(v ~T0 @X0 0 ef2`uc`uc ]
-"101 lib/app_device_joystick.c
-[; ;lib/app_device_joystick.c: 101:     if( USBDeviceState < CONFIGURED_STATE )
-[c E297 0 1 2 4 8 16 32 .. ]
-[n E297 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
+"99 lib/app_device_joystick.c
+[; ;lib/app_device_joystick.c: 99:     if( USBDeviceState < CONFIGURED_STATE )
+[c E2454 0 1 2 4 8 16 32 .. ]
+[n E2454 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
 "2050 .\include/usb/usb_device.h
 [; ;.\include/usb/usb_device.h: 2050: extern USB_DEVICE_STATE USBDeviceState;
-[v _USBDeviceState `E297 ~T0 @X0 0 e ]
+[v _USBDeviceState `E2454 ~T0 @X0 0 e ]
 "4638 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 4638:     struct {
-[s S289 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S289 . . SUSPND RESUME USBEN PKTDIS SE0 PPBRST ]
+[s S247 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S247 . . SUSPND RESUME USBEN PKTDIS SE0 PPBRST ]
 "4637
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 4637: typedef union {
-[u S288 `S289 1 ]
-[n S288 . . ]
+[u S246 `S247 1 ]
+[n S246 . . ]
 "4648
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 4648: extern volatile UCONbits_t UCONbits __attribute__((address(0xE8E)));
-[v _UCONbits `VS288 ~T0 @X0 0 e@3726 ]
+[v _UCONbits `VS246 ~T0 @X0 0 e@3726 ]
 "3216
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 3216: extern volatile unsigned char SSPCON1 __attribute__((address(0x215)));
 [v _SSPCON1 `Vuc ~T0 @X0 0 e@533 ]
@@ -437,214 +437,214 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5734
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 5734: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"86 .\include/app_device_joystick.h
-[; ;.\include/app_device_joystick.h: 86:         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
+"96 .\include/app_device_joystick.h
+[; ;.\include/app_device_joystick.h: 96:         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
 [v _haptic_in `uc ~T0 @X0 -> 16 `i e@8272 ]
-"87
-[; ;.\include/app_device_joystick.h: 87:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+"97
+[; ;.\include/app_device_joystick.h: 97:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
 [v _haptic_out `uc ~T0 @X0 -> 64 `i e@8368 ]
-"88
-[; ;.\include/app_device_joystick.h: 88:         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+"98
+[; ;.\include/app_device_joystick.h: 98:         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
 [v _leds_output `uc ~T0 @X0 -> 49 `i e@8496 ]
-"89
-[; ;.\include/app_device_joystick.h: 89:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
+"99
+[; ;.\include/app_device_joystick.h: 99:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
 [v _display_output `uc ~T0 @X0 -> 64 `i e@8624 ]
-"13 .\include/spi.h
-[; ;.\include/spi.h: 13: uint8_t TESTB,REGT;
+"17 .\include/spi.h
+[; ;.\include/spi.h: 17: uint8_t TESTB,REGT;
 [v _TESTB `uc ~T0 @X0 1 e ]
 [v _REGT `uc ~T0 @X0 1 e ]
-"37 lib/app_device_joystick.c
-[; ;lib/app_device_joystick.c: 37:              void* last_HAP_IN = 0;
+"35 lib/app_device_joystick.c
+[; ;lib/app_device_joystick.c: 35:              void* last_HAP_IN = 0;
 [v _last_HAP_IN `*v ~T0 @X0 1 e ]
 [i _last_HAP_IN
 -> -> 0 `i `*v
 ]
-"38
-[; ;lib/app_device_joystick.c: 38:              void* last_HAP_OUT = 0;
+"36
+[; ;lib/app_device_joystick.c: 36:              void* last_HAP_OUT = 0;
 [v _last_HAP_OUT `*v ~T0 @X0 1 e ]
 [i _last_HAP_OUT
 -> -> 0 `i `*v
 ]
-"39
-[; ;lib/app_device_joystick.c: 39:              void* last_LED_OUT = 0;
+"37
+[; ;lib/app_device_joystick.c: 37:              void* last_LED_OUT = 0;
 [v _last_LED_OUT `*v ~T0 @X0 1 e ]
 [i _last_LED_OUT
 -> -> 0 `i `*v
 ]
-"40
-[; ;lib/app_device_joystick.c: 40:              void* last_DSP_OUT = 0;
+"38
+[; ;lib/app_device_joystick.c: 38:              void* last_DSP_OUT = 0;
 [v _last_DSP_OUT `*v ~T0 @X0 1 e ]
 [i _last_DSP_OUT
 -> -> 0 `i `*v
 ]
-"56
-[; ;lib/app_device_joystick.c: 56: uint8_t display_pkt_ready,LED_pkt_ready,hap_IN_pkt_ready,hap_OUT_pkt_ready;
+"54
+[; ;lib/app_device_joystick.c: 54: uint8_t display_pkt_ready,LED_pkt_ready,hap_IN_pkt_sent,hap_OUT_pkt_ready;
 [v _display_pkt_ready `uc ~T0 @X0 1 e ]
 [v _LED_pkt_ready `uc ~T0 @X0 1 e ]
-[v _hap_IN_pkt_ready `uc ~T0 @X0 1 e ]
+[v _hap_IN_pkt_sent `uc ~T0 @X0 1 e ]
 [v _hap_OUT_pkt_ready `uc ~T0 @X0 1 e ]
-"58
-[; ;lib/app_device_joystick.c: 58: void APP_DeviceJoystickInitialize(void)
+"56
+[; ;lib/app_device_joystick.c: 56: void APP_DeviceJoystickInitialize(void)
 [v _APP_DeviceJoystickInitialize `(v ~T0 @X0 1 ef ]
-"59
-[; ;lib/app_device_joystick.c: 59: {
+"57
+[; ;lib/app_device_joystick.c: 57: {
 {
 [e :U _APP_DeviceJoystickInitialize ]
 [f ]
-"62
-[; ;lib/app_device_joystick.c: 62:     last_HAP_IN = 0;
+"60
+[; ;lib/app_device_joystick.c: 60:     last_HAP_IN = 0;
 [e = _last_HAP_IN -> -> 0 `i `*v ]
-"63
-[; ;lib/app_device_joystick.c: 63:     last_HAP_OUT = 0;
+"61
+[; ;lib/app_device_joystick.c: 61:     last_HAP_OUT = 0;
 [e = _last_HAP_OUT -> -> 0 `i `*v ]
-"64
-[; ;lib/app_device_joystick.c: 64:     last_LED_OUT = 0;
+"62
+[; ;lib/app_device_joystick.c: 62:     last_LED_OUT = 0;
 [e = _last_LED_OUT -> -> 0 `i `*v ]
-"65
-[; ;lib/app_device_joystick.c: 65:     last_DSP_OUT = 0;
+"63
+[; ;lib/app_device_joystick.c: 63:     last_DSP_OUT = 0;
 [e = _last_DSP_OUT -> -> 0 `i `*v ]
-"68
-[; ;lib/app_device_joystick.c: 68:     display_pkt_ready=0;
+"66
+[; ;lib/app_device_joystick.c: 66:     display_pkt_ready=0;
 [e = _display_pkt_ready -> -> 0 `i `uc ]
-"69
-[; ;lib/app_device_joystick.c: 69:     LED_pkt_ready=0;
+"67
+[; ;lib/app_device_joystick.c: 67:     LED_pkt_ready=0;
 [e = _LED_pkt_ready -> -> 0 `i `uc ]
-"70
-[; ;lib/app_device_joystick.c: 70:     hap_IN_pkt_ready=0;
-[e = _hap_IN_pkt_ready -> -> 0 `i `uc ]
-"71
-[; ;lib/app_device_joystick.c: 71:     hap_OUT_pkt_ready=0;
+"68
+[; ;lib/app_device_joystick.c: 68:     hap_IN_pkt_sent=1;
+[e = _hap_IN_pkt_sent -> -> 1 `i `uc ]
+"69
+[; ;lib/app_device_joystick.c: 69:     hap_OUT_pkt_ready=0;
 [e = _hap_OUT_pkt_ready -> -> 0 `i `uc ]
-"74
-[; ;lib/app_device_joystick.c: 74:     USBEnableEndpoint(1,0x04|0x02|0x10|0x08);
+"72
+[; ;lib/app_device_joystick.c: 72:     USBEnableEndpoint(1,0x04|0x02|0x10|0x08);
 [e ( _USBEnableEndpoint (2 , -> -> 1 `i `uc -> | | | -> 4 `i -> 2 `i -> 16 `i -> 8 `i `uc ]
-"75
-[; ;lib/app_device_joystick.c: 75:     USBEnableEndpoint(2 ,0x04|0x02|0x10|0x08);
+"73
+[; ;lib/app_device_joystick.c: 73:     USBEnableEndpoint(2 ,0x04|0x02|0x10|0x08);
 [e ( _USBEnableEndpoint (2 , -> -> 2 `i `uc -> | | | -> 4 `i -> 2 `i -> 16 `i -> 8 `i `uc ]
-"76
-[; ;lib/app_device_joystick.c: 76:     USBEnableEndpoint(3 ,0x04|0x02|0x10|0x08);
+"74
+[; ;lib/app_device_joystick.c: 74:     USBEnableEndpoint(3 ,0x04|0x02|0x10|0x08);
 [e ( _USBEnableEndpoint (2 , -> -> 3 `i `uc -> | | | -> 4 `i -> 2 `i -> 16 `i -> 8 `i `uc ]
-"77
-[; ;lib/app_device_joystick.c: 77: }
+"75
+[; ;lib/app_device_joystick.c: 75: }
 [e :UE 362 ]
 }
-"94
-[; ;lib/app_device_joystick.c: 94: uint8_t cntr=0;
+"92
+[; ;lib/app_device_joystick.c: 92: uint8_t cntr=0;
 [v _cntr `uc ~T0 @X0 1 e ]
 [i _cntr
 -> -> 0 `i `uc
 ]
-"96
-[; ;lib/app_device_joystick.c: 96: void APP_DeviceJoystickTasks(void)
+"94
+[; ;lib/app_device_joystick.c: 94: void APP_DeviceJoystickTasks(void)
 [v _APP_DeviceJoystickTasks `(v ~T0 @X0 1 ef ]
-"97
-[; ;lib/app_device_joystick.c: 97: {
+"95
+[; ;lib/app_device_joystick.c: 95: {
 {
 [e :U _APP_DeviceJoystickTasks ]
 [f ]
-"101
-[; ;lib/app_device_joystick.c: 101:     if( USBDeviceState < CONFIGURED_STATE )
-[e $ ! < -> _USBDeviceState `ui -> . `E297 6 `ui 364  ]
-"102
-[; ;lib/app_device_joystick.c: 102:     {
+"99
+[; ;lib/app_device_joystick.c: 99:     if( USBDeviceState < CONFIGURED_STATE )
+[e $ ! < -> _USBDeviceState `ui -> . `E2454 6 `ui 364  ]
+"100
+[; ;lib/app_device_joystick.c: 100:     {
 {
-"104
-[; ;lib/app_device_joystick.c: 104:         return;
+"102
+[; ;lib/app_device_joystick.c: 102:         return;
 [e $UE 363  ]
-"105
-[; ;lib/app_device_joystick.c: 105:     }
+"103
+[; ;lib/app_device_joystick.c: 103:     }
 }
 [e :U 364 ]
-"111
-[; ;lib/app_device_joystick.c: 111:     if( UCONbits.SUSPND == 1 )
+"109
+[; ;lib/app_device_joystick.c: 109:     if( UCONbits.SUSPND == 1 )
 [e $ ! == -> . . _UCONbits 0 1 `i -> 1 `i 365  ]
-"112
-[; ;lib/app_device_joystick.c: 112:     {
+"110
+[; ;lib/app_device_joystick.c: 110:     {
 {
-"114
-[; ;lib/app_device_joystick.c: 114:         return;
+"112
+[; ;lib/app_device_joystick.c: 112:         return;
 [e $UE 363  ]
-"115
-[; ;lib/app_device_joystick.c: 115:     }
+"113
+[; ;lib/app_device_joystick.c: 113:     }
 }
 [e :U 365 ]
-"118
-[; ;lib/app_device_joystick.c: 118:     if(!((last_HAP_IN != 0x0000) && ((*(volatile uint8_t*)last_HAP_IN & 0x80) != 0x00)) && hap_IN_pkt_ready)
-[e $ ! && ! && != _last_HAP_IN -> -> 0 `i `*v != & -> *U -> _last_HAP_IN `*Vuc `i -> 128 `i -> 0 `i != -> _hap_IN_pkt_ready `i -> 0 `i 366  ]
-"119
-[; ;lib/app_device_joystick.c: 119:     {
+"116
+[; ;lib/app_device_joystick.c: 116:     if(!((last_HAP_IN != 0x0000) && ((*(volatile uint8_t*)last_HAP_IN & 0x80) != 0x00)) && (hap_IN_pkt_sent == 0))
+[e $ ! && ! && != _last_HAP_IN -> -> 0 `i `*v != & -> *U -> _last_HAP_IN `*Vuc `i -> 128 `i -> 0 `i == -> _hap_IN_pkt_sent `i -> 0 `i 366  ]
+"117
+[; ;lib/app_device_joystick.c: 117:     {
 {
-"122
-[; ;lib/app_device_joystick.c: 122:         haptic_in[0] = display_output[0];
+"120
+[; ;lib/app_device_joystick.c: 120:         haptic_in[0] = display_output[0];
 [e = *U + &U _haptic_in * -> -> -> 0 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux *U + &U _display_output * -> -> -> 0 `i `ui `ux -> -> # *U &U _display_output `ui `ux ]
-"123
-[; ;lib/app_device_joystick.c: 123:         haptic_in[1] = display_output[1];
+"121
+[; ;lib/app_device_joystick.c: 121:         haptic_in[1] = display_output[1];
 [e = *U + &U _haptic_in * -> -> -> 1 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux *U + &U _display_output * -> -> -> 1 `i `ui `ux -> -> # *U &U _display_output `ui `ux ]
-"124
-[; ;lib/app_device_joystick.c: 124:         haptic_in[2] = TESTB;
+"122
+[; ;lib/app_device_joystick.c: 122:         haptic_in[2] = TESTB;
 [e = *U + &U _haptic_in * -> -> -> 2 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _TESTB ]
-"125
-[; ;lib/app_device_joystick.c: 125:         haptic_in[3] = SSPCON1;
+"123
+[; ;lib/app_device_joystick.c: 123:         haptic_in[3] = SSPCON1;
 [e = *U + &U _haptic_in * -> -> -> 3 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPCON1 ]
-"126
-[; ;lib/app_device_joystick.c: 126:         haptic_in[4] = SSPSTAT;
+"124
+[; ;lib/app_device_joystick.c: 124:         haptic_in[4] = SSPSTAT;
 [e = *U + &U _haptic_in * -> -> -> 4 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPSTAT ]
-"127
-[; ;lib/app_device_joystick.c: 127:         haptic_in[5] = display_output[63];
+"125
+[; ;lib/app_device_joystick.c: 125:         haptic_in[5] = display_output[63];
 [e = *U + &U _haptic_in * -> -> -> 5 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux *U + &U _display_output * -> -> -> 63 `i `ui `ux -> -> # *U &U _display_output `ui `ux ]
+"126
+[; ;lib/app_device_joystick.c: 126:         hap_IN_pkt_sent = 1;
+[e = _hap_IN_pkt_sent -> -> 1 `i `uc ]
 "128
-[; ;lib/app_device_joystick.c: 128:         hap_IN_pkt_ready = 0;
-[e = _hap_IN_pkt_ready -> -> 0 `i `uc ]
-"130
-[; ;lib/app_device_joystick.c: 130:         last_HAP_IN = USBTransferOnePacket(1,1,(uint8_t*)&haptic_in,sizeof(haptic_in));
+[; ;lib/app_device_joystick.c: 128:         last_HAP_IN = USBTransferOnePacket(1,1,(uint8_t*)&haptic_in,sizeof(haptic_in));
 [e = _last_HAP_IN ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _haptic_in `*uc -> -> # _haptic_in `ui `uc ]
-"132
-[; ;lib/app_device_joystick.c: 132:     }
+"130
+[; ;lib/app_device_joystick.c: 130:     }
 }
 [e :U 366 ]
-"134
-[; ;lib/app_device_joystick.c: 134:     if(!((last_HAP_OUT != 0x0000) && ((*(volatile uint8_t*)last_HAP_OUT & 0x80) != 0x00)) && hap_OUT_pkt_ready){
+"132
+[; ;lib/app_device_joystick.c: 132:     if(!((last_HAP_OUT != 0x0000) && ((*(volatile uint8_t*)last_HAP_OUT & 0x80) != 0x00)) && hap_OUT_pkt_ready){
 [e $ ! && ! && != _last_HAP_OUT -> -> 0 `i `*v != & -> *U -> _last_HAP_OUT `*Vuc `i -> 128 `i -> 0 `i != -> _hap_OUT_pkt_ready `i -> 0 `i 367  ]
 {
-"135
-[; ;lib/app_device_joystick.c: 135:         hap_OUT_pkt_ready = 0;
+"133
+[; ;lib/app_device_joystick.c: 133:         hap_OUT_pkt_ready = 0;
 [e = _hap_OUT_pkt_ready -> -> 0 `i `uc ]
-"136
-[; ;lib/app_device_joystick.c: 136:         last_HAP_OUT = USBTransferOnePacket(1,0,(uint8_t*)&haptic_out,sizeof(haptic_out));
+"134
+[; ;lib/app_device_joystick.c: 134:         last_HAP_OUT = USBTransferOnePacket(1,0,(uint8_t*)&haptic_out,sizeof(haptic_out));
 [e = _last_HAP_OUT ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 0 `i `uc -> &U _haptic_out `*uc -> -> # _haptic_out `ui `uc ]
-"137
-[; ;lib/app_device_joystick.c: 137:     }
+"135
+[; ;lib/app_device_joystick.c: 135:     }
 }
 [e :U 367 ]
-"138
-[; ;lib/app_device_joystick.c: 138:     if(!((last_DSP_OUT != 0x0000) && ((*(volatile uint8_t*)last_DSP_OUT & 0x80) != 0x00)) && display_pkt_ready){
+"136
+[; ;lib/app_device_joystick.c: 136:     if(!((last_DSP_OUT != 0x0000) && ((*(volatile uint8_t*)last_DSP_OUT & 0x80) != 0x00)) && display_pkt_ready){
 [e $ ! && ! && != _last_DSP_OUT -> -> 0 `i `*v != & -> *U -> _last_DSP_OUT `*Vuc `i -> 128 `i -> 0 `i != -> _display_pkt_ready `i -> 0 `i 368  ]
 {
-"139
-[; ;lib/app_device_joystick.c: 139:         display_pkt_ready = 0;
+"137
+[; ;lib/app_device_joystick.c: 137:         display_pkt_ready = 0;
 [e = _display_pkt_ready -> -> 0 `i `uc ]
-"140
-[; ;lib/app_device_joystick.c: 140:         last_DSP_OUT = USBTransferOnePacket(3,0,(uint8_t*)&display_output,sizeof(display_output));
+"138
+[; ;lib/app_device_joystick.c: 138:         last_DSP_OUT = USBTransferOnePacket(3,0,(uint8_t*)&display_output,sizeof(display_output));
 [e = _last_DSP_OUT ( _USBTransferOnePacket (4 , , , -> -> 3 `i `uc -> -> 0 `i `uc -> &U _display_output `*uc -> -> # _display_output `ui `uc ]
-"141
-[; ;lib/app_device_joystick.c: 141:     }
+"139
+[; ;lib/app_device_joystick.c: 139:     }
 }
 [e :U 368 ]
-"142
-[; ;lib/app_device_joystick.c: 142:     if(!((last_LED_OUT != 0x0000) && ((*(volatile uint8_t*)last_LED_OUT & 0x80) != 0x00)) && LED_pkt_ready){
+"140
+[; ;lib/app_device_joystick.c: 140:     if(!((last_LED_OUT != 0x0000) && ((*(volatile uint8_t*)last_LED_OUT & 0x80) != 0x00)) && LED_pkt_ready){
 [e $ ! && ! && != _last_LED_OUT -> -> 0 `i `*v != & -> *U -> _last_LED_OUT `*Vuc `i -> 128 `i -> 0 `i != -> _LED_pkt_ready `i -> 0 `i 369  ]
 {
-"143
-[; ;lib/app_device_joystick.c: 143:         LED_pkt_ready = 0;
+"141
+[; ;lib/app_device_joystick.c: 141:         LED_pkt_ready = 0;
 [e = _LED_pkt_ready -> -> 0 `i `uc ]
-"144
-[; ;lib/app_device_joystick.c: 144:         last_LED_OUT = USBTransferOnePacket(2,0,(uint8_t*)&leds_output,sizeof(leds_output));
+"142
+[; ;lib/app_device_joystick.c: 142:         last_LED_OUT = USBTransferOnePacket(2,0,(uint8_t*)&leds_output,sizeof(leds_output));
 [e = _last_LED_OUT ( _USBTransferOnePacket (4 , , , -> -> 2 `i `uc -> -> 0 `i `uc -> &U _leds_output `*uc -> -> # _leds_output `ui `uc ]
-"145
-[; ;lib/app_device_joystick.c: 145:     }
+"143
+[; ;lib/app_device_joystick.c: 143:     }
 }
 [e :U 369 ]
-"147
-[; ;lib/app_device_joystick.c: 147: }
+"145
+[; ;lib/app_device_joystick.c: 145: }
 [e :UE 363 ]
 }

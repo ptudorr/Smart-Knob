@@ -21,7 +21,7 @@ libusb-1.0.lib(events_windows.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was n
 libusb-1.0.lib(windows_common.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(windows_common.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
 libusb-1.0.lib(hotplug.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(hotplug.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
 libusb-1.0.lib(sync.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(sync.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
-libusb-1.0.lib(threads_windows.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(threads_windows.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
+libusb-1.0.lib(threads_windows.obj) : warning LNK4099: PDB '' was not found with 'libusb-1.0.lib(threads_windows.obj)' or at ''; linking object as if no debug info
 libusb-1.0.lib(windows_winusb.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(windows_winusb.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
 libusb-1.0.lib(windows_usbdk.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(windows_usbdk.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
   usb_service.vcxproj -> E:\Smart-Knob\usb_service\x64\Debug\usb_service.exe

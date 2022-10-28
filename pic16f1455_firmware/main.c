@@ -36,17 +36,18 @@ MAIN_RETURN main(void)
     //SYSTEM_Initialize(SYSTEM_STATE_USB_START);
     __delay_ms(200);
     
-    MasterinitSPI();
+    SlaveinitSPI();
     
     USBDeviceInit();
     USBDeviceAttach();
 
+    TRISCbits.TRISC4 = 0;
     
     while(1)
     {
-        spiWrite();
+        spiTask();
         SYSTEM_Tasks();
-
+        LATCbits.LATC4 = ~LATCbits.LATC4;
         #if defined(USB_POLLING)
             // Interrupt or polling method.  If using polling, must call
             // this function periodically.  This function will take care

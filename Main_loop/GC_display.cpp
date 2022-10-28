@@ -80,8 +80,9 @@ void updateDisplay(){
   #endif
 
   //SPI.begin();
-  SPI.beginTransaction(SPISettings(100000000, MSBFIRST, SPI_MODE0));
-  pinMode(12,OUTPUT);
+  SPI.beginTransaction(SPISettings(12000000, MSBFIRST, SPI_MODE0));
+  pinMode(DISPLAY_DC_PIN,OUTPUT);//disable special function
+  //same as pinMode(DISPLAY_DC_PIN,OUTPUT); but faster
   
   
   //tft.fillScreen(cnt);
@@ -89,6 +90,8 @@ void updateDisplay(){
     tft.pushImage(25+cnt/2, 120, 16, 16, igt2);
   cnt++;
     tft.pushImage(25+cnt/2, 120, 16, 16, igt);
+
+  GPOS = (1<<DISPLAY_CS_PIN);
   
   #ifdef DEBUG_DISPLAY
     delayMicroseconds(300);

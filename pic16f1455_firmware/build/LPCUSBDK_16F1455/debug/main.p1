@@ -6,31 +6,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6881
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 6881: extern volatile __bit TRISC2 __attribute__((address(0x472)));
 [v _TRISC2 `Vb ~T0 @X0 0 e@1138 ]
-"36 main.c
-[; ;main.c: 36:     SYSTEM_Initialize(SYSTEM_STATE_USB_START);
-[c E2217 0 1 2 .. ]
-[n E2217 . SYSTEM_STATE_USB_START SYSTEM_STATE_USB_SUSPEND SYSTEM_STATE_USB_RESUME  ]
-"67 ./include/system.h
-[; ;./include/system.h: 67: void SYSTEM_Initialize( SYSTEM_STATE state );
-[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef1`E2217 ]
 [v F192 `(v ~T0 @X0 1 tf1`ul ]
 "12 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\builtins.h
 [v __delay `JF192 ~T0 @X0 0 e ]
 [p i __delay ]
-"52 ./include/spi.h
-[; ;./include/spi.h: 52: void MasterinitSPI(void);
-[v _MasterinitSPI `(v ~T0 @X0 0 ef ]
+"59 ./include/spi.h
+[; ;./include/spi.h: 59: void SlaveinitSPI(void);
+[v _SlaveinitSPI `(v ~T0 @X0 0 ef ]
 "199 ./include/usb/usb_device.h
 [; ;./include/usb/usb_device.h: 199: void USBDeviceInit(void);
 [v _USBDeviceInit `(v ~T0 @X0 0 ef ]
-"50 ./include/spi.h
-[; ;./include/spi.h: 50: void spiWrite(void);
-[v _spiWrite `(v ~T0 @X0 0 ef ]
+"987 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 987:     struct {
+[s S63 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S63 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
+"986
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 986: typedef union {
+[u S62 `S63 1 ]
+[n S62 . . ]
+"996
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 996: extern volatile TRISCbits_t TRISCbits __attribute__((address(0x08E)));
+[v _TRISCbits `VS62 ~T0 @X0 0 e@142 ]
+"56 ./include/spi.h
+[; ;./include/spi.h: 56: void spiTask(void);
+[v _spiTask `(v ~T0 @X0 0 ef ]
+"1798 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1798:     struct {
+[s S101 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S101 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
+"1797
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1797: typedef union {
+[u S100 `S101 1 ]
+[n S100 . . ]
+"1807
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1807: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
+[v _LATCbits `VS100 ~T0 @X0 0 e@270 ]
 "303 ./include/usb/usb_device.h
 [; ;./include/usb/usb_device.h: 303: void USBDeviceTasks(void);
 [v _USBDeviceTasks `(v ~T0 @X0 0 ef ]
-"69 main.c
-[; ;main.c: 69:         if( USBDeviceState < CONFIGURED_STATE )
+"70 main.c
+[; ;main.c: 70:         if( USBDeviceState < CONFIGURED_STATE )
 [c E2485 0 1 2 4 8 16 32 .. ]
 [n E2485 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
 "2050 ./include/usb/usb_device.h
@@ -462,14 +477,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./include/app_device_joystick.h: 86:         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
 [v _haptic_in `uc ~T0 @X0 -> 16 `i e@8272 ]
 "87
-[; ;./include/app_device_joystick.h: 87:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20D0)));
-[v _haptic_out `uc ~T0 @X0 -> 64 `i e@8400 ]
+[; ;./include/app_device_joystick.h: 87:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+[v _haptic_out `uc ~T0 @X0 -> 64 `i e@8368 ]
 "88
-[; ;./include/app_device_joystick.h: 88:         LEDS_CONTROLS leds_output __attribute__((address(0x2150)));
-[v _leds_output `uc ~T0 @X0 -> 49 `i e@8528 ]
+[; ;./include/app_device_joystick.h: 88:         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+[v _leds_output `uc ~T0 @X0 -> 49 `i e@8496 ]
 "89
-[; ;./include/app_device_joystick.h: 89:         DISPLAY_CONTROLS display_output __attribute__((address(0x21D0)));
-[v _display_output `uc ~T0 @X0 -> 64 `i e@8656 ]
+[; ;./include/app_device_joystick.h: 89:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
+[v _display_output `uc ~T0 @X0 -> 64 `i e@8624 ]
 "13 ./include/spi.h
 [; ;./include/spi.h: 13: uint8_t TESTB,REGT;
 [v _TESTB `uc ~T0 @X0 1 e ]
@@ -487,66 +502,69 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 35:     TRISC1 = 1;TRISC2 = 0;
 [e = _TRISC1 -> -> 1 `i `b ]
 [e = _TRISC2 -> -> 0 `i `b ]
-"36
-[; ;main.c: 36:     SYSTEM_Initialize(SYSTEM_STATE_USB_START);
-[e ( _SYSTEM_Initialize (1 . `E2217 0 ]
 "37
 [; ;main.c: 37:     _delay((unsigned long)((200)*(48000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 48000000 `l `d .4000.0 `ul ]
 "39
-[; ;main.c: 39:     MasterinitSPI();
-[e ( _MasterinitSPI ..  ]
+[; ;main.c: 39:     SlaveinitSPI();
+[e ( _SlaveinitSPI ..  ]
 "41
 [; ;main.c: 41:     USBDeviceInit();
 [e ( _USBDeviceInit ..  ]
-"45
-[; ;main.c: 45:     while(1)
-[e :U 364 ]
+"44
+[; ;main.c: 44:     TRISCbits.TRISC4 = 0;
+[e = . . _TRISCbits 0 4 -> -> 0 `i `uc ]
 "46
-[; ;main.c: 46:     {
-{
+[; ;main.c: 46:     while(1)
+[e :U 364 ]
 "47
-[; ;main.c: 47:         spiWrite();
-[e ( _spiWrite ..  ]
-"63
-[; ;main.c: 63:             USBDeviceTasks();
-[e ( _USBDeviceTasks ..  ]
-"69
-[; ;main.c: 69:         if( USBDeviceState < CONFIGURED_STATE )
-[e $ ! < -> _USBDeviceState `ui -> . `E2485 6 `ui 366  ]
-"70
-[; ;main.c: 70:         {
+[; ;main.c: 47:     {
 {
-"72
-[; ;main.c: 72:             continue;
-[e $U 363  ]
+"48
+[; ;main.c: 48:         spiTask();
+[e ( _spiTask ..  ]
+"50
+[; ;main.c: 50:         LATCbits.LATC4 = ~LATCbits.LATC4;
+[e = . . _LATCbits 0 4 -> ~ -> . . _LATCbits 0 4 `i `uc ]
+"64
+[; ;main.c: 64:             USBDeviceTasks();
+[e ( _USBDeviceTasks ..  ]
+"70
+[; ;main.c: 70:         if( USBDeviceState < CONFIGURED_STATE )
+[e $ ! < -> _USBDeviceState `ui -> . `E2485 6 `ui 366  ]
+"71
+[; ;main.c: 71:         {
+{
 "73
-[; ;main.c: 73:         }
+[; ;main.c: 73:             continue;
+[e $U 363  ]
+"74
+[; ;main.c: 74:         }
 }
 [e :U 366 ]
-"79
-[; ;main.c: 79:         if( UCONbits.SUSPND == 1 )
-[e $ ! == -> . . _UCONbits 0 1 `i -> 1 `i 367  ]
 "80
-[; ;main.c: 80:         {
+[; ;main.c: 80:         if( UCONbits.SUSPND == 1 )
+[e $ ! == -> . . _UCONbits 0 1 `i -> 1 `i 367  ]
+"81
+[; ;main.c: 81:         {
 {
-"82
-[; ;main.c: 82:             continue;
-[e $U 363  ]
 "83
-[; ;main.c: 83:         }
+[; ;main.c: 83:             continue;
+[e $U 363  ]
+"84
+[; ;main.c: 84:         }
 }
 [e :U 367 ]
-"86
-[; ;main.c: 86:         APP_DeviceJoystickTasks();
+"87
+[; ;main.c: 87:         APP_DeviceJoystickTasks();
 [e ( _APP_DeviceJoystickTasks ..  ]
-"91
-[; ;main.c: 91:     }
+"92
+[; ;main.c: 92:     }
 }
 [e :U 363 ]
 [e $U 364  ]
 [e :U 365 ]
-"92
-[; ;main.c: 92: }
+"93
+[; ;main.c: 93: }
 [e :UE 362 ]
 }

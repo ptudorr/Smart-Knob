@@ -13,8 +13,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "67 .\include/system.h
 [; ;.\include/system.h: 67: void SYSTEM_Initialize( SYSTEM_STATE state );
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef1`E2217 ]
-"108 .\include/app_device_joystick.h
-[; ;.\include/app_device_joystick.h: 108: void APP_DeviceJoystickInitialize(void);
+"118 .\include/app_device_joystick.h
+[; ;.\include/app_device_joystick.h: 118: void APP_DeviceJoystickInitialize(void);
 [v _APP_DeviceJoystickInitialize `(v ~T0 @X0 0 ef ]
 "98 .\include/usb/usb_device_hid.h
 [; ;.\include/usb/usb_device_hid.h: 98: void USBCheckHIDRequest(void);
@@ -431,17 +431,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5734
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 5734: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"86 .\include/app_device_joystick.h
-[; ;.\include/app_device_joystick.h: 86:         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
+"96 .\include/app_device_joystick.h
+[; ;.\include/app_device_joystick.h: 96:         HAPTIC_IN_CONTROLS haptic_in __attribute__((address(0x2050)));
 [v _haptic_in `uc ~T0 @X0 -> 16 `i e@8272 ]
-"87
-[; ;.\include/app_device_joystick.h: 87:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
+"97
+[; ;.\include/app_device_joystick.h: 97:         HAPTIC_OUT_CONTROLS haptic_out __attribute__((address(0x20B0)));
 [v _haptic_out `uc ~T0 @X0 -> 64 `i e@8368 ]
-"88
-[; ;.\include/app_device_joystick.h: 88:         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
+"98
+[; ;.\include/app_device_joystick.h: 98:         LEDS_CONTROLS leds_output __attribute__((address(0x2130)));
 [v _leds_output `uc ~T0 @X0 -> 49 `i e@8496 ]
-"89
-[; ;.\include/app_device_joystick.h: 89:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
+"99
+[; ;.\include/app_device_joystick.h: 99:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
 [v _display_output `uc ~T0 @X0 -> 64 `i e@8624 ]
 "50 lib/usb/usb_events.c
 [; ;lib/usb/usb_events.c: 50: _Bool USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, uint16_t size)
