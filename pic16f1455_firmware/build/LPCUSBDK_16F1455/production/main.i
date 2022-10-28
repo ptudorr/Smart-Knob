@@ -4894,6 +4894,7 @@ void main(void)
         LATCbits.LATC4 = ~LATCbits.LATC4;
 # 64 "main.c"
             USBDeviceTasks();
+            USBDeviceTasks();
 
 
 

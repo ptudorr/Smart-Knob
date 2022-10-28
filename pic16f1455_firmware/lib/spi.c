@@ -104,14 +104,14 @@ void spiTask(void){
             //else it sends another BEGIN_TRANSFER to read the ACK1
             SSPBUF = pkt_requests;
             //we surely don't have overflow; NodeMCU waits 1us
-            asm("BTFSS SSP1STAT, 0x0");            /*if ready continue*/
-            asm("BRA -2");                         /*else go back*/
+            asm("BTFSS SSP1STAT, 0x0");            //if ready continue
+            asm("BRA -2");                         //else go back
             luminosity = SSPBUF;
             
             SSPBUF = ctrl2_from_PIC;
             //we surely don't have overflow; NodeMCU waits 1us
-            asm("BTFSS SSP1STAT, 0x0");            /*if ready continue*/
-            asm("BRA -2");                         /*else go back*/
+            asm("BTFSS SSP1STAT, 0x0");            //if ready continue
+            asm("BRA -2");                         //else go back
             errors_ctr2_to_PIC = SSPBUF;
             //we have transmitted and received control bytes
             
@@ -124,14 +124,14 @@ void spiTask(void){
                 asm("MOVWF FSR0H");
                 asm("MOVLB 4");//go to bank 4, where the spbuf/stat is
                 
-                
+                asm("MOVF SSP1BUF,W");
                 REP8(writeByteOnlyRead)
                 REP8(writeByteOnlyRead)
                 
                         
-                asm("BTFSS SSP1STAT, 0x0"); /*if ready continue*/   
-                asm("BRA -2");              /*else go back*/                  
-                asm("MOVF SSP1BUF,W");      /*read the received byte into W*/
+                asm("BTFSS SSP1STAT, 0x0"); //if ready continue   
+                asm("BRA -2");              //else go back             
+                asm("MOVF SSP1BUF,W");      //read the received byte into W
                 SSPBUF = 0x00;
             }
             

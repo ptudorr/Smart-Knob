@@ -44,8 +44,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "303 ./include/usb/usb_device.h
 [; ;./include/usb/usb_device.h: 303: void USBDeviceTasks(void);
 [v _USBDeviceTasks `(v ~T0 @X0 0 ef ]
-"70 main.c
-[; ;main.c: 70:         if( USBDeviceState < CONFIGURED_STATE )
+"71 main.c
+[; ;main.c: 71:         if( USBDeviceState < CONFIGURED_STATE )
 [c E2485 0 1 2 4 8 16 32 .. ]
 [n E2485 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
 "2050 ./include/usb/usb_device.h
@@ -529,42 +529,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 "64
 [; ;main.c: 64:             USBDeviceTasks();
 [e ( _USBDeviceTasks ..  ]
-"70
-[; ;main.c: 70:         if( USBDeviceState < CONFIGURED_STATE )
-[e $ ! < -> _USBDeviceState `ui -> . `E2485 6 `ui 366  ]
+"65
+[; ;main.c: 65:             USBDeviceTasks();
+[e ( _USBDeviceTasks ..  ]
 "71
-[; ;main.c: 71:         {
+[; ;main.c: 71:         if( USBDeviceState < CONFIGURED_STATE )
+[e $ ! < -> _USBDeviceState `ui -> . `E2485 6 `ui 366  ]
+"72
+[; ;main.c: 72:         {
 {
-"73
-[; ;main.c: 73:             continue;
-[e $U 363  ]
 "74
-[; ;main.c: 74:         }
+[; ;main.c: 74:             continue;
+[e $U 363  ]
+"75
+[; ;main.c: 75:         }
 }
 [e :U 366 ]
-"80
-[; ;main.c: 80:         if( UCONbits.SUSPND == 1 )
-[e $ ! == -> . . _UCONbits 0 1 `i -> 1 `i 367  ]
 "81
-[; ;main.c: 81:         {
+[; ;main.c: 81:         if( UCONbits.SUSPND == 1 )
+[e $ ! == -> . . _UCONbits 0 1 `i -> 1 `i 367  ]
+"82
+[; ;main.c: 82:         {
 {
-"83
-[; ;main.c: 83:             continue;
-[e $U 363  ]
 "84
-[; ;main.c: 84:         }
+[; ;main.c: 84:             continue;
+[e $U 363  ]
+"85
+[; ;main.c: 85:         }
 }
 [e :U 367 ]
-"87
-[; ;main.c: 87:         APP_DeviceJoystickTasks();
+"88
+[; ;main.c: 88:         APP_DeviceJoystickTasks();
 [e ( _APP_DeviceJoystickTasks ..  ]
-"92
-[; ;main.c: 92:     }
+"93
+[; ;main.c: 93:     }
 }
 [e :U 363 ]
 [e $U 364  ]
 [e :U 365 ]
-"93
-[; ;main.c: 93: }
+"94
+[; ;main.c: 94: }
 [e :UE 362 ]
 }

@@ -113,7 +113,7 @@ EVENT_EP0_REQUEST 3
 EVENT_ATTACH 4
 EVENT_TRANSFER_TERMINATED 5
 ]
-"70 E:\Smart-Knob\pic16f1455_firmware\main.c
+"71 E:\Smart-Knob\pic16f1455_firmware\main.c
 [e E2485 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
@@ -669,7 +669,7 @@ IDLE_LOW 0
 "32 E:\Smart-Knob\pic16f1455_firmware\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"93
+"94
 } 0
 "73 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _spiTask spiTask `(v  1 e 1 0 ]

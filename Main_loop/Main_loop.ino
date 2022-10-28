@@ -38,7 +38,7 @@ void motor(){
 
 void measureStrain(){
   strain_last = micros();
-  ps=!ps;digitalWrite(2,ps);
+  //ps=!ps;digitalWrite(2,ps);
   delayMicroseconds(20);
   
 }

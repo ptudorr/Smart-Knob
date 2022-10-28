@@ -80,7 +80,7 @@ void updateDisplay(){
   #endif
 
   //SPI.begin();
-  SPI.beginTransaction(SPISettings(12000000, MSBFIRST, SPI_MODE0));
+  SPI.beginTransaction(SPISettings(100000000, MSBFIRST, SPI_MODE0));
   pinMode(DISPLAY_DC_PIN,OUTPUT);//disable special function
   //same as pinMode(DISPLAY_DC_PIN,OUTPUT); but faster
   
