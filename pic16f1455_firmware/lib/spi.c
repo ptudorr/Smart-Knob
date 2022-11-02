@@ -82,23 +82,10 @@ void spiTask(void){
     SSPOV = 0;
     //wait for a new byte, only for 3 microseconds
     
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    AFARA:               /*read the received byte into W*/
+        asm("MOVLB 4");
+    REP8(asm("BTFSC SSP1STAT, 0x0"); asm("BRA OUTOFWAITSPI");)
+    REP8(asm("BTFSC SSP1STAT, 0x0"); asm("BRA OUTOFWAITSPI");)
+    asm("OUTOFWAITSPI: NOP");                
     
     ///we have waited for a "fresh" request
     if(BF && SSPBUF == BEGIN_TRANSFER){
@@ -114,12 +101,16 @@ void spiTask(void){
             //else it sends another BEGIN_TRANSFER to read the ACK1
             SSPBUF = pkt_requests;
             //we surely don't have overflow; NodeMCU waits 1us
-            while(!BF);
+            asm("BTFSS SSP1STAT, 0x0");            //if ready continue
+            asm("BRA -2");                         //else go back
+            
             luminosity = SSPBUF;
             
             SSPBUF = ctrl2_from_PIC;
             //we surely don't have overflow; NodeMCU waits 1us
-            while(!BF);
+            asm("BTFSS SSP1STAT, 0x0");            //if ready continue
+            asm("BRA -2");                         //else go back
+            
             errors_ctr2_to_PIC = SSPBUF;
             //we have transmitted and received control bytes
             
@@ -127,40 +118,16 @@ void spiTask(void){
                 hap_IN_pkt_sent=0;
                 
                 
+                //read 16 bytes
+                MOVLW_ADR(HAPTIC_IN_ADDRESS_LO)
+                asm("MOVWF FSR0L");
+                MOVLW_ADR(HAPTIC_IN_ADDRESS_HI)
+                asm("MOVWF FSR0H");
+                asm("MOVLB 4");//go to bank 4, where the spbuf/stat is
                 
-                garbage = SSPBUF;
-                while(!BF);
-                haptic_in[0]=SSPBUF;
-                while(!BF);
-                haptic_in[1]=SSPBUF;
-                while(!BF);
-                haptic_in[2]=SSPBUF;
-                while(!BF);
-                haptic_in[3]=SSPBUF;
-                while(!BF);
-                haptic_in[4]=SSPBUF;
-                while(!BF);
-                haptic_in[5]=SSPBUF;
-                while(!BF);
-                haptic_in[6]=SSPBUF;
-                while(!BF);
-                haptic_in[7]=SSPBUF;
-                while(!BF);
-                haptic_in[8]=SSPBUF;
-                while(!BF);
-                haptic_in[9]=SSPBUF;
-                while(!BF);
-                haptic_in[10]=SSPBUF;
-                while(!BF);
-                haptic_in[11]=SSPBUF;
-                while(!BF);
-                haptic_in[12]=SSPBUF;
-                while(!BF);
-                haptic_in[13]=SSPBUF;
-                while(!BF);
-                haptic_in[14]=SSPBUF;
-                while(!BF);
-                haptic_in[15]=SSPBUF;
+                asm("MOVF SSP1BUF,W");
+                REP8(writeByteOnlyRead)
+                REP8(writeByteOnlyRead)
                         
                 //asm("BTFSS SSP1STAT, 0x0"); //if ready continue   
                 //asm("BRA -2");              //else go back             

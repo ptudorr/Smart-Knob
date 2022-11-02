@@ -4831,25 +4831,11 @@ void spiTask(void){
     SSPOV = 0;
 
 
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    if(BF) goto AFARA;
-    AFARA:
-
-
+        __asm("MOVLB 4");
+    __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI");
+    __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSC SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI");
+    __asm("OUTOFWAITSPI: NOP");
+# 108 "lib/spi.c"
     if(BF && SSPBUF == 0x55){
 
 
@@ -4863,12 +4849,16 @@ void spiTask(void){
 
             SSPBUF = pkt_requests;
 
-            while(!BF);
+            __asm("BTFSS SSP1STAT, 0x0");
+            __asm("BRA -2");
+
             luminosity = SSPBUF;
 
             SSPBUF = ctrl2_from_PIC;
 
-            while(!BF);
+            __asm("BTFSS SSP1STAT, 0x0");
+            __asm("BRA -2");
+
             errors_ctr2_to_PIC = SSPBUF;
 
 
@@ -4877,39 +4867,15 @@ void spiTask(void){
 
 
 
-                garbage = SSPBUF;
-                while(!BF);
-                haptic_in[0]=SSPBUF;
-                while(!BF);
-                haptic_in[1]=SSPBUF;
-                while(!BF);
-                haptic_in[2]=SSPBUF;
-                while(!BF);
-                haptic_in[3]=SSPBUF;
-                while(!BF);
-                haptic_in[4]=SSPBUF;
-                while(!BF);
-                haptic_in[5]=SSPBUF;
-                while(!BF);
-                haptic_in[6]=SSPBUF;
-                while(!BF);
-                haptic_in[7]=SSPBUF;
-                while(!BF);
-                haptic_in[8]=SSPBUF;
-                while(!BF);
-                haptic_in[9]=SSPBUF;
-                while(!BF);
-                haptic_in[10]=SSPBUF;
-                while(!BF);
-                haptic_in[11]=SSPBUF;
-                while(!BF);
-                haptic_in[12]=SSPBUF;
-                while(!BF);
-                haptic_in[13]=SSPBUF;
-                while(!BF);
-                haptic_in[14]=SSPBUF;
-                while(!BF);
-                haptic_in[15]=SSPBUF;
+                __asm("MOVLW 0x50");
+                __asm("MOVWF FSR0L");
+                __asm("MOVLW 0x20");
+                __asm("MOVWF FSR0H");
+                __asm("MOVLB 4");
+
+                __asm("MOVF SSP1BUF,W");
+                __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++");
+                __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++");
 
 
 
@@ -4934,16 +4900,16 @@ void spiTask(void){
 char v[8]="ABCDEFGH";
 
 void spwrh(){
-# 207 "lib/spi.c"
+# 191 "lib/spi.c"
     __asm("MOVLW 0xB0");
     __asm("MOVWF FSR1L");
     __asm("MOVLW 0x21");
     __asm("MOVWF FSR1H");
-# 220 "lib/spi.c"
+# 204 "lib/spi.c"
     __asm("MOVLB 4");
 
     __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W");
-# 234 "lib/spi.c"
+# 218 "lib/spi.c"
 }
 int cnt_tr=0;
 
@@ -4957,7 +4923,7 @@ void spiWrite(){
 
 
     spwrh();
-# 256 "lib/spi.c"
+# 240 "lib/spi.c"
     SSPBUF = ' ';while(!BF);
     PORTCbits.RC3 = 1;
 }

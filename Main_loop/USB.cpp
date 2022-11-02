@@ -4,7 +4,8 @@
 #include <SPI.h>
 
 //#define DEBUG_TRANSACTION
-#define USB_WAIT_MICROS 35
+//#define DEBUG_TIMEOUT //print timeout message
+#define USB_WAIT_MICROS 40
 #define BEGIN_TRANSFER 0x55
 #define ACK1 0x76
 
@@ -22,8 +23,9 @@ void USB(){
   #endif
   
   //SPI.begin();//make sure SPI.begin() has been called
-  SPI.beginTransaction(SPISettings(6000000, MSBFIRST, SPI_MODE0));//lower SPI bitrate
-  pinMode(15, OUTPUT);
+  //SPI.beginTransaction(SPISettings(12000000, MSBFIRST, SPI_MODE0));//lower SPI bitrate
+  SPI.setClockDivider(0x181001);
+  pinMode(PIC_CS_PIN, OUTPUT);
   GPOC = (1<<PIC_CS_PIN); //CS = LOW; select the PIC
   pinMode(MCU_MISO_PIN,SPECIAL); //MISO is SPI-special
 
@@ -52,7 +54,9 @@ int nr=0;
   }
   if(nr==USB_WAIT_MICROS){
     //we have a timeout
-    Serial.print(rec,HEX);Serial.println(" TIMEOUT_RESP");
+    #ifdef DEBUG_TIMEOUT
+      Serial.print(rec,HEX);Serial.println(" TIMEOUT_RESP");
+    #endif
     //signal that the possible transmitted ACK1 will not be taken into consideration
   }else{
     //we have received ACK; the PIC is ready to comunicate

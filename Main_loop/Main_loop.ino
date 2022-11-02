@@ -101,7 +101,6 @@ void loop() {
       }
         //almost every 'frame' we can update the display(if the LEDs haven't been updated)
       updateDisplay();
-      
     }
   }
   

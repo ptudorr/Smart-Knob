@@ -9,7 +9,7 @@ uint8_t display_OUT_buffer[DISPLAY_OUT_BUFFER_SIZE];
 
 TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 
-uint8_t cnt=0;
+uint8_t cnt=0,incr=0;
 
 uint16_t igt[64*4]={0x5555,0x5555,0x5555,0x5555,0x5555,0x5555,0x5555,0x5555,
 0x5555,0x5555,0x5555,0x5555,0x5555,0x5555,0x5555,0x5555,
@@ -79,19 +79,20 @@ void updateDisplay(){
     pd=!pd;digitalWrite(0,pd);
   #endif
 
-  //SPI.begin();
-  SPI.beginTransaction(SPISettings(100000000, MSBFIRST, SPI_MODE0));
+  //SPI.beginTransaction(SPISettings(100000000, MSBFIRST, SPI_MODE0));
+  SPI.setClockDivider(0x80000000);
   pinMode(DISPLAY_DC_PIN,OUTPUT);//disable special function
   //same as pinMode(DISPLAY_DC_PIN,OUTPUT); but faster
   
   
   //tft.fillScreen(cnt);
-  /*tft.setSwapBytes(true);
+  incr+=4;
+  if(incr==0){
+  tft.setSwapBytes(true);
     tft.pushImage(25+cnt/2, 120, 16, 16, igt2);
   cnt++;
-    tft.pushImage(25+cnt/2, 120, 16, 16, igt);*/
-    delayMicroseconds(400);
-
+    tft.pushImage(25+cnt/2, 120, 16, 16, igt);
+  }
   GPOS = (1<<DISPLAY_CS_PIN);
   
   #ifdef DEBUG_DISPLAY
