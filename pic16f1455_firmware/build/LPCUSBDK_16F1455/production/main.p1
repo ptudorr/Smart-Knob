@@ -27,10 +27,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "996
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 996: extern volatile TRISCbits_t TRISCbits __attribute__((address(0x08E)));
 [v _TRISCbits `VS62 ~T0 @X0 0 e@142 ]
-"60 ./include/spi.h
-[; ;./include/spi.h: 60: void spiTask(void);
-[v _spiTask `(v ~T0 @X0 0 ef ]
-"1798 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
+"1798
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1798:     struct {
 [s S101 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S101 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
@@ -41,6 +38,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1807
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1807: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
 [v _LATCbits `VS100 ~T0 @X0 0 e@270 ]
+"60 ./include/spi.h
+[; ;./include/spi.h: 60: void spiTask(void);
+[v _spiTask `(v ~T0 @X0 0 ef ]
 "303 ./include/usb/usb_device.h
 [; ;./include/usb/usb_device.h: 303: void USBDeviceTasks(void);
 [v _USBDeviceTasks `(v ~T0 @X0 0 ef ]
@@ -521,14 +521,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 47:     {
 {
 "48
-[; ;main.c: 48:         spiTask();
+[; ;main.c: 48:         LATCbits.LATC4 = 0;
+[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
+"49
+[; ;main.c: 49:         spiTask();
 [e ( _spiTask ..  ]
 "50
-[; ;main.c: 50:         LATCbits.LATC4 = ~LATCbits.LATC4;
-[e = . . _LATCbits 0 4 -> ~ -> . . _LATCbits 0 4 `i `uc ]
-"64
-[; ;main.c: 64:             USBDeviceTasks();
-[e ( _USBDeviceTasks ..  ]
+[; ;main.c: 50:         LATCbits.LATC4 = 1;
+[e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
 "65
 [; ;main.c: 65:             USBDeviceTasks();
 [e ( _USBDeviceTasks ..  ]

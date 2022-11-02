@@ -45,9 +45,10 @@ MAIN_RETURN main(void)
     
     while(1)
     {
+        LATCbits.LATC4 = 0;
         spiTask();
+        LATCbits.LATC4 = 1;
         SYSTEM_Tasks();
-        LATCbits.LATC4 = ~LATCbits.LATC4;
         #if defined(USB_POLLING)
             // Interrupt or polling method.  If using polling, must call
             // this function periodically.  This function will take care

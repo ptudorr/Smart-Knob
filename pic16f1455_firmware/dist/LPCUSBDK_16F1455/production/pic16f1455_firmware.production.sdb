@@ -180,7 +180,7 @@ LED_D3 3
 BUTTON_NONE 0
 BUTTON_S1 1
 ]
-"233 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+"266 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [e E2208 . `uc
 SAMPLE_MIDDLE 0
 SAMPLE_END 128
@@ -189,7 +189,7 @@ SAMPLE_END 128
 IDLE_TO_ACTIVE 0
 ACTIVE_TO_IDLE 64
 ]
-"234
+"267
 [e E2199 . `uc
 MASTER_OSC_DIV4 32
 MASTER_OSC_DIV16 33
@@ -227,9 +227,9 @@ IDLE_LOW 0
 [v _LED_Enable LED_Enable `(v  1 e 1 0 ]
 "73 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _spiTask spiTask `(v  1 e 1 0 ]
-"154
+"187
 [v _spwrh spwrh `(v  1 e 1 0 ]
-"237
+"270
 [v _SlaveinitSPI SlaveinitSPI `(v  1 e 1 0 ]
 "85 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -339,7 +339,7 @@ IDLE_LOW 0
 "1105
 [u S321 . 1 `S312 1 . 1 0 ]
 [v _PIE2bits PIE2bits `VES321  1 e 1 @146 ]
-[s S1938 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S1934 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -347,8 +347,8 @@ IDLE_LOW 0
 `uc 1 LATC5 1 0 :1:5 
 ]
 "1807
-[u S1945 . 1 `S1938 1 . 1 0 ]
-[v _LATCbits LATCbits `VES1945  1 e 1 @270 ]
+[u S1941 . 1 `S1934 1 . 1 0 ]
+[v _LATCbits LATCbits `VES1941  1 e 1 @270 ]
 "2417
 [v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
 "2976
@@ -458,7 +458,7 @@ IDLE_LOW 0
 [v _errors_ctr2_to_PIC errors_ctr2_to_PIC `uc  1 e 1 0 ]
 "70
 [v _pkt_requests pkt_requests `uc  1 e 1 0 ]
-"202
+"235
 [v _cnt_tr cnt_tr `i  1 e 2 0 ]
 [s S22 _USB_DEVICE_DESCRIPTOR 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `us 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubClass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `us 1 idVendor 2 8 `us 1 idProduct 2 10 `us 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
 "150 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_descriptors.c
@@ -674,7 +674,7 @@ IDLE_LOW 0
 "73 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _spiTask spiTask `(v  1 e 1 0 ]
 {
-"150
+"183
 } 0
 "481 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBDeviceTasks USBDeviceTasks `(v  1 e 1 0 ]
@@ -1009,10 +1009,10 @@ IDLE_LOW 0
 [v USBCtrlTrfTxService@byteToSend byteToSend `uc  1 a 1 2 ]
 "1829
 } 0
-"237 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+"270 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _SlaveinitSPI SlaveinitSPI `(v  1 e 1 0 ]
 {
-"244
+"277
 } 0
 "94 E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 [v _APP_DeviceJoystickTasks APP_DeviceJoystickTasks `(v  1 e 1 0 ]

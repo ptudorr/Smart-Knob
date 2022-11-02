@@ -86,10 +86,11 @@ void updateDisplay(){
   
   
   //tft.fillScreen(cnt);
-  tft.setSwapBytes(true);
+  /*tft.setSwapBytes(true);
     tft.pushImage(25+cnt/2, 120, 16, 16, igt2);
   cnt++;
-    tft.pushImage(25+cnt/2, 120, 16, 16, igt);
+    tft.pushImage(25+cnt/2, 120, 16, 16, igt);*/
+    delayMicroseconds(400);
 
   GPOS = (1<<DISPLAY_CS_PIN);
   

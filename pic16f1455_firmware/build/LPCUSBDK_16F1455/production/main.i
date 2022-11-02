@@ -4889,11 +4889,11 @@ void main(void)
 
     while(1)
     {
+        LATCbits.LATC4 = 0;
         spiTask();
+        LATCbits.LATC4 = 1;
                       ;
-        LATCbits.LATC4 = ~LATCbits.LATC4;
-# 64 "main.c"
-            USBDeviceTasks();
+# 65 "main.c"
             USBDeviceTasks();
 
 

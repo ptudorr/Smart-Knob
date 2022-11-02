@@ -11,13 +11,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5891
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 5891: extern volatile __bit BF __attribute__((address(0x10A0)));
 [v _BF `Vb ~T0 @X0 0 e@4256 ]
-"6980
-[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 6980: extern volatile __bit WCOL __attribute__((address(0x10AF)));
-[v _WCOL `Vb ~T0 @X0 0 e@4271 ]
 "51 .\include/app_device_joystick.h
 [; ;.\include/app_device_joystick.h: 51: extern uint8_t display_pkt_ready,LED_pkt_ready,hap_IN_pkt_sent,hap_OUT_pkt_ready;
 [v _hap_IN_pkt_sent `uc ~T0 @X0 0 e ]
-"481 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
+"6980 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 6980: extern volatile __bit WCOL __attribute__((address(0x10AF)));
+[v _WCOL `Vb ~T0 @X0 0 e@4271 ]
+"481
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 481:     struct {
 [s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S36 . RC0 RC1 RC2 RC3 RC4 RC5 ]
@@ -40,8 +40,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3090
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 3090: extern volatile unsigned char SSPSTAT __attribute__((address(0x214)));
 [v _SSPSTAT `Vuc ~T0 @X0 0 e@532 ]
-"233 lib/spi.c
-[; ;lib/spi.c: 233:     SSPSTAT = SAMPLE_MIDDLE | ACTIVE_TO_IDLE;
+"266 lib/spi.c
+[; ;lib/spi.c: 266:     SSPSTAT = SAMPLE_MIDDLE | ACTIVE_TO_IDLE;
 [c E2208 0 128 .. ]
 [n E2208 . SAMPLE_MIDDLE SAMPLE_END  ]
 [c E2216 0 64 .. ]
@@ -49,8 +49,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3212 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 3212: extern volatile unsigned char SSPCON __attribute__((address(0x215)));
 [v _SSPCON `Vuc ~T0 @X0 0 e@533 ]
-"234 lib/spi.c
-[; ;lib/spi.c: 234:     SSPCON = MASTER_OSC_SPADD | IDLE_LOW;
+"267 lib/spi.c
+[; ;lib/spi.c: 267:     SSPCON = MASTER_OSC_SPADD | IDLE_LOW;
 [c E2199 32 33 34 35 42 36 37 .. ]
 [n E2199 . MASTER_OSC_DIV4 MASTER_OSC_DIV16 MASTER_OSC_DIV64 MASTER_TMR2_DIV2 MASTER_OSC_SPADD SLAVE_SS_EN SLAVE_SS_DIS  ]
 [c E2212 8 0 .. ]
@@ -521,246 +521,341 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;lib/spi.c: 82:     SSPOV = 0;
 [e = _SSPOV -> -> 0 `i `b ]
 "85
-[; ;lib/spi.c: 85:     __asm("MOVLB 4");
-[; <" MOVLB 4 ;# ">
+[; ;lib/spi.c: 85:     if(BF) goto AFARA;
+[e $ ! _BF 364  ]
+[e $U 365  ]
+[e :U 364 ]
 "86
-[; ;lib/spi.c: 86:     __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI");
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-"87
-[; ;lib/spi.c: 87:     __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA OUTOFWAITSPI");
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA OUTOFWAITSPI ;# ">
-"88
-[; ;lib/spi.c: 88:     __asm("OUTOFWAITSPI: NOP");
-[; <" OUTOFWAITSPI: NOP ;# ">
-"91
-[; ;lib/spi.c: 91:     if(BF && SSPBUF == 0x55){
-[e $ ! && _BF == -> _SSPBUF `i -> 85 `i 364  ]
-{
-"94
-[; ;lib/spi.c: 94:         SSPBUF = 0x76;
-[e = _SSPBUF -> -> 118 `i `uc ]
-"96
-[; ;lib/spi.c: 96:         while(WCOL){
+[; ;lib/spi.c: 86:     if(BF) goto AFARA;
+[e $ ! _BF 366  ]
 [e $U 365  ]
 [e :U 366 ]
-{
-"97
-[; ;lib/spi.c: 97:             WCOL=0;
-[e = _WCOL -> -> 0 `i `b ]
-"98
-[; ;lib/spi.c: 98:             SSPBUF = 0x76;
-[e = _SSPBUF -> -> 118 `i `uc ]
-"99
-[; ;lib/spi.c: 99:         }
-}
-[e :U 365 ]
-"96
-[; ;lib/spi.c: 96:         while(WCOL){
-[e $ _WCOL 366  ]
+"87
+[; ;lib/spi.c: 87:     if(BF) goto AFARA;
+[e $ ! _BF 367  ]
+[e $U 365  ]
 [e :U 367 ]
-"100
-[; ;lib/spi.c: 100:         while(!BF);
-[e $U 368  ]
-[e :U 369 ]
+"88
+[; ;lib/spi.c: 88:     if(BF) goto AFARA;
+[e $ ! _BF 368  ]
+[e $U 365  ]
 [e :U 368 ]
+"89
+[; ;lib/spi.c: 89:     if(BF) goto AFARA;
 [e $ ! _BF 369  ]
+[e $U 365  ]
+[e :U 369 ]
+"90
+[; ;lib/spi.c: 90:     if(BF) goto AFARA;
+[e $ ! _BF 370  ]
+[e $U 365  ]
 [e :U 370 ]
-"101
-[; ;lib/spi.c: 101:         if(SSPBUF == 0x55){
-[e $ ! == -> _SSPBUF `i -> 85 `i 371  ]
-{
-"105
-[; ;lib/spi.c: 105:             SSPBUF = pkt_requests;
-[e = _SSPBUF _pkt_requests ]
-"107
-[; ;lib/spi.c: 107:             __asm("BTFSS SSP1STAT, 0x0");
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-"108
-[; ;lib/spi.c: 108:             __asm("BRA -2");
-[; <" BRA -2 ;# ">
-"109
-[; ;lib/spi.c: 109:             luminosity = SSPBUF;
-[e = _luminosity _SSPBUF ]
-"111
-[; ;lib/spi.c: 111:             SSPBUF = ctrl2_from_PIC;
-[e = _SSPBUF _ctrl2_from_PIC ]
-"113
-[; ;lib/spi.c: 113:             __asm("BTFSS SSP1STAT, 0x0");
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-"114
-[; ;lib/spi.c: 114:             __asm("BRA -2");
-[; <" BRA -2 ;# ">
-"115
-[; ;lib/spi.c: 115:             errors_ctr2_to_PIC = SSPBUF;
-[e = _errors_ctr2_to_PIC _SSPBUF ]
-"118
-[; ;lib/spi.c: 118:             if(pkt_requests & 0x01){
-[e $ ! != & -> _pkt_requests `i -> 1 `i -> 0 `i 372  ]
-{
-"119
-[; ;lib/spi.c: 119:                 hap_IN_pkt_sent=0;
-[e = _hap_IN_pkt_sent -> -> 0 `i `uc ]
-"121
-[; ;lib/spi.c: 121:                 __asm("MOVLW 0x50");
-[; <" MOVLW 0x50 ;# ">
-"122
-[; ;lib/spi.c: 122:                 __asm("MOVWF FSR0L");
-[; <" MOVWF FSR0L ;# ">
-"123
-[; ;lib/spi.c: 123:                 __asm("MOVLW 0x20");
-[; <" MOVLW 0x20 ;# ">
-"124
-[; ;lib/spi.c: 124:                 __asm("MOVWF FSR0H");
-[; <" MOVWF FSR0H ;# ">
-"125
-[; ;lib/spi.c: 125:                 __asm("MOVLB 4");
-[; <" MOVLB 4 ;# ">
-"128
-[; ;lib/spi.c: 128:                 __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++");
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-"129
-[; ;lib/spi.c: 129:                 __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVWI FSR0++");
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-[; <" BRA -2 ;# ">
-[; <" MOVF SSP1BUF,W ;# ">
-[; <" MOVWI FSR0++ ;# ">
-"132
-[; ;lib/spi.c: 132:                 __asm("BTFSS SSP1STAT, 0x0");
-[; <" BTFSS SSP1STAT, 0x0 ;# ">
-"133
-[; ;lib/spi.c: 133:                 __asm("BRA -2");
-[; <" BRA -2 ;# ">
-"134
-[; ;lib/spi.c: 134:                 __asm("MOVF SSP1BUF,W");
-[; <" MOVF SSP1BUF,W ;# ">
-"135
-[; ;lib/spi.c: 135:                 SSPBUF = 0x00;
-[e = _SSPBUF -> -> 0 `i `uc ]
-"136
-[; ;lib/spi.c: 136:             }
-}
-[e :U 372 ]
-"138
-[; ;lib/spi.c: 138:         }else{
-}
-[e $U 373  ]
+"91
+[; ;lib/spi.c: 91:     if(BF) goto AFARA;
+[e $ ! _BF 371  ]
+[e $U 365  ]
 [e :U 371 ]
-{
-"141
-[; ;lib/spi.c: 141:             return;
-[e $UE 362  ]
-"142
-[; ;lib/spi.c: 142:         }
-}
+"92
+[; ;lib/spi.c: 92:     if(BF) goto AFARA;
+[e $ ! _BF 372  ]
+[e $U 365  ]
+[e :U 372 ]
+"93
+[; ;lib/spi.c: 93:     if(BF) goto AFARA;
+[e $ ! _BF 373  ]
+[e $U 365  ]
 [e :U 373 ]
+"94
+[; ;lib/spi.c: 94:     if(BF) goto AFARA;
+[e $ ! _BF 374  ]
+[e $U 365  ]
+[e :U 374 ]
+"95
+[; ;lib/spi.c: 95:     if(BF) goto AFARA;
+[e $ ! _BF 375  ]
+[e $U 365  ]
+[e :U 375 ]
+"96
+[; ;lib/spi.c: 96:     if(BF) goto AFARA;
+[e $ ! _BF 376  ]
+[e $U 365  ]
+[e :U 376 ]
+"97
+[; ;lib/spi.c: 97:     if(BF) goto AFARA;
+[e $ ! _BF 377  ]
+[e $U 365  ]
+[e :U 377 ]
+"98
+[; ;lib/spi.c: 98:     if(BF) goto AFARA;
+[e $ ! _BF 378  ]
+[e $U 365  ]
+[e :U 378 ]
+"99
+[; ;lib/spi.c: 99:     if(BF) goto AFARA;
+[e $ ! _BF 379  ]
+[e $U 365  ]
+[e :U 379 ]
+"100
+[; ;lib/spi.c: 100:     if(BF) goto AFARA;
+[e $ ! _BF 380  ]
+[e $U 365  ]
+[e :U 380 ]
+"101
+[; ;lib/spi.c: 101:     AFARA:
+[e :U 365 ]
+"104
+[; ;lib/spi.c: 104:     if(BF && SSPBUF == 0x55){
+[e $ ! && _BF == -> _SSPBUF `i -> 85 `i 381  ]
+{
+"107
+[; ;lib/spi.c: 107:         SSPBUF = 0x76;
+[e = _SSPBUF -> -> 118 `i `uc ]
+"110
+[; ;lib/spi.c: 110:         while(!BF);
+[e $U 382  ]
+[e :U 383 ]
+[e :U 382 ]
+[e $ ! _BF 383  ]
+[e :U 384 ]
+"111
+[; ;lib/spi.c: 111:         if(SSPBUF == 0x55){
+[e $ ! == -> _SSPBUF `i -> 85 `i 385  ]
+{
+"115
+[; ;lib/spi.c: 115:             SSPBUF = pkt_requests;
+[e = _SSPBUF _pkt_requests ]
+"117
+[; ;lib/spi.c: 117:             while(!BF);
+[e $U 386  ]
+[e :U 387 ]
+[e :U 386 ]
+[e $ ! _BF 387  ]
+[e :U 388 ]
+"118
+[; ;lib/spi.c: 118:             luminosity = SSPBUF;
+[e = _luminosity _SSPBUF ]
+"120
+[; ;lib/spi.c: 120:             SSPBUF = ctrl2_from_PIC;
+[e = _SSPBUF _ctrl2_from_PIC ]
+"122
+[; ;lib/spi.c: 122:             while(!BF);
+[e $U 389  ]
+[e :U 390 ]
+[e :U 389 ]
+[e $ ! _BF 390  ]
+[e :U 391 ]
+"123
+[; ;lib/spi.c: 123:             errors_ctr2_to_PIC = SSPBUF;
+[e = _errors_ctr2_to_PIC _SSPBUF ]
+"126
+[; ;lib/spi.c: 126:             if(pkt_requests & 0x01){
+[e $ ! != & -> _pkt_requests `i -> 1 `i -> 0 `i 392  ]
+{
+"127
+[; ;lib/spi.c: 127:                 hap_IN_pkt_sent=0;
+[e = _hap_IN_pkt_sent -> -> 0 `i `uc ]
+"131
+[; ;lib/spi.c: 131:                 garbage = SSPBUF;
+[e = _garbage _SSPBUF ]
+"132
+[; ;lib/spi.c: 132:                 while(!BF);
+[e $U 393  ]
+[e :U 394 ]
+[e :U 393 ]
+[e $ ! _BF 394  ]
+[e :U 395 ]
+"133
+[; ;lib/spi.c: 133:                 haptic_in[0]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 0 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"134
+[; ;lib/spi.c: 134:                 while(!BF);
+[e $U 396  ]
+[e :U 397 ]
+[e :U 396 ]
+[e $ ! _BF 397  ]
+[e :U 398 ]
+"135
+[; ;lib/spi.c: 135:                 haptic_in[1]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 1 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"136
+[; ;lib/spi.c: 136:                 while(!BF);
+[e $U 399  ]
+[e :U 400 ]
+[e :U 399 ]
+[e $ ! _BF 400  ]
+[e :U 401 ]
+"137
+[; ;lib/spi.c: 137:                 haptic_in[2]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 2 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"138
+[; ;lib/spi.c: 138:                 while(!BF);
+[e $U 402  ]
+[e :U 403 ]
+[e :U 402 ]
+[e $ ! _BF 403  ]
+[e :U 404 ]
+"139
+[; ;lib/spi.c: 139:                 haptic_in[3]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 3 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"140
+[; ;lib/spi.c: 140:                 while(!BF);
+[e $U 405  ]
+[e :U 406 ]
+[e :U 405 ]
+[e $ ! _BF 406  ]
+[e :U 407 ]
+"141
+[; ;lib/spi.c: 141:                 haptic_in[4]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 4 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"142
+[; ;lib/spi.c: 142:                 while(!BF);
+[e $U 408  ]
+[e :U 409 ]
+[e :U 408 ]
+[e $ ! _BF 409  ]
+[e :U 410 ]
+"143
+[; ;lib/spi.c: 143:                 haptic_in[5]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 5 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"144
+[; ;lib/spi.c: 144:                 while(!BF);
+[e $U 411  ]
+[e :U 412 ]
+[e :U 411 ]
+[e $ ! _BF 412  ]
+[e :U 413 ]
 "145
-[; ;lib/spi.c: 145:     }
-}
-[e :U 364 ]
+[; ;lib/spi.c: 145:                 haptic_in[6]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 6 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"146
+[; ;lib/spi.c: 146:                 while(!BF);
+[e $U 414  ]
+[e :U 415 ]
+[e :U 414 ]
+[e $ ! _BF 415  ]
+[e :U 416 ]
 "147
-[; ;lib/spi.c: 147:     SSPBUF = 0x00;
-[e = _SSPBUF -> -> 0 `i `uc ]
+[; ;lib/spi.c: 147:                 haptic_in[7]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 7 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
 "148
-[; ;lib/spi.c: 148:     WCOL=0;
-[e = _WCOL -> -> 0 `i `b ]
+[; ;lib/spi.c: 148:                 while(!BF);
+[e $U 417  ]
+[e :U 418 ]
+[e :U 417 ]
+[e $ ! _BF 418  ]
+[e :U 419 ]
 "149
-[; ;lib/spi.c: 149:     SSPOV=0;
-[e = _SSPOV -> -> 0 `i `b ]
+[; ;lib/spi.c: 149:                 haptic_in[8]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 8 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
 "150
-[; ;lib/spi.c: 150: }
+[; ;lib/spi.c: 150:                 while(!BF);
+[e $U 420  ]
+[e :U 421 ]
+[e :U 420 ]
+[e $ ! _BF 421  ]
+[e :U 422 ]
+"151
+[; ;lib/spi.c: 151:                 haptic_in[9]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 9 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"152
+[; ;lib/spi.c: 152:                 while(!BF);
+[e $U 423  ]
+[e :U 424 ]
+[e :U 423 ]
+[e $ ! _BF 424  ]
+[e :U 425 ]
+"153
+[; ;lib/spi.c: 153:                 haptic_in[10]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 10 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"154
+[; ;lib/spi.c: 154:                 while(!BF);
+[e $U 426  ]
+[e :U 427 ]
+[e :U 426 ]
+[e $ ! _BF 427  ]
+[e :U 428 ]
+"155
+[; ;lib/spi.c: 155:                 haptic_in[11]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 11 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"156
+[; ;lib/spi.c: 156:                 while(!BF);
+[e $U 429  ]
+[e :U 430 ]
+[e :U 429 ]
+[e $ ! _BF 430  ]
+[e :U 431 ]
+"157
+[; ;lib/spi.c: 157:                 haptic_in[12]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 12 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"158
+[; ;lib/spi.c: 158:                 while(!BF);
+[e $U 432  ]
+[e :U 433 ]
+[e :U 432 ]
+[e $ ! _BF 433  ]
+[e :U 434 ]
+"159
+[; ;lib/spi.c: 159:                 haptic_in[13]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 13 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"160
+[; ;lib/spi.c: 160:                 while(!BF);
+[e $U 435  ]
+[e :U 436 ]
+[e :U 435 ]
+[e $ ! _BF 436  ]
+[e :U 437 ]
+"161
+[; ;lib/spi.c: 161:                 haptic_in[14]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 14 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"162
+[; ;lib/spi.c: 162:                 while(!BF);
+[e $U 438  ]
+[e :U 439 ]
+[e :U 438 ]
+[e $ ! _BF 439  ]
+[e :U 440 ]
+"163
+[; ;lib/spi.c: 163:                 haptic_in[15]=SSPBUF;
+[e = *U + &U _haptic_in * -> -> -> 15 `i `ui `ux -> -> # *U &U _haptic_in `ui `ux _SSPBUF ]
+"168
+[; ;lib/spi.c: 168:                 SSPBUF = 0x00;
+[e = _SSPBUF -> -> 0 `i `uc ]
+"169
+[; ;lib/spi.c: 169:             }
+}
+[e :U 392 ]
+"171
+[; ;lib/spi.c: 171:         }else{
+}
+[e $U 441  ]
+[e :U 385 ]
+{
+"174
+[; ;lib/spi.c: 174:             return;
+[e $UE 362  ]
+"175
+[; ;lib/spi.c: 175:         }
+}
+[e :U 441 ]
+"178
+[; ;lib/spi.c: 178:     }
+}
+[e :U 381 ]
+"180
+[; ;lib/spi.c: 180:     SSPBUF = 0x00;
+[e = _SSPBUF -> -> 0 `i `uc ]
+"181
+[; ;lib/spi.c: 181:     WCOL=0;
+[e = _WCOL -> -> 0 `i `b ]
+"182
+[; ;lib/spi.c: 182:     SSPOV=0;
+[e = _SSPOV -> -> 0 `i `b ]
+"183
+[; ;lib/spi.c: 183: }
 [e :UE 362 ]
 }
-"152
-[; ;lib/spi.c: 152: char v[8]="ABCDEFGH";
+"185
+[; ;lib/spi.c: 185: char v[8]="ABCDEFGH";
 [v _v `uc ~T0 @X0 -> 8 `i e ]
 [i _v
 :U ..
@@ -774,29 +869,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 72 `c
 ..
 ]
-"154
-[; ;lib/spi.c: 154: void spwrh(){
+"187
+[; ;lib/spi.c: 187: void spwrh(){
 [v _spwrh `(v ~T0 @X0 1 ef ]
 {
 [e :U _spwrh ]
 [f ]
-"174
-[; ;lib/spi.c: 174:     __asm("MOVLW 0xB0");
+"207
+[; ;lib/spi.c: 207:     __asm("MOVLW 0xB0");
 [; <" MOVLW 0xB0 ;# ">
-"175
-[; ;lib/spi.c: 175:     __asm("MOVWF FSR1L");
+"208
+[; ;lib/spi.c: 208:     __asm("MOVWF FSR1L");
 [; <" MOVWF FSR1L ;# ">
-"176
-[; ;lib/spi.c: 176:     __asm("MOVLW 0x21");
+"209
+[; ;lib/spi.c: 209:     __asm("MOVLW 0x21");
 [; <" MOVLW 0x21 ;# ">
-"177
-[; ;lib/spi.c: 177:     __asm("MOVWF FSR1H");
+"210
+[; ;lib/spi.c: 210:     __asm("MOVWF FSR1H");
 [; <" MOVWF FSR1H ;# ">
-"187
-[; ;lib/spi.c: 187:     __asm("MOVLB 4");
+"220
+[; ;lib/spi.c: 220:     __asm("MOVLB 4");
 [; <" MOVLB 4 ;# ">
-"189
-[; ;lib/spi.c: 189:     __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W");
+"222
+[; ;lib/spi.c: 222:     __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W"); __asm("MOVIW FSR1++"); __asm("MOVWF SSP1BUF"); __asm("BTFSS SSP1STAT, 0x0"); __asm("BRA -2"); __asm("MOVF SSP1BUF,W");
 [; <" MOVIW FSR1++ ;# ">
 [; <" MOVWF SSP1BUF ;# ">
 [; <" BTFSS SSP1STAT, 0x0 ;# ">
@@ -1117,100 +1212,100 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" BTFSS SSP1STAT, 0x0 ;# ">
 [; <" BRA -2 ;# ">
 [; <" MOVF SSP1BUF,W ;# ">
-"201
-[; ;lib/spi.c: 201: }
-[e :UE 374 ]
+"234
+[; ;lib/spi.c: 234: }
+[e :UE 442 ]
 }
-"202
-[; ;lib/spi.c: 202: int cnt_tr=0;
+"235
+[; ;lib/spi.c: 235: int cnt_tr=0;
 [v _cnt_tr `i ~T0 @X0 1 e ]
 [i _cnt_tr
 -> 0 `i
 ]
-"204
-[; ;lib/spi.c: 204: void spiWrite(){
+"237
+[; ;lib/spi.c: 237: void spiWrite(){
 [v _spiWrite `(v ~T0 @X0 1 ef ]
 {
 [e :U _spiWrite ]
 [f ]
-"205
-[; ;lib/spi.c: 205:     if(cnt_tr<1000){
-[e $ ! < _cnt_tr -> 1000 `i 376  ]
+"238
+[; ;lib/spi.c: 238:     if(cnt_tr<1000){
+[e $ ! < _cnt_tr -> 1000 `i 444  ]
 {
-"206
-[; ;lib/spi.c: 206:        cnt_tr++;
+"239
+[; ;lib/spi.c: 239:        cnt_tr++;
 [e ++ _cnt_tr -> 1 `i ]
-"207
-[; ;lib/spi.c: 207:         return;
-[e $UE 375  ]
-"208
-[; ;lib/spi.c: 208:     }
+"240
+[; ;lib/spi.c: 240:         return;
+[e $UE 443  ]
+"241
+[; ;lib/spi.c: 241:     }
 }
-[e :U 376 ]
-"209
-[; ;lib/spi.c: 209:     cnt_tr=0;
+[e :U 444 ]
+"242
+[; ;lib/spi.c: 242:     cnt_tr=0;
 [e = _cnt_tr -> 0 `i ]
-"210
-[; ;lib/spi.c: 210:     PORTCbits.RC3 = 0;
+"243
+[; ;lib/spi.c: 243:     PORTCbits.RC3 = 0;
 [e = . . _PORTCbits 0 3 -> -> 0 `i `uc ]
-"213
-[; ;lib/spi.c: 213:     spwrh();
+"246
+[; ;lib/spi.c: 246:     spwrh();
 [e ( _spwrh ..  ]
-"223
-[; ;lib/spi.c: 223:     SSPBUF = ' ';while(!BF);
+"256
+[; ;lib/spi.c: 256:     SSPBUF = ' ';while(!BF);
 [e = _SSPBUF -> -> 32 `ui `uc ]
-[e $U 377  ]
-[e :U 378 ]
-[e :U 377 ]
-[e $ ! _BF 378  ]
-[e :U 379 ]
-"224
-[; ;lib/spi.c: 224:     PORTCbits.RC3 = 1;
+[e $U 445  ]
+[e :U 446 ]
+[e :U 445 ]
+[e $ ! _BF 446  ]
+[e :U 447 ]
+"257
+[; ;lib/spi.c: 257:     PORTCbits.RC3 = 1;
 [e = . . _PORTCbits 0 3 -> -> 1 `i `uc ]
-"225
-[; ;lib/spi.c: 225: }
-[e :UE 375 ]
+"258
+[; ;lib/spi.c: 258: }
+[e :UE 443 ]
 }
-"227
-[; ;lib/spi.c: 227: void MasterinitSPI(){
+"260
+[; ;lib/spi.c: 260: void MasterinitSPI(){
 [v _MasterinitSPI `(v ~T0 @X0 1 ef ]
 {
 [e :U _MasterinitSPI ]
 [f ]
-"228
-[; ;lib/spi.c: 228:     TRISC3 = 0;TRISC0 = 0;
+"261
+[; ;lib/spi.c: 261:     TRISC3 = 0;TRISC0 = 0;
 [e = _TRISC3 -> -> 0 `i `b ]
 [e = _TRISC0 -> -> 0 `i `b ]
-"231
-[; ;lib/spi.c: 231:     SSPADD = 1;
+"264
+[; ;lib/spi.c: 264:     SSPADD = 1;
 [e = _SSPADD -> -> 1 `i `uc ]
-"233
-[; ;lib/spi.c: 233:     SSPSTAT = SAMPLE_MIDDLE | ACTIVE_TO_IDLE;
+"266
+[; ;lib/spi.c: 266:     SSPSTAT = SAMPLE_MIDDLE | ACTIVE_TO_IDLE;
 [e = _SSPSTAT -> | -> . `E2208 0 `i -> . `E2216 1 `i `uc ]
-"234
-[; ;lib/spi.c: 234:     SSPCON = MASTER_OSC_SPADD | IDLE_LOW;
+"267
+[; ;lib/spi.c: 267:     SSPCON = MASTER_OSC_SPADD | IDLE_LOW;
 [e = _SSPCON -> | -> . `E2199 4 `i -> . `E2212 1 `i `uc ]
-"236
-[; ;lib/spi.c: 236: }
-[e :UE 380 ]
+"269
+[; ;lib/spi.c: 269: }
+[e :UE 448 ]
 }
-"237
-[; ;lib/spi.c: 237: void SlaveinitSPI(){
+"270
+[; ;lib/spi.c: 270: void SlaveinitSPI(){
 [v _SlaveinitSPI `(v ~T0 @X0 1 ef ]
 {
 [e :U _SlaveinitSPI ]
 [f ]
-"238
-[; ;lib/spi.c: 238:     TRISC3 = 1;TRISC0 = 1;
+"271
+[; ;lib/spi.c: 271:     TRISC3 = 1;TRISC0 = 1;
 [e = _TRISC3 -> -> 1 `i `b ]
 [e = _TRISC0 -> -> 1 `i `b ]
-"242
-[; ;lib/spi.c: 242:     SSPSTAT = SAMPLE_MIDDLE | ACTIVE_TO_IDLE;
+"275
+[; ;lib/spi.c: 275:     SSPSTAT = SAMPLE_MIDDLE | ACTIVE_TO_IDLE;
 [e = _SSPSTAT -> | -> . `E2208 0 `i -> . `E2216 1 `i `uc ]
-"243
-[; ;lib/spi.c: 243:     SSPCON = SLAVE_SS_EN | IDLE_LOW;
+"276
+[; ;lib/spi.c: 276:     SSPCON = SLAVE_SS_EN | IDLE_LOW;
 [e = _SSPCON -> | -> . `E2199 5 `i -> . `E2212 1 `i `uc ]
-"244
-[; ;lib/spi.c: 244: }
-[e :UE 381 ]
+"277
+[; ;lib/spi.c: 277: }
+[e :UE 449 ]
 }
