@@ -4822,7 +4822,7 @@ void APP_LEDUpdateUSBStatus(void);
 # 28 "lib/app_device_joystick.c" 2
 
 # 1 ".\\include/spi.h" 1
-# 17 ".\\include/spi.h"
+# 24 ".\\include/spi.h"
 uint8_t TESTB,REGT;
 
 extern uint8_t luminosity;
@@ -4894,10 +4894,10 @@ void APP_DeviceJoystickInitialize(void)
     last_DSP_OUT = 0;
 
 
-    display_pkt_ready=0;
-    LED_pkt_ready=0;
+    display_pkt_ready=1;
+    LED_pkt_ready=1;
     hap_IN_pkt_sent=1;
-    hap_OUT_pkt_ready=0;
+    hap_OUT_pkt_ready=1;
 
 
     USBEnableEndpoint(1,0x04|0x02|0x10|0x08);

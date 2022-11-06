@@ -63,10 +63,10 @@ void APP_DeviceJoystickInitialize(void)
     last_DSP_OUT = 0;
 
     
-    display_pkt_ready=0;
-    LED_pkt_ready=0;
+    display_pkt_ready=1;
+    LED_pkt_ready=1;
     hap_IN_pkt_sent=1;
-    hap_OUT_pkt_ready=0;
+    hap_OUT_pkt_ready=1;
 
     //enable the HID endpoint
     USBEnableEndpoint(HAPTIC_EP,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);

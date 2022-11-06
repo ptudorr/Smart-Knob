@@ -312,9 +312,11 @@ void cb_DSP_OUT(struct libusb_transfer* transfer)
 
 	for (int i = 0;i < 32;i++) {
 		crcol = ((r << 8) & 0xf800) | ((g << 3) & 0x07E0) | (b >> 3);
-		buf_dsp[2 * i] = 0xff & crcol;
-		buf_dsp[2 * i + 1] = 0xff & (crcol>>8);
+		buf_dsp[2 * i] = /*0xff & crcol*/0x1c;
+		buf_dsp[2 * i + 1] = /*0xff & (crcol>>8)*/0x1c;
 	}
+	for (int i = 0;i < 64;i++) 
+		buf_dsp[i] = i;
 
 	libusb_submit_transfer(dsp_dsp_out);
 
@@ -433,7 +435,7 @@ int main(int argc, char* argv[])
 		r = libusb_handle_events_timeout_completed(ctx, &t_oned, NULL);
 		printf("\r|%02x;%02x;%02x;%02x;%02x;%02x;%02x;%02x;   h_in:%d;h_out:%d;l_out:%d;d_out:%d",
 			buf_in[0], buf_in[1], buf_in[2], buf_in[3], buf_in[4], buf_in[5], buf_in[6], buf_in[15], nr_hap_in, nr_hap_out, nr_led_out, nr_dsp_out);
-		if (buf_in[6] != 0x04) printf("");
+		if (buf_in[6] != 0x04) printf("TZEAPA");// else printf("      ");
 		if (r < 0) {   // negative values are errors
 			break;
 		}

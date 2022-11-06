@@ -10,7 +10,14 @@
 
 #define BEGIN_TRANSFER 0x55
 #define ACK1 0x76
-#define REQUEST_HAPTIC_IN 0x01
+
+
+//OUT_type 2 bits, IS_OUT 1 bit, IS_IN1 bit
+#define REQUEST_HAPTIC_IN   0x01  //0001
+#define REQUEST_OUT         0x02  //0010
+#define REQUEST_HAPTIC_OUT  0x06  //0110
+#define REQUEST_LED_OUT     0x0A  //1010
+#define REQUEST_DISPLAY_OUT 0x0E  //1110
 
 #include <xc.h> // include processor files - each processor file is guarded.  
  

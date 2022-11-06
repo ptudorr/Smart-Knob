@@ -12,7 +12,6 @@
             <file>file:/E:/Smart-Knob/pic16f1455_firmware/lib/spi.c</file>
             <file>file:/E:/Smart-Knob/pic16f1455_firmware/lib/usb/usb_device.c</file>
             <file>file:/E:/Smart-Knob/pic16f1455_firmware/include/usb/usb_device_hid.h</file>
-            <file>file:/E:/Smart-Knob/pic16f1455_firmware/disassembly/listing.disasm</file>
         </group>
     </open-files>
 </project-private>

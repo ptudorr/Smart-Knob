@@ -70,11 +70,17 @@ uint8_t errors_ctr2_to_PIC;//second control byte to send
 uint8_t pkt_requests;//bitmask for each packet type
 uint8_t ctrl2_from_PIC;//second ctrl byte
 
+void spiWrite(void);
+
 void spiTask(void){
     pkt_requests = 0;
     if(!HIDTxHandleBusy(last_HAP_IN)){
         //rady to send another to PC
         pkt_requests = REQUEST_HAPTIC_IN;
+    }
+    if(!HIDRxHandleBusy(last_DSP_OUT)){
+        //rady to send another to PC
+        pkt_requests = REQUEST_DISPLAY_OUT;
     }
     //in case we have received a start command 
     //from previous unserviced transaction
@@ -133,6 +139,15 @@ void spiTask(void){
                 //asm("BRA -2");              //else go back             
                 //asm("MOVF SSP1BUF,W");      //read the received byte into W
                 SSPBUF = 0x00;
+            }else if(pkt_requests & REQUEST_DISPLAY_OUT){
+                display_pkt_ready = 1;
+                __delay_us(10);
+                MasterinitSPI();
+                __delay_us(20);
+                spiWrite();
+                __delay_us(5);//NodeMCU has to copy the packet
+                SlaveinitSPI();
+                __delay_us(30);
             }
             
         }else{
@@ -149,26 +164,8 @@ void spiTask(void){
     SSPOV=0;
 }
 
-char v[8]="ABCDEFGH";
-
-void spwrh(){
-    /*
-     
-     * 
-     * 
-     * MOVLW 0xD0
-0B9E  0086     MOVWF FSR1L
-0B9F  3021     MOVLW 0x21
-0BA0  0087     MOVWF FSR1H
-0BA1  3141     ADDFSR 1, 1--------------
-0BA2  0801     MOVF INDF1, W
-0BA3  0091     MOVWF SSP1BUF
-0BA4  1C14     BTFSS SSP1STAT, 0x0
-0BA5  2BA7     GOTO 0x3A7
-0BA6  2BA8     GOTO 0x3A8
-0BA7  2BA4     GOTO 0x3A4
-     */
-    ////TESTING RECEIVE ON DISPLAY AND SEND ON HAPTIC
+void spiWrite(){
+    CS_PIN = 0;
     //preload address
     //address for DISPLAY
     MOVLW_ADR(DISPLAY_DATA_ADDRESS_LO)     //asm("MOVLW 0xD0");
@@ -176,61 +173,24 @@ void spwrh(){
     MOVLW_ADR(DISPLAY_DATA_ADDRESS_HI)     //asm("MOVLW 0x21");
     asm("MOVWF FSR1H");
     
-    //address for HAPTIC_IN
-    /*asm("MOVLW 0x30");
-    asm("MOVWF FSR0L");
-    asm("MOVLW 0x22");
-    asm("MOVWF FSR0H");*/
-    
-    
     //go to bank 4, where the spbuf/stat is
     asm("MOVLB 4");
     
     REP8(REP8(writeByteNOread))
-    
-     
-    /*SSPBUF = display_output[0];while(!BF);//7f=DEL
-    SSPBUF = display_output[1];while(!BF);//7f=DEL
-    SSPBUF = display_output[2];while(!BF);//7f=DEL
-    SSPBUF = display_output[3];while(!BF);//7f=DEL
-    SSPBUF = display_output[4];while(!BF);//7f=DEL
-    SSPBUF = display_output[5];while(!BF);//7f=DEL
-    SSPBUF = display_output[6];while(!BF);//7f=
-    SSPBUF = display_output[7];while(!BF);//7f=DEL*/
-    
-}
-int cnt_tr=0;
-
-void spiWrite(){
-    if(cnt_tr<1000){ 
-       cnt_tr++;
-        return;
-    }
-    cnt_tr=0;
-    CS_PIN = 0;
-    //__delay_us(100);
-    
-    spwrh();
-    //spwrh("ASDFQWER");
-    //spwrh("POIUYTRE");
-    //spwrh("PLMNJKOI");
-    //spwrh("GHBNVFTY");
-    //spwrh("12398754");
-    //spwrh(",./;'[]-");
-    //spwrh("GHtjhv/]");
-    //spwrh("-=6`4f;z");
-    
+    //NodeMCU needs to receive one more dummy byte
     SSPBUF = ' ';while(!BF);
+    
     CS_PIN = 1;
 }
 
 void MasterinitSPI(){
     TRIS_CS_PIN = 0;TRIS_CLK_PIN = 0;
+    CS_PIN=1;
   
 #if SPI_FREQ == 6
     SSPADD = 1;
 #endif
-    SSPSTAT = SAMPLE_MIDDLE |  ACTIVE_TO_IDLE;//SMP=0;CKE=1
+    SSPSTAT = SAMPLE_MIDDLE |  IDLE_TO_ACTIVE;//SMP=0;CKE=1
     SSPCON = SPI_MODE | IDLE_LOW;//SSPM=0000:=;CKP=0
     
 }

@@ -4822,7 +4822,7 @@ void APP_LEDUpdateUSBStatus(void);
 
 
 # 1 "./include/spi.h" 1
-# 17 "./include/spi.h"
+# 24 "./include/spi.h"
 uint8_t TESTB,REGT;
 
 extern uint8_t luminosity;
