@@ -1,6 +1,7 @@
 
 #include <Arduino.h>
 #include "USB.h"
+#include "buffers.h"
 #include <SPI.h>
 
 //#define DEBUG_TRANSACTION
@@ -25,7 +26,8 @@ uint8_t errors_ctr2_to_PIC;//second control byte to send
 
 uint16_t cntrusb;
 
-uint16_t TESTPKT[64];
+uint32_t TESTPKT[16];
+uint8_t received = 0;
 
 void pinSpecialFast(uint8_t pin) {
       GPC(pin) = (GPC(pin) & (0xF << GPCI)); //SOURCE(GPIO) | DRIVER(NORMAL) | INT_TYPE(UNCHANGED) | WAKEUP_ENABLE(DISABLED)
@@ -46,41 +48,15 @@ void loadRegs(){
   SPI1C1=TSPI1C1, SPI1S1=TSPI1S1, SPI1P=TSPI1P, SPI1CMD=TSPI1CMD, SPI1C2=TSPI1C2, SPI1S=TSPI1S;
 }
 
-void initSPISlave2(){
-    //the other pins are already SPECIAL, since we already transferred some bytes
-    //CS was OUTPUT, so we need to set it to SPECIAL
-    //pinMode(PIC_CS_PIN,SPECIAL);
-
-        pinMode(MCU_CLK_PIN, SPECIAL);  ///< GPIO14
-        pinMode(MCU_MISO_PIN, INPUT); ///< GPIO12
-        pinMode(MCU_MOSI_PIN, SPECIAL); ///< GPIO13
-        pinMode(PIC_CS_PIN, SPECIAL); ///< GPIO15
-
-    SPI1C = 0;
-    SPI1U = SPIUMISO | SPIUMOSI  | SPIUSSE /*| SPIUDUPLEX*/ ;//sters command
-    SPI1CLK = 0;
-    SPI1U1 = (512 << SPILMOSI) | (512 << SPILMISO);
-    //SPI1C1 = 0;//???
-    SPI1U2 = (1 << SPILCOMMAND);//no command - does this work?
-    
-    //SPI1S1 = (((status_len * 8) - 1) << SPIS1LSTA) | (0xff << SPIS1LBUF) | (7 << SPIS1LWBA) | (7 << SPIS1LRBA) | SPIS1RSTA;
-    SPI1S1 = (((64 * 8) - 1) << SPIS1LBUF)  ;
-
-    SPI1P = (1 << 19);//poate altu 0 1 2 CS - 1=disable
-    //SPI1CMD |= SPIBUSY;//START TRF
-    //SPI1C2 = (0x1<<SPIC2MISODM_S);  // delays MISO by 1/2 clock cycle. With the help of Günter Ackermann.
-    //SPI1C2 = (0x2<<SPIC2MOSIDM_S) /*(0x3<<SPIC2MOSIDN_S )*/;//SPIC2MOSIDM_S 
-    SPI1S = SPISE | SPISBE /*| 0x3E0*/;//0x3E0 only for interrupt
-    /*pinMode(PIC_CS_PIN,INPUT);
-    while(!(GPI & (1<<PIC_CS_PIN)));
-    pinSpecialFast(PIC_CS_PIN); ///< GPIO15*/
-  
-}
 void initSPISlave(){
-        pinMode(MCU_CLK_PIN, SPECIAL);  ///< GPIO14
+        /*pinMode(MCU_CLK_PIN, SPECIAL);  ///< GPIO14
         pinMode(MCU_MISO_PIN, SPECIAL); ///< GPIO12
         pinMode(MCU_MOSI_PIN, SPECIAL); ///< GPIO13
-        pinMode(PIC_CS_PIN, SPECIAL); ///< GPIO15
+        pinMode(PIC_CS_PIN, SPECIAL); ///< GPIO15*/
+        pinSpecialFast(MCU_CLK_PIN);
+        pinSpecialFast(MCU_MISO_PIN);
+        pinSpecialFast(MCU_MOSI_PIN);
+        pinSpecialFast(PIC_CS_PIN);
 
     SPI1C = 0;
     SPI1S = SPISE | SPISBE /*| 0x3E0*/;//0x3E0 only for interrupt
@@ -188,11 +164,11 @@ int nr=0;
       GPOS = (1<<PIC_CS_PIN);//PIC will also drive CS HIGH QUICKLY
       saveRegs();
       //we are sure CS is HIGH
-      delayMicroseconds(20);
+      //delayMicroseconds(20);
       initSPISlave();
+      //delayMicroseconds(70);
       uint8_t crnr, cnt = GET_TRANSFER_NUMBER;
       //wait for transfer
-      int crtm = micros();
       do{
         crnr = GET_TRANSFER_NUMBER;
       }while(crnr == cnt);
@@ -217,7 +193,7 @@ int nr=0;
       //Serial.println(micros() - crtm);
       //Serial.println();
       
-      delayMicroseconds(20);
+      //delayMicroseconds(20);
       loadRegs();
       //????????????? VERY WEIRD
       //calling ANY function before and after pinMode
@@ -236,16 +212,17 @@ int nr=0;
         copyPKT(TESTPKT,8);copyPKT(TESTPKT,9);copyPKT(TESTPKT,10);copyPKT(TESTPKT,11);
         copyPKT(TESTPKT,12);copyPKT(TESTPKT,13);copyPKT(TESTPKT,14);copyPKT(TESTPKT,15); 
       }
-      delayMicroseconds(30);
+      //delayMicroseconds(30);
       //Serial.println(TESTPKT[4],HEX);
       //PIC in now slave
       //we select it once more to send 0x00 to it to "empty" the buffer
       GPOC = (1<<PIC_CS_PIN);
+      received=1;
     }
     
 
       //empty the send/receive buffer
-      delayMicroseconds(1);
+      //delayMicroseconds(1);
       SPI.transfer(0x00);
 
     

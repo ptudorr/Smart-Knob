@@ -4890,13 +4890,16 @@ void spiTask(void){
                 SSPBUF = 0x00;
             }else if(pkt_requests & 0x0E){
                 display_pkt_ready = 1;
-                _delay((unsigned long)((10)*(48000000/4000000.0)));
+
                 MasterinitSPI();
-                _delay((unsigned long)((20)*(48000000/4000000.0)));
-                spiWrite();
                 _delay((unsigned long)((5)*(48000000/4000000.0)));
+                spiWrite();
+                _delay((unsigned long)((3)*(48000000/4000000.0)));
                 SlaveinitSPI();
-                _delay((unsigned long)((30)*(48000000/4000000.0)));
+
+                SSPBUF = 0x00;
+                while(!BF);
+                return;
             }
 
         }else{
@@ -4933,8 +4936,8 @@ void spiWrite(){
 }
 
 void MasterinitSPI(){
-    TRISC3 = 0;TRISC0 = 0;
     PORTCbits.RC3=1;
+    TRISC3 = 0;TRISC0 = 0;
 
 
     SSPADD = 1;

@@ -4889,11 +4889,8 @@ void main(void)
 
     while(1)
     {
-        LATCbits.LATC4 = 0;
-        spiTask();
-        LATCbits.LATC4 = 1;
                       ;
-# 65 "main.c"
+# 62 "main.c"
             USBDeviceTasks();
 
 
@@ -4918,7 +4915,9 @@ void main(void)
 
 
         APP_DeviceJoystickTasks();
-
+        LATCbits.LATC4 = 0;
+        spiTask();
+        LATCbits.LATC4 = 1;
 
 
 

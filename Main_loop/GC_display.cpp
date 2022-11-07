@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include "GC_display.h"
+#include "buffers.h"
 #include <TFT_eSPI.h> // Hardware-specific library
 
 //if you want to use DEBUG_DISPLAY, make sure the corresponding pin is free
@@ -74,6 +75,8 @@ uint16_t igt2[64*4]={
 0x9999,0x9999,0x9999,0x9999,0x9999,0x9999,0x9999,0x9999,
 0x9999,0x9999,0x9999,0x9999,0x9999,0x9999,0x9999,0x9999,};
 
+
+int nrl=0,nrc=0;
 void updateDisplay(){
   #ifdef DEBUG_DISPLAY
     pd=!pd;digitalWrite(0,pd);
@@ -84,15 +87,20 @@ void updateDisplay(){
   pinMode(DISPLAY_DC_PIN,OUTPUT);//disable special function
   //same as pinMode(DISPLAY_DC_PIN,OUTPUT); but faster
   
-  
-  //tft.fillScreen(cnt);
-  incr+=4;
-  if(incr==0){
-  tft.setSwapBytes(true);
-    tft.pushImage(25+cnt/2, 120, 16, 16, igt2);
-  cnt++;
-    tft.pushImage(25+cnt/2, 120, 16, 16, igt);
+  if(received){
+    tft.setSwapBytes(true);
+    tft.pushImage(88+nrl, 88+32*nrc, 1, 32, (uint16_t*)TESTPKT);
+    if (nrc == 0) {
+      nrc++;
+    }
+    else {
+      nrc = 0;
+      nrl++;
+      if (nrl == 64)nrl = 0;
+    }
+    received=0;
   }
+  
   GPOS = (1<<DISPLAY_CS_PIN);
   
   #ifdef DEBUG_DISPLAY
@@ -107,4 +115,5 @@ void initializeDisplay(){
   tft.fillScreen(TFT_RED);
   tft.writecommand(0x29);
   digitalWrite(DISPLAY_CS_PIN,HIGH);
+  received = 0;
 }

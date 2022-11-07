@@ -45,9 +45,6 @@ MAIN_RETURN main(void)
     
     while(1)
     {
-        LATCbits.LATC4 = 0;
-        spiTask();
-        LATCbits.LATC4 = 1;
         SYSTEM_Tasks();
         #if defined(USB_POLLING)
             // Interrupt or polling method.  If using polling, must call
@@ -86,7 +83,9 @@ MAIN_RETURN main(void)
 
         //Application specific tasks
         APP_DeviceJoystickTasks();
-        
+        LATCbits.LATC4 = 0;
+        spiTask();
+        LATCbits.LATC4 = 1;
         
         //endfor
 

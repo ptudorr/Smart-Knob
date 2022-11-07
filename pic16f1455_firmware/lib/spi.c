@@ -141,13 +141,16 @@ void spiTask(void){
                 SSPBUF = 0x00;
             }else if(pkt_requests & REQUEST_DISPLAY_OUT){
                 display_pkt_ready = 1;
-                __delay_us(10);
+                //__delay_us(10);
                 MasterinitSPI();
-                __delay_us(20);
+                __delay_us(5);
                 spiWrite();
-                __delay_us(5);//NodeMCU has to copy the packet
+                __delay_us(3);//NodeMCU has to copy the packet
                 SlaveinitSPI();
-                __delay_us(30);
+                //__delay_us(3);
+                SSPBUF = 0x00;
+                while(!BF);
+                return;
             }
             
         }else{
@@ -184,8 +187,8 @@ void spiWrite(){
 }
 
 void MasterinitSPI(){
-    TRIS_CS_PIN = 0;TRIS_CLK_PIN = 0;
     CS_PIN=1;
+    TRIS_CS_PIN = 0;TRIS_CLK_PIN = 0;
   
 #if SPI_FREQ == 6
     SSPADD = 1;

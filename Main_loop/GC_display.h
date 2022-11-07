@@ -21,7 +21,6 @@
 extern uint32_t pd;
 
 extern uint8_t display_OUT_buffer[DISPLAY_OUT_BUFFER_SIZE];
-
 void updateDisplay();
 
 void initializeDisplay();

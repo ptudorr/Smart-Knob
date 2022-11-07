@@ -113,7 +113,7 @@ EVENT_EP0_REQUEST 3
 EVENT_ATTACH 4
 EVENT_TRANSFER_TERMINATED 5
 ]
-"71 E:\Smart-Knob\pic16f1455_firmware\main.c
+"68 E:\Smart-Knob\pic16f1455_firmware\main.c
 [e E2485 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
@@ -180,7 +180,7 @@ LED_D3 3
 BUTTON_NONE 0
 BUTTON_S1 1
 ]
-"193 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+"196 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [e E2208 . `uc
 SAMPLE_MIDDLE 0
 SAMPLE_END 128
@@ -189,7 +189,7 @@ SAMPLE_END 128
 IDLE_TO_ACTIVE 0
 ACTIVE_TO_IDLE 64
 ]
-"194
+"197
 [e E2199 . `uc
 MASTER_OSC_DIV4 32
 MASTER_OSC_DIV16 33
@@ -227,11 +227,11 @@ IDLE_LOW 0
 [v _LED_Enable LED_Enable `(v  1 e 1 0 ]
 "75 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _spiTask spiTask `(v  1 e 1 0 ]
-"167
+"170
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
-"186
+"189
 [v _MasterinitSPI MasterinitSPI `(v  1 e 1 0 ]
-"197
+"200
 [v _SlaveinitSPI SlaveinitSPI `(v  1 e 1 0 ]
 "85 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -341,7 +341,7 @@ IDLE_LOW 0
 "1105
 [u S321 . 1 `S312 1 . 1 0 ]
 [v _PIE2bits PIE2bits `VES321  1 e 1 @146 ]
-[s S1934 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S1959 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -349,8 +349,8 @@ IDLE_LOW 0
 `uc 1 LATC5 1 0 :1:5 
 ]
 "1807
-[u S1941 . 1 `S1934 1 . 1 0 ]
-[v _LATCbits LATCbits `VES1941  1 e 1 @270 ]
+[u S1966 . 1 `S1959 1 . 1 0 ]
+[v _LATCbits LATCbits `VES1966  1 e 1 @270 ]
 "2417
 [v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
 "2976
@@ -669,27 +669,27 @@ IDLE_LOW 0
 "32 E:\Smart-Knob\pic16f1455_firmware\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"94
+"93
 } 0
 "75 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _spiTask spiTask `(v  1 e 1 0 ]
 {
-"165
+"168
 } 0
-"167
+"170
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
 {
-"184
+"187
 } 0
-"197
+"200
 [v _SlaveinitSPI SlaveinitSPI `(v  1 e 1 0 ]
 {
-"204
+"207
 } 0
-"186
+"189
 [v _MasterinitSPI MasterinitSPI `(v  1 e 1 0 ]
 {
-"196
+"199
 } 0
 "481 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBDeviceTasks USBDeviceTasks `(v  1 e 1 0 ]

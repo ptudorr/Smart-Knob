@@ -47,7 +47,7 @@ void updateLEDs(){
   LED_reset = 0;
   LED_last = micros();
   pl=!pl;digitalWrite(14,pl);
-  delayMicroseconds(325);
+  //delayMicroseconds(325);
 }
 
 void measureLight(){

@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
+$C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
 idloc IDLOC 5 8000 8000 4 2 1
 reset_vec CODE 0 0 0 2 2 1
 end_init CODE 0 8 8 2 2 1
@@ -170,39 +170,39 @@ STRING 186C-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-A cinit CODE >3797:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-A cinit CODE >3800:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-A cinit CODE >3971:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-B cinit CODE >3972:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-C cinit CODE >3973:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-D cinit CODE >3974:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-E cinit CODE >3975:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-F cinit CODE >3976:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-10 cinit CODE >3977:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-11 cinit CODE >3978:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-12 cinit CODE >3979:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-15 cinit CODE >3983:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-16 cinit CODE >3984:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-17 cinit CODE >3985:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-18 cinit CODE >3986:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-19 cinit CODE >3987:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1A cinit CODE >3988:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1B cinit CODE >3989:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1C cinit CODE >3990:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1D cinit CODE >3991:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-20 cinit CODE >3995:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-21 cinit CODE >3996:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-22 cinit CODE >3997:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-23 cinit CODE >3998:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-24 cinit CODE >3999:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-25 cinit CODE >4000:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-26 cinit CODE >4001:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-27 cinit CODE >4002:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-28 cinit CODE >4003:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-2B cinit CODE >4009:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-2B cinit CODE >4011:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-2C cinit CODE >4012:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-2D cinit CODE >4013:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
+A cinit CODE >3797:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+A cinit CODE >3800:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+A cinit CODE >3971:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+B cinit CODE >3972:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+C cinit CODE >3973:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+D cinit CODE >3974:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+E cinit CODE >3975:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+F cinit CODE >3976:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+10 cinit CODE >3977:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+11 cinit CODE >3978:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+12 cinit CODE >3979:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+15 cinit CODE >3983:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+16 cinit CODE >3984:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+17 cinit CODE >3985:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+18 cinit CODE >3986:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+19 cinit CODE >3987:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1A cinit CODE >3988:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1B cinit CODE >3989:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1C cinit CODE >3990:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1D cinit CODE >3991:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+20 cinit CODE >3995:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+21 cinit CODE >3996:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+22 cinit CODE >3997:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+23 cinit CODE >3998:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+24 cinit CODE >3999:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+25 cinit CODE >4000:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+26 cinit CODE >4001:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+27 cinit CODE >4002:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+28 cinit CODE >4003:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+2B cinit CODE >4009:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+2B cinit CODE >4011:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+2C cinit CODE >4012:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+2D cinit CODE >4013:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
 4 intentry CODE >117:E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 6 intentry CODE >122:E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 D89 text39 CODE >999:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
@@ -1019,29 +1019,29 @@ FFF text10 CODE >375:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 413 text5 CODE >828:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 413 text5 CODE >830:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 415 text5 CODE >831:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-165C text4 CODE >186:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-165C text4 CODE >187:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-165F text4 CODE >188:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-1661 text4 CODE >191:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-1664 text4 CODE >193:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-1665 text4 CODE >194:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-1667 text4 CODE >196:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7F7 text3 CODE >197:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7F7 text3 CODE >198:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7FA text3 CODE >202:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7FD text3 CODE >203:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7FF text3 CODE >204:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-196 text2 CODE >167:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-196 text2 CODE >168:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-198 text2 CODE >171:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-199 text2 CODE >172:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-19A text2 CODE >173:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-19B text2 CODE >174:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-19C text2 CODE >177:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-19D text2 CODE >179:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-2DD text2 CODE >181:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-2E4 text2 CODE >183:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-2E6 text2 CODE >184:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+165C text4 CODE >189:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+165C text4 CODE >190:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+165E text4 CODE >191:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1661 text4 CODE >194:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1664 text4 CODE >196:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1665 text4 CODE >197:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1667 text4 CODE >199:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+7F7 text3 CODE >200:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+7F7 text3 CODE >201:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+7FA text3 CODE >205:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+7FD text3 CODE >206:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+7FF text3 CODE >207:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+196 text2 CODE >170:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+196 text2 CODE >171:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+198 text2 CODE >174:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+199 text2 CODE >175:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+19A text2 CODE >176:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+19B text2 CODE >177:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+19C text2 CODE >180:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+19D text2 CODE >182:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+2DD text2 CODE >184:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+2E4 text2 CODE >186:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+2E6 text2 CODE >187:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 52D text1 CODE >75:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 52D text1 CODE >76:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 52F text1 CODE >77:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
@@ -1080,47 +1080,47 @@ FFF text10 CODE >375:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 5F5 text1 CODE >141:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 5F7 text1 CODE >142:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 5FE text1 CODE >143:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-601 text1 CODE >144:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-604 text1 CODE >145:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-607 text1 CODE >146:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-60A text1 CODE >147:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-60D text1 CODE >148:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-610 text1 CODE >149:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-613 text1 CODE >150:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-617 text1 CODE >157:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-617 text1 CODE >162:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-619 text1 CODE >163:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-61A text1 CODE >164:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-61B text1 CODE >165:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+601 text1 CODE >145:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+604 text1 CODE >146:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+607 text1 CODE >147:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+60A text1 CODE >148:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+60D text1 CODE >149:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+610 text1 CODE >151:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+612 text1 CODE >152:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+617 text1 CODE >160:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+617 text1 CODE >165:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+619 text1 CODE >166:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+61A text1 CODE >167:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+61B text1 CODE >168:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 819 maintext CODE >32:E:\Smart-Knob\pic16f1455_firmware\main.c
 819 maintext CODE >35:E:\Smart-Knob\pic16f1455_firmware\main.c
 81C maintext CODE >37:E:\Smart-Knob\pic16f1455_firmware\main.c
 829 maintext CODE >39:E:\Smart-Knob\pic16f1455_firmware\main.c
 82C maintext CODE >41:E:\Smart-Knob\pic16f1455_firmware\main.c
 82F maintext CODE >44:E:\Smart-Knob\pic16f1455_firmware\main.c
-831 maintext CODE >48:E:\Smart-Knob\pic16f1455_firmware\main.c
-833 maintext CODE >49:E:\Smart-Knob\pic16f1455_firmware\main.c
-836 maintext CODE >50:E:\Smart-Knob\pic16f1455_firmware\main.c
-838 maintext CODE >65:E:\Smart-Knob\pic16f1455_firmware\main.c
-83B maintext CODE >71:E:\Smart-Knob\pic16f1455_firmware\main.c
-83E maintext CODE >71:E:\Smart-Knob\pic16f1455_firmware\main.c
-843 maintext CODE >75:E:\Smart-Knob\pic16f1455_firmware\main.c
-843 maintext CODE >81:E:\Smart-Knob\pic16f1455_firmware\main.c
-849 maintext CODE >88:E:\Smart-Knob\pic16f1455_firmware\main.c
-1668 clrtext CODE >3954:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1668 clrtext CODE >3955:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1669 clrtext CODE >3956:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1669 clrtext CODE >3957:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-166A clrtext CODE >3958:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-166B clrtext CODE >3959:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-166C clrtext CODE >3960:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-166D clrtext CODE >3961:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-166E clrtext CODE >3962:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-166F clrtext CODE >3963:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1670 clrtext CODE >3964:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1671 clrtext CODE >3965:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1672 clrtext CODE >3966:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
-1673 clrtext CODE >3967:C:\Users\Dutu\AppData\Local\Temp\xcAsoos.s
+831 maintext CODE >62:E:\Smart-Knob\pic16f1455_firmware\main.c
+834 maintext CODE >68:E:\Smart-Knob\pic16f1455_firmware\main.c
+837 maintext CODE >68:E:\Smart-Knob\pic16f1455_firmware\main.c
+83C maintext CODE >72:E:\Smart-Knob\pic16f1455_firmware\main.c
+83C maintext CODE >78:E:\Smart-Knob\pic16f1455_firmware\main.c
+842 maintext CODE >85:E:\Smart-Knob\pic16f1455_firmware\main.c
+845 maintext CODE >86:E:\Smart-Knob\pic16f1455_firmware\main.c
+847 maintext CODE >87:E:\Smart-Knob\pic16f1455_firmware\main.c
+84A maintext CODE >88:E:\Smart-Knob\pic16f1455_firmware\main.c
+1668 clrtext CODE >3954:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1668 clrtext CODE >3955:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1669 clrtext CODE >3956:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1669 clrtext CODE >3957:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+166A clrtext CODE >3958:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+166B clrtext CODE >3959:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+166C clrtext CODE >3960:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+166D clrtext CODE >3961:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+166E clrtext CODE >3962:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+166F clrtext CODE >3963:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1670 clrtext CODE >3964:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1671 clrtext CODE >3965:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1672 clrtext CODE >3966:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+1673 clrtext CODE >3967:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1160,11 +1160,11 @@ _UEIR E93 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.product
 _UEP0 E98 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _UEP1 E99 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _WCOL 10AF 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-___sp 0 0 STACK 2 stack C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
+___sp 0 0 STACK 2 stack C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
 _main 1032 0 CODE 0 maintext dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _pDst D1 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 btemp 7E 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-start 10 0 CODE 0 init C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
+start 10 0 CODE 0 init C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
 __end_of_USBCheckHIDRequest A5A 0 CODE 0 text23 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBTransferOnePacket 1B12 0 CODE 0 text39 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hstringtext10 0 0 ABS 0 stringtext10 -
@@ -1178,12 +1178,12 @@ _UEP0bits E98 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.pro
 APP_LEDUpdateUSBStatus@ledCount BD 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _CtrlTrfData 68 0 ABS 1 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_LED_Enable 2EAA 0 CODE 0 text25 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
 _pBDTEntryIn B0 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 wtemp0 7E 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBCheckHIDRequest 82C 0 CODE 0 text23 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1212,8 +1212,8 @@ _USBCtrlTrfRxService 1D58 0 CODE 0 text34 dist/LPCUSBDK_16F1455/production\pic16
 USBStdFeatureReqHandler@pUEP E1 0 BANK1 1 cstackBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBCtrlTrfRxService@byteToRead 75 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_BUTTON_Enable 1032 0 CODE 0 text26 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-___stackhi 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
-___stacklo 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
+___stackhi 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+___stacklo 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
 __end_of_USBCtrlTrfOutHandler FEE 0 CODE 0 text33 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBBusIsSuspended CF 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _LED_On 2E22 0 CODE 0 text28 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1249,7 +1249,7 @@ _TRISC1 471 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.produ
 _TRISC2 472 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _TRISC3 473 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBEnableEndpoint 2EF4 0 CODE 0 text31 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
+___int_sp 0 0 STACK 2 stack C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
 _UIEbits E92 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _UIRbits E90 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hbank0 0 0 ABS 0 bank0 -
@@ -1443,7 +1443,7 @@ __end_of_USBStdGetDscHandler 1A06 0 CODE 0 text20 dist/LPCUSBDK_16F1455/producti
 __Lintentry 8 0 CODE 0 intentry -
 __end_of_USBCtrlTrfSetupHandler 1240 0 CODE 0 text13 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _last_DSP_OUT BF 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
 _USBEnableEndpoint 2EAA 0 CODE 0 text31 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
 __LbssBANK2 0 0 ABS 0 bssBANK2 -
@@ -1603,8 +1603,8 @@ __Hstringtext6 0 0 ABS 0 stringtext6 -
 __Hstringtext7 0 0 ABS 0 stringtext7 -
 __Hstringtext8 0 0 ABS 0 stringtext8 -
 __Hstringtext9 0 0 ABS 0 stringtext9 -
-___heap_hi 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
-___heap_lo 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsoos.o
+___heap_hi 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+___heap_lo 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
 _last_LED_OUT 1B4 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBStdSetCfgHandler 1A06 0 CODE 0 text17 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of__initialization 56 0 CODE 0 cinit dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o

@@ -23,5 +23,8 @@
     <ClInclude Include="libusb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ExampleImageVec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

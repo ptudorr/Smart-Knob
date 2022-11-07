@@ -300,10 +300,13 @@ void cb_LED_OUT(struct libusb_transfer* transfer)
 
 }
 
+
+#include "ExampleImageVec.h"
+int nrl=0, nrc=0;
 void cb_DSP_OUT(struct libusb_transfer* transfer)
 {
 	nr_dsp_out++;
-	if (ra == 1) { r++; if (r == 0xff) { ra = 0;ba = -1; } }
+	/*if (ra == 1) { r++; if (r == 0xff) { ra = 0;ba = -1; } }
 	else if (ba == -1) { b--; if (b == 0x00) { ga = 1;ba = 0; } }
 	else if (ga == 1) { g++; if (g == 0xff) { ra = -1;ga = 0; } }
 	else if (ra == -1) { r--; if (r == 0x00) { ra = 0;ba = 1; } }
@@ -312,12 +315,22 @@ void cb_DSP_OUT(struct libusb_transfer* transfer)
 
 	for (int i = 0;i < 32;i++) {
 		crcol = ((r << 8) & 0xf800) | ((g << 3) & 0x07E0) | (b >> 3);
-		buf_dsp[2 * i] = /*0xff & crcol*/0x1c;
-		buf_dsp[2 * i + 1] = /*0xff & (crcol>>8)*/0x1c;
+		buf_dsp[2 * i] = 0xff & crcol;
+		buf_dsp[2 * i + 1] = 0xff & (crcol>>8);
+	}*/
+	for (int i = 0;i < 32;i++) {
+		buf_dsp[2 * i] = 0xff  /* & floare_soare[64 * nrl + 32 * nrc + i] */ ;
+		buf_dsp[2 * i + 1] = 0xff /*& (floare_soare[64 * nrl + 32 * nrc + i] >> 8)*/;
 	}
-	for (int i = 0;i < 64;i++) 
-		buf_dsp[i] = i;
-
+	if (nrc == 0) {
+		nrc++;
+	}
+	else {
+		nrc = 0;
+		nrl++;
+		if (nrl == 64)nrl = 0;
+	}
+	
 	libusb_submit_transfer(dsp_dsp_out);
 
 }
@@ -346,7 +359,8 @@ void start_DSP_OUT(libusb_device_handle* devh, uint8_t USB_ENDPOINT_OUT) {
 	libusb_fill_interrupt_transfer(dsp_dsp_out, devh, USB_ENDPOINT_OUT,
 		buf_dsp, 64,  // Note: in_buffer is where input data written.
 		cb_DSP_OUT, NULL, 0); // no user data
-	int r = libusb_submit_transfer(dsp_dsp_out);
+	//int r = libusb_submit_transfer(dsp_dsp_out);
+	cb_DSP_OUT(dsp_dsp_out);
 }
 
 void start_HAP_OUT(libusb_device_handle* devh, uint8_t USB_ENDPOINT_OUT) {

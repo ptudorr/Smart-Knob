@@ -27,25 +27,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "996
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 996: extern volatile TRISCbits_t TRISCbits __attribute__((address(0x08E)));
 [v _TRISCbits `VS62 ~T0 @X0 0 e@142 ]
-"1798
-[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1798:     struct {
-[s S101 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S101 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
-"1797
-[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1797: typedef union {
-[u S100 `S101 1 ]
-[n S100 . . ]
-"1807
-[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1807: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
-[v _LATCbits `VS100 ~T0 @X0 0 e@270 ]
-"67 ./include/spi.h
-[; ;./include/spi.h: 67: void spiTask(void);
-[v _spiTask `(v ~T0 @X0 0 ef ]
 "303 ./include/usb/usb_device.h
 [; ;./include/usb/usb_device.h: 303: void USBDeviceTasks(void);
 [v _USBDeviceTasks `(v ~T0 @X0 0 ef ]
-"71 main.c
-[; ;main.c: 71:         if( USBDeviceState < CONFIGURED_STATE )
+"68 main.c
+[; ;main.c: 68:         if( USBDeviceState < CONFIGURED_STATE )
 [c E2485 0 1 2 4 8 16 32 .. ]
 [n E2485 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
 "2050 ./include/usb/usb_device.h
@@ -65,6 +51,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "150 ./include/app_device_joystick.h
 [; ;./include/app_device_joystick.h: 150: void APP_DeviceJoystickTasks(void);
 [v _APP_DeviceJoystickTasks `(v ~T0 @X0 0 ef ]
+"1798 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1798:     struct {
+[s S101 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S101 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
+"1797
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1797: typedef union {
+[u S100 `S101 1 ]
+[n S100 . . ]
+"1807
+[; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1807: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
+[v _LATCbits `VS100 ~T0 @X0 0 e@270 ]
+"67 ./include/spi.h
+[; ;./include/spi.h: 67: void spiTask(void);
+[v _spiTask `(v ~T0 @X0 0 ef ]
 "55 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -520,54 +520,54 @@ Version 4.0 HI-TECH Software Intermediate Code
 "47
 [; ;main.c: 47:     {
 {
-"48
-[; ;main.c: 48:         LATCbits.LATC4 = 0;
-[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-"49
-[; ;main.c: 49:         spiTask();
-[e ( _spiTask ..  ]
-"50
-[; ;main.c: 50:         LATCbits.LATC4 = 1;
-[e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-"65
-[; ;main.c: 65:             USBDeviceTasks();
+"62
+[; ;main.c: 62:             USBDeviceTasks();
 [e ( _USBDeviceTasks ..  ]
-"71
-[; ;main.c: 71:         if( USBDeviceState < CONFIGURED_STATE )
+"68
+[; ;main.c: 68:         if( USBDeviceState < CONFIGURED_STATE )
 [e $ ! < -> _USBDeviceState `ui -> . `E2485 6 `ui 366  ]
-"72
-[; ;main.c: 72:         {
+"69
+[; ;main.c: 69:         {
 {
-"74
-[; ;main.c: 74:             continue;
+"71
+[; ;main.c: 71:             continue;
 [e $U 363  ]
-"75
-[; ;main.c: 75:         }
+"72
+[; ;main.c: 72:         }
 }
 [e :U 366 ]
-"81
-[; ;main.c: 81:         if( UCONbits.SUSPND == 1 )
+"78
+[; ;main.c: 78:         if( UCONbits.SUSPND == 1 )
 [e $ ! == -> . . _UCONbits 0 1 `i -> 1 `i 367  ]
-"82
-[; ;main.c: 82:         {
+"79
+[; ;main.c: 79:         {
 {
-"84
-[; ;main.c: 84:             continue;
+"81
+[; ;main.c: 81:             continue;
 [e $U 363  ]
-"85
-[; ;main.c: 85:         }
+"82
+[; ;main.c: 82:         }
 }
 [e :U 367 ]
-"88
-[; ;main.c: 88:         APP_DeviceJoystickTasks();
+"85
+[; ;main.c: 85:         APP_DeviceJoystickTasks();
 [e ( _APP_DeviceJoystickTasks ..  ]
-"93
-[; ;main.c: 93:     }
+"86
+[; ;main.c: 86:         LATCbits.LATC4 = 0;
+[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
+"87
+[; ;main.c: 87:         spiTask();
+[e ( _spiTask ..  ]
+"88
+[; ;main.c: 88:         LATCbits.LATC4 = 1;
+[e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
+"92
+[; ;main.c: 92:     }
 }
 [e :U 363 ]
 [e $U 364  ]
 [e :U 365 ]
-"94
-[; ;main.c: 94: }
+"93
+[; ;main.c: 93: }
 [e :UE 362 ]
 }
