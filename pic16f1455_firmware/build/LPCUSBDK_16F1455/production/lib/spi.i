@@ -3821,7 +3821,7 @@ extern __bank0 __bit __timeout;
 # 1 "lib/spi.c" 2
 
 # 1 ".\\include/spi.h" 1
-# 24 ".\\include/spi.h"
+# 25 ".\\include/spi.h"
 uint8_t TESTB,REGT;
 
 extern uint8_t luminosity;
@@ -4869,6 +4869,9 @@ void spiTask(void){
             errors_ctr2_to_PIC = SSPBUF;
 
 
+            if(errors_ctr2_to_PIC & 0x01){
+                pkt_requests = 0x0E;
+            }
             if(pkt_requests & 0x01){
                 hap_IN_pkt_sent=0;
 
@@ -4888,8 +4891,9 @@ void spiTask(void){
 
 
                 SSPBUF = 0x00;
-            }else if(pkt_requests & 0x0E){
-                display_pkt_ready = 1;
+            }else if(pkt_requests == 0x0E){
+                if(!(errors_ctr2_to_PIC & 0x01))
+                    display_pkt_ready = 1;
 
                 MasterinitSPI();
                 _delay((unsigned long)((5)*(48000000/4000000.0)));

@@ -120,6 +120,9 @@ void spiTask(void){
             errors_ctr2_to_PIC = SSPBUF;
             //we have transmitted and received control bytes
             
+            if(errors_ctr2_to_PIC & DUMMY_OUT_TRANSFER){
+                pkt_requests = REQUEST_DISPLAY_OUT;
+            }
             if(pkt_requests & REQUEST_HAPTIC_IN){
                 hap_IN_pkt_sent=0;
                 
@@ -139,8 +142,9 @@ void spiTask(void){
                 //asm("BRA -2");              //else go back             
                 //asm("MOVF SSP1BUF,W");      //read the received byte into W
                 SSPBUF = 0x00;
-            }else if(pkt_requests & REQUEST_DISPLAY_OUT){
-                display_pkt_ready = 1;
+            }else if(pkt_requests == REQUEST_DISPLAY_OUT){
+                if(!(errors_ctr2_to_PIC & DUMMY_OUT_TRANSFER))
+                    display_pkt_ready = 1;
                 //__delay_us(10);
                 MasterinitSPI();
                 __delay_us(5);

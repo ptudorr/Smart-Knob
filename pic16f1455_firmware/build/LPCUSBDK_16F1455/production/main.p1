@@ -10,8 +10,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\builtins.h
 [v __delay `JF192 ~T0 @X0 0 e ]
 [p i __delay ]
-"70 ./include/spi.h
-[; ;./include/spi.h: 70: void SlaveinitSPI(void);
+"71 ./include/spi.h
+[; ;./include/spi.h: 71: void SlaveinitSPI(void);
 [v _SlaveinitSPI `(v ~T0 @X0 0 ef ]
 "199 ./include/usb/usb_device.h
 [; ;./include/usb/usb_device.h: 199: void USBDeviceInit(void);
@@ -62,8 +62,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1807
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 1807: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
 [v _LATCbits `VS100 ~T0 @X0 0 e@270 ]
-"67 ./include/spi.h
-[; ;./include/spi.h: 67: void spiTask(void);
+"68 ./include/spi.h
+[; ;./include/spi.h: 68: void spiTask(void);
 [v _spiTask `(v ~T0 @X0 0 ef ]
 "55 E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h
 [; ;E:/MPlab/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1455.h: 55: __asm("INDF0 equ 00h");
@@ -485,8 +485,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "99
 [; ;./include/app_device_joystick.h: 99:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
 [v _display_output `uc ~T0 @X0 -> 64 `i e@8624 ]
-"24 ./include/spi.h
-[; ;./include/spi.h: 24: uint8_t TESTB,REGT;
+"25 ./include/spi.h
+[; ;./include/spi.h: 25: uint8_t TESTB,REGT;
 [v _TESTB `uc ~T0 @X0 1 e ]
 [v _REGT `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]

@@ -24,6 +24,7 @@ extern uint8_t errors_ctr2_to_PIC;//second control byte to send
 extern uint8_t haptic_IN_buffer[HAPTIC_IN_BUFFER_SIZE];
 
 void USB();
+void initializeUSB();
 
 
 

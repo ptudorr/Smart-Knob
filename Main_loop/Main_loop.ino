@@ -66,6 +66,7 @@ void setup() {
   #endif
   initPins();
   initializeDisplay();
+  initializeUSB();
   action = 0;
   Serial.begin(500000);
 }

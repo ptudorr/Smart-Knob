@@ -4822,7 +4822,7 @@ void APP_LEDUpdateUSBStatus(void);
 # 28 "lib/app_device_joystick.c" 2
 
 # 1 ".\\include/spi.h" 1
-# 24 ".\\include/spi.h"
+# 25 ".\\include/spi.h"
 uint8_t TESTB,REGT;
 
 extern uint8_t luminosity;

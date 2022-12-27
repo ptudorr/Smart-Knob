@@ -180,7 +180,7 @@ LED_D3 3
 BUTTON_NONE 0
 BUTTON_S1 1
 ]
-"196 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+"200 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [e E2208 . `uc
 SAMPLE_MIDDLE 0
 SAMPLE_END 128
@@ -189,7 +189,7 @@ SAMPLE_END 128
 IDLE_TO_ACTIVE 0
 ACTIVE_TO_IDLE 64
 ]
-"197
+"201
 [e E2199 . `uc
 MASTER_OSC_DIV4 32
 MASTER_OSC_DIV16 33
@@ -227,11 +227,11 @@ IDLE_LOW 0
 [v _LED_Enable LED_Enable `(v  1 e 1 0 ]
 "75 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _spiTask spiTask `(v  1 e 1 0 ]
-"170
+"174
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
-"189
+"193
 [v _MasterinitSPI MasterinitSPI `(v  1 e 1 0 ]
-"200
+"204
 [v _SlaveinitSPI SlaveinitSPI `(v  1 e 1 0 ]
 "85 E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -674,22 +674,22 @@ IDLE_LOW 0
 "75 E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 [v _spiTask spiTask `(v  1 e 1 0 ]
 {
-"168
+"172
 } 0
-"170
+"174
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
 {
-"187
+"191
 } 0
-"200
+"204
 [v _SlaveinitSPI SlaveinitSPI `(v  1 e 1 0 ]
 {
-"207
+"211
 } 0
-"189
+"193
 [v _MasterinitSPI MasterinitSPI `(v  1 e 1 0 ]
 {
-"199
+"203
 } 0
 "481 E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 [v _USBDeviceTasks USBDeviceTasks `(v  1 e 1 0 ]

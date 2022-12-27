@@ -449,8 +449,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "99
 [; ;.\include/app_device_joystick.h: 99:         DISPLAY_CONTROLS display_output __attribute__((address(0x21B0)));
 [v _display_output `uc ~T0 @X0 -> 64 `i e@8624 ]
-"24 .\include/spi.h
-[; ;.\include/spi.h: 24: uint8_t TESTB,REGT;
+"25 .\include/spi.h
+[; ;.\include/spi.h: 25: uint8_t TESTB,REGT;
 [v _TESTB `uc ~T0 @X0 1 e ]
 [v _REGT `uc ~T0 @X0 1 e ]
 "35 lib/app_device_joystick.c

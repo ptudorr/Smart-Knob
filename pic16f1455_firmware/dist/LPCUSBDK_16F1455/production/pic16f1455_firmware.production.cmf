@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+$C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
 idloc IDLOC 5 8000 8000 4 2 1
 reset_vec CODE 0 0 0 2 2 1
 end_init CODE 0 8 8 2 2 1
@@ -19,9 +19,9 @@ config CONFIG 4 8007 8007 2 2 1
 $dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 cinit CODE 0 A A 25 2 1
 idloc IDLOC 5 8000 8000 4 2 1
-text1 CODE 0 52D 52D EF 2 1
+text1 CODE 0 52D 52D FA 2 1
 text2 CODE 0 196 196 151 2 1
-text3 CODE 0 7F7 7F7 9 2 1
+text3 CODE 0 1653 1653 9 2 1
 text4 CODE 0 165C 165C C 2 1
 text5 CODE 0 2E7 2E7 12F 2 1
 text6 CODE 0 16CE 16CE 21 2 1
@@ -36,7 +36,7 @@ text14 CODE 0 E10 E10 9C 2 1
 text15 CODE 0 974 974 5F 2 1
 text16 CODE 0 C02 C02 7C 2 1
 text17 CODE 0 D03 D03 86 2 1
-text18 CODE 0 6F5 6F5 CA 2 1
+text18 CODE 0 700 700 CA 2 1
 text19 CODE 0 A36 A36 6D 2 1
 text20 CODE 0 C7E C7E 85 2 1
 text21 CODE 0 2F 2F 167 2 1
@@ -44,21 +44,21 @@ text22 CODE 0 892 892 46 2 1
 text23 CODE 0 416 416 117 2 1
 text24 CODE 0 16AD 16AD 21 2 1
 text25 CODE 0 1733 1733 22 2 1
-text26 CODE 0 807 807 12 2 1
+text26 CODE 0 805 805 12 2 1
 text27 CODE 0 9D3 9D3 63 2 1
 text28 CODE 0 1711 1711 22 2 1
 text29 CODE 0 16EF 16EF 22 2 1
 text30 CODE 0 17A5 17A5 2D 2 1
 text31 CODE 0 1755 1755 25 2 1
 text32 CODE 0 84F 84F 43 2 1
-text33 CODE 0 7BF 7BF 38 2 1
+text33 CODE 0 817 817 38 2 1
 text34 CODE 0 EAC EAC AA 2 1
 text35 CODE 0 AA3 AA3 72 2 1
 text36 CODE 0 B8A B8A 78 2 1
 text37 CODE 0 B15 B15 75 2 1
-text38 CODE 0 61C 61C D9 2 1
+text38 CODE 0 627 627 D9 2 1
 text39 CODE 0 D89 D89 87 2 1
-maintext CODE 0 819 819 36 2 1
+maintext CODE 0 7CA 7CA 36 2 1
 cstackCOMMON COMMON 1 70 70 E 1 1
 cstackBANK1 BANK1 1 D9 D9 17 1 1
 stringtext1 STRCODE 0 1860 1860 6 2 1
@@ -101,12 +101,12 @@ BANK7 3A0-3EF 1
 BANK8 420-46F 1
 BANK9 4A0-4EF 1
 CONST 2-3 2
-CONST 800-806 2
-CONST 10F4-165B 2
+CONST 800-804 2
+CONST 10F4-1652 2
 CONST 186C-1FFF 2
 ENTRY 2-3 2
-ENTRY 800-806 2
-ENTRY 10F4-165B 2
+ENTRY 800-804 2
+ENTRY 10F4-1652 2
 ENTRY 186C-1FFF 2
 SFR10 500-51F 1
 SFR11 580-59F 1
@@ -131,8 +131,8 @@ SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
 CODE 2-3 2
-CODE 800-806 2
-CODE 10F4-165B 2
+CODE 800-804 2
+CODE 10F4-1652 2
 CODE 186C-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -149,12 +149,12 @@ BANK11 5A0-5EF 1
 BANK12 620-64F 1
 BIGRAM 2000-23EF 1
 STRCODE 2-3 2
-STRCODE 800-806 2
-STRCODE 10F4-165B 2
+STRCODE 800-804 2
+STRCODE 10F4-1652 2
 STRCODE 186C-1FFF 2
 STRING 2-3 2
-STRING 800-806 2
-STRING 10F4-165B 2
+STRING 800-804 2
+STRING 10F4-1652 2
 STRING 186C-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -170,39 +170,39 @@ STRING 186C-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-A cinit CODE >3797:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-A cinit CODE >3800:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-A cinit CODE >3971:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-B cinit CODE >3972:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-C cinit CODE >3973:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-D cinit CODE >3974:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-E cinit CODE >3975:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-F cinit CODE >3976:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-10 cinit CODE >3977:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-11 cinit CODE >3978:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-12 cinit CODE >3979:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-15 cinit CODE >3983:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-16 cinit CODE >3984:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-17 cinit CODE >3985:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-18 cinit CODE >3986:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-19 cinit CODE >3987:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1A cinit CODE >3988:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1B cinit CODE >3989:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1C cinit CODE >3990:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1D cinit CODE >3991:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-20 cinit CODE >3995:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-21 cinit CODE >3996:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-22 cinit CODE >3997:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-23 cinit CODE >3998:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-24 cinit CODE >3999:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-25 cinit CODE >4000:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-26 cinit CODE >4001:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-27 cinit CODE >4002:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-28 cinit CODE >4003:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-2B cinit CODE >4009:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-2B cinit CODE >4011:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-2C cinit CODE >4012:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-2D cinit CODE >4013:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+A cinit CODE >3797:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+A cinit CODE >3800:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+A cinit CODE >3971:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+B cinit CODE >3972:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+C cinit CODE >3973:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+D cinit CODE >3974:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+E cinit CODE >3975:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+F cinit CODE >3976:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+10 cinit CODE >3977:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+11 cinit CODE >3978:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+12 cinit CODE >3979:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+15 cinit CODE >3983:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+16 cinit CODE >3984:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+17 cinit CODE >3985:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+18 cinit CODE >3986:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+19 cinit CODE >3987:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1A cinit CODE >3988:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1B cinit CODE >3989:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1C cinit CODE >3990:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1D cinit CODE >3991:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+20 cinit CODE >3995:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+21 cinit CODE >3996:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+22 cinit CODE >3997:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+23 cinit CODE >3998:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+24 cinit CODE >3999:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+25 cinit CODE >4000:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+26 cinit CODE >4001:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+27 cinit CODE >4002:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+28 cinit CODE >4003:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+2B cinit CODE >4009:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+2B cinit CODE >4011:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+2C cinit CODE >4012:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+2D cinit CODE >4013:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
 4 intentry CODE >117:E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 6 intentry CODE >122:E:\Smart-Knob\pic16f1455_firmware\lib/system.c
 D89 text39 CODE >999:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
@@ -223,30 +223,30 @@ DF2 text39 CODE >1044:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 DF3 text39 CODE >1048:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 E0B text39 CODE >1050:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 E0F text39 CODE >1051:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-61C text38 CODE >94:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-61C text38 CODE >99:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-61F text38 CODE >99:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-624 text38 CODE >103:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-624 text38 CODE >109:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-62A text38 CODE >116:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-63F text38 CODE >120:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-648 text38 CODE >121:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-651 text38 CODE >122:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-652 text38 CODE >123:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-658 text38 CODE >124:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-65E text38 CODE >125:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-666 text38 CODE >126:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-669 text38 CODE >128:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-67C text38 CODE >132:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-691 text38 CODE >133:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-692 text38 CODE >134:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-6A4 text38 CODE >136:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-6B9 text38 CODE >137:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-6BA text38 CODE >138:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-6CC text38 CODE >140:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-6E1 text38 CODE >141:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-6E2 text38 CODE >142:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
-6F4 text38 CODE >145:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+627 text38 CODE >94:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+627 text38 CODE >99:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+62A text38 CODE >99:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+62F text38 CODE >103:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+62F text38 CODE >109:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+635 text38 CODE >116:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+64A text38 CODE >120:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+653 text38 CODE >121:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+65C text38 CODE >122:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+65D text38 CODE >123:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+663 text38 CODE >124:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+669 text38 CODE >125:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+671 text38 CODE >126:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+674 text38 CODE >128:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+687 text38 CODE >132:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+69C text38 CODE >133:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+69D text38 CODE >134:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+6AF text38 CODE >136:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+6C4 text38 CODE >137:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+6C5 text38 CODE >138:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+6D7 text38 CODE >140:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+6EC text38 CODE >141:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+6ED text38 CODE >142:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
+6FF text38 CODE >145:E:\Smart-Knob\pic16f1455_firmware\lib/app_device_joystick.c
 B15 text37 CODE >1775:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 B15 text37 CODE >1781:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 B19 text37 CODE >1782:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
@@ -350,19 +350,19 @@ F4A text34 CODE >1931:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 F4C text34 CODE >1945:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 F52 text34 CODE >1947:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 F55 text34 CODE >1951:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7BF text33 CODE >2545:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7BF text33 CODE >2547:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7C6 text33 CODE >2549:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7C9 text33 CODE >2550:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7CA text33 CODE >2555:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7CB text33 CODE >2562:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7D0 text33 CODE >2564:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7DC text33 CODE >2565:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7E9 text33 CODE >2566:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7EF text33 CODE >2567:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7F4 text33 CODE >2568:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7F5 text33 CODE >2571:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-7F6 text33 CODE >2574:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+817 text33 CODE >2545:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+817 text33 CODE >2547:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+81E text33 CODE >2549:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+821 text33 CODE >2550:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+822 text33 CODE >2555:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+823 text33 CODE >2562:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+828 text33 CODE >2564:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+834 text33 CODE >2565:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+841 text33 CODE >2566:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+847 text33 CODE >2567:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+84C text33 CODE >2568:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+84D text33 CODE >2571:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
+84E text33 CODE >2574:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 84F text32 CODE >1547:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 850 text32 CODE >1553:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 854 text32 CODE >1554:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
@@ -462,13 +462,13 @@ A28 text27 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/app_led_usb_status.c
 A2D text27 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/app_led_usb_status.c
 A30 text27 CODE >98:E:\Smart-Knob\pic16f1455_firmware\lib/app_led_usb_status.c
 A35 text27 CODE >99:E:\Smart-Knob\pic16f1455_firmware\lib/app_led_usb_status.c
-807 text26 CODE >86:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
-808 text26 CODE >88:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
-808 text26 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
-80D text26 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
-812 text26 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
-815 text26 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
-818 text26 CODE >96:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
+805 text26 CODE >86:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
+806 text26 CODE >88:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
+806 text26 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
+80B text26 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
+810 text26 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
+813 text26 CODE >95:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
+816 text26 CODE >96:E:\Smart-Knob\pic16f1455_firmware\lib/buttons.c
 1733 text25 CODE >220:E:\Smart-Knob\pic16f1455_firmware\lib/leds.c
 1734 text25 CODE >222:E:\Smart-Knob\pic16f1455_firmware\lib/leds.c
 1735 text25 CODE >224:E:\Smart-Knob\pic16f1455_firmware\lib/leds.c
@@ -684,33 +684,33 @@ A99 text19 CODE >2187:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 A9D text19 CODE >2188:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 A9E text19 CODE >2189:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 AA2 text19 CODE >2191:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-6F5 text18 CODE >4:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-6F5 text18 CODE >6:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-6F9 text18 CODE >13:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-700 text18 CODE >14:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-706 text18 CODE >15:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-718 text18 CODE >16:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-71B text18 CODE >16:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-71D text18 CODE >16:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-722 text18 CODE >17:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-72E text18 CODE >18:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-73A text18 CODE >19:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-74C text18 CODE >20:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-75E text18 CODE >21:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-761 text18 CODE >21:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-763 text18 CODE >21:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-768 text18 CODE >22:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-774 text18 CODE >23:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-786 text18 CODE >24:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-789 text18 CODE >24:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-78B text18 CODE >24:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-790 text18 CODE >31:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-795 text18 CODE >31:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-79D text18 CODE >32:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-7A1 text18 CODE >33:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-7A5 text18 CODE >34:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-7A9 text18 CODE >86:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
-7BE text18 CODE >90:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+700 text18 CODE >4:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+700 text18 CODE >6:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+704 text18 CODE >13:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+70B text18 CODE >14:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+711 text18 CODE >15:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+723 text18 CODE >16:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+726 text18 CODE >16:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+728 text18 CODE >16:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+72D text18 CODE >17:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+739 text18 CODE >18:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+745 text18 CODE >19:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+757 text18 CODE >20:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+769 text18 CODE >21:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+76C text18 CODE >21:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+76E text18 CODE >21:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+773 text18 CODE >22:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+77F text18 CODE >23:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+791 text18 CODE >24:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+794 text18 CODE >24:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+796 text18 CODE >24:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+79B text18 CODE >31:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+7A0 text18 CODE >31:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+7A8 text18 CODE >32:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+7AC text18 CODE >33:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+7B0 text18 CODE >34:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+7B4 text18 CODE >86:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
+7C9 text18 CODE >90:E:\Atmel Studio\Comp-istall\pic\sources\c99\common\memset.c
 D03 text17 CODE >1972:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 D03 text17 CODE >1977:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 D05 text17 CODE >1980:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
@@ -1019,29 +1019,29 @@ FFF text10 CODE >375:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 413 text5 CODE >828:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 413 text5 CODE >830:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 415 text5 CODE >831:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
-165C text4 CODE >189:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-165C text4 CODE >190:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-165E text4 CODE >191:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-1661 text4 CODE >194:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-1664 text4 CODE >196:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-1665 text4 CODE >197:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-1667 text4 CODE >199:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7F7 text3 CODE >200:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7F7 text3 CODE >201:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7FA text3 CODE >205:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7FD text3 CODE >206:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-7FF text3 CODE >207:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-196 text2 CODE >170:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-196 text2 CODE >171:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-198 text2 CODE >174:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-199 text2 CODE >175:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-19A text2 CODE >176:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-19B text2 CODE >177:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-19C text2 CODE >180:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-19D text2 CODE >182:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-2DD text2 CODE >184:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-2E4 text2 CODE >186:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-2E6 text2 CODE >187:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+165C text4 CODE >193:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+165C text4 CODE >194:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+165E text4 CODE >195:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1661 text4 CODE >198:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1664 text4 CODE >200:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1665 text4 CODE >201:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1667 text4 CODE >203:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1653 text3 CODE >204:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1653 text3 CODE >205:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1656 text3 CODE >209:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+1659 text3 CODE >210:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+165B text3 CODE >211:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+196 text2 CODE >174:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+196 text2 CODE >175:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+198 text2 CODE >178:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+199 text2 CODE >179:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+19A text2 CODE >180:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+19B text2 CODE >181:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+19C text2 CODE >184:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+19D text2 CODE >186:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+2DD text2 CODE >188:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+2E4 text2 CODE >190:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+2E6 text2 CODE >191:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 52D text1 CODE >75:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 52D text1 CODE >76:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 52F text1 CODE >77:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
@@ -1068,59 +1068,62 @@ FFF text10 CODE >375:E:\Smart-Knob\pic16f1455_firmware\lib/usb/usb_device.c
 5A1 text1 CODE >118:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 5A2 text1 CODE >120:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
 5A8 text1 CODE >123:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5AD text1 CODE >124:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5AF text1 CODE >128:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5B0 text1 CODE >129:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5B1 text1 CODE >130:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5B2 text1 CODE >131:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5B3 text1 CODE >132:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5B4 text1 CODE >134:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5B5 text1 CODE >135:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5D5 text1 CODE >136:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5F5 text1 CODE >141:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5F7 text1 CODE >142:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-5FE text1 CODE >143:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-601 text1 CODE >145:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-604 text1 CODE >146:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-607 text1 CODE >147:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-60A text1 CODE >148:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-60D text1 CODE >149:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-610 text1 CODE >151:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-612 text1 CODE >152:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-617 text1 CODE >160:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-617 text1 CODE >165:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-619 text1 CODE >166:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-61A text1 CODE >167:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-61B text1 CODE >168:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
-819 maintext CODE >32:E:\Smart-Knob\pic16f1455_firmware\main.c
-819 maintext CODE >35:E:\Smart-Knob\pic16f1455_firmware\main.c
-81C maintext CODE >37:E:\Smart-Knob\pic16f1455_firmware\main.c
-829 maintext CODE >39:E:\Smart-Knob\pic16f1455_firmware\main.c
-82C maintext CODE >41:E:\Smart-Knob\pic16f1455_firmware\main.c
-82F maintext CODE >44:E:\Smart-Knob\pic16f1455_firmware\main.c
-831 maintext CODE >62:E:\Smart-Knob\pic16f1455_firmware\main.c
-834 maintext CODE >68:E:\Smart-Knob\pic16f1455_firmware\main.c
-837 maintext CODE >68:E:\Smart-Knob\pic16f1455_firmware\main.c
-83C maintext CODE >72:E:\Smart-Knob\pic16f1455_firmware\main.c
-83C maintext CODE >78:E:\Smart-Knob\pic16f1455_firmware\main.c
-842 maintext CODE >85:E:\Smart-Knob\pic16f1455_firmware\main.c
-845 maintext CODE >86:E:\Smart-Knob\pic16f1455_firmware\main.c
-847 maintext CODE >87:E:\Smart-Knob\pic16f1455_firmware\main.c
-84A maintext CODE >88:E:\Smart-Knob\pic16f1455_firmware\main.c
-1668 clrtext CODE >3954:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1668 clrtext CODE >3955:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1669 clrtext CODE >3956:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1669 clrtext CODE >3957:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-166A clrtext CODE >3958:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-166B clrtext CODE >3959:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-166C clrtext CODE >3960:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-166D clrtext CODE >3961:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-166E clrtext CODE >3962:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-166F clrtext CODE >3963:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1670 clrtext CODE >3964:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1671 clrtext CODE >3965:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1672 clrtext CODE >3966:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
-1673 clrtext CODE >3967:C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.s
+5AC text1 CODE >124:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5B0 text1 CODE >126:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5B4 text1 CODE >127:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5B6 text1 CODE >131:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5B7 text1 CODE >132:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5B8 text1 CODE >133:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5B9 text1 CODE >134:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5BA text1 CODE >135:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5BB text1 CODE >137:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5BC text1 CODE >138:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5DC text1 CODE >139:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5FC text1 CODE >144:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+5FE text1 CODE >145:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+605 text1 CODE >146:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+609 text1 CODE >147:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+60C text1 CODE >149:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+60F text1 CODE >150:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+612 text1 CODE >151:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+615 text1 CODE >152:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+618 text1 CODE >153:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+61B text1 CODE >155:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+61D text1 CODE >156:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+622 text1 CODE >164:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+622 text1 CODE >169:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+624 text1 CODE >170:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+625 text1 CODE >171:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+626 text1 CODE >172:E:\Smart-Knob\pic16f1455_firmware\lib/spi.c
+7CA maintext CODE >32:E:\Smart-Knob\pic16f1455_firmware\main.c
+7CA maintext CODE >35:E:\Smart-Knob\pic16f1455_firmware\main.c
+7CD maintext CODE >37:E:\Smart-Knob\pic16f1455_firmware\main.c
+7DA maintext CODE >39:E:\Smart-Knob\pic16f1455_firmware\main.c
+7DD maintext CODE >41:E:\Smart-Knob\pic16f1455_firmware\main.c
+7E0 maintext CODE >44:E:\Smart-Knob\pic16f1455_firmware\main.c
+7E2 maintext CODE >62:E:\Smart-Knob\pic16f1455_firmware\main.c
+7E5 maintext CODE >68:E:\Smart-Knob\pic16f1455_firmware\main.c
+7E8 maintext CODE >68:E:\Smart-Knob\pic16f1455_firmware\main.c
+7ED maintext CODE >72:E:\Smart-Knob\pic16f1455_firmware\main.c
+7ED maintext CODE >78:E:\Smart-Knob\pic16f1455_firmware\main.c
+7F3 maintext CODE >85:E:\Smart-Knob\pic16f1455_firmware\main.c
+7F6 maintext CODE >86:E:\Smart-Knob\pic16f1455_firmware\main.c
+7F8 maintext CODE >87:E:\Smart-Knob\pic16f1455_firmware\main.c
+7FB maintext CODE >88:E:\Smart-Knob\pic16f1455_firmware\main.c
+1668 clrtext CODE >3954:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1668 clrtext CODE >3955:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1669 clrtext CODE >3956:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1669 clrtext CODE >3957:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+166A clrtext CODE >3958:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+166B clrtext CODE >3959:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+166C clrtext CODE >3960:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+166D clrtext CODE >3961:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+166E clrtext CODE >3962:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+166F clrtext CODE >3963:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1670 clrtext CODE >3964:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1671 clrtext CODE >3965:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1672 clrtext CODE >3966:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
+1673 clrtext CODE >3967:C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1148,10 +1151,10 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __end_of_USBStdSetCfgHandler 1B12 0 CODE 0 text17 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBEnableEndpoint@options 77 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_LED_On 2E66 0 CODE 0 text28 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_garbage 127 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_garbage 1BA 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _BF 10A0 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_SlaveinitSPI FEE 0 CODE 0 text3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_hap_IN_pkt_sent 12A 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_SlaveinitSPI 2CA6 0 CODE 0 text3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_hap_IN_pkt_sent 129 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hstrings 0 0 ABS 0 strings -
 _UCFG E91 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _UCON E8E 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1160,15 +1163,15 @@ _UEIR E93 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.product
 _UEP0 E98 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _UEP1 E99 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _WCOL 10AF 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-___sp 0 0 STACK 2 stack C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-_main 1032 0 CODE 0 maintext dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_pDst D1 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+___sp 0 0 STACK 2 stack C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+_main F94 0 CODE 0 maintext dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_pDst D2 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 btemp 7E 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-start 10 0 CODE 0 init C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+start 10 0 CODE 0 init C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
 __end_of_USBCheckHIDRequest A5A 0 CODE 0 text23 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBTransferOnePacket 1B12 0 CODE 0 text39 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hstringtext10 0 0 ABS 0 stringtext10 -
-_active_protocol 12F 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_active_protocol 12E 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBDeviceInit 1EAC 0 CODE 0 text10 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _pBDTEntryEP0OutNext C3 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBCtrlTrfInHandler@lastDTS 75 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1178,27 +1181,27 @@ _UEP0bits E98 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.pro
 APP_LEDUpdateUSBStatus@ledCount BD 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _CtrlTrfData 68 0 ABS 1 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_LED_Enable 2EAA 0 CODE 0 text25 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
 _pBDTEntryIn B0 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 wtemp0 7E 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBCheckHIDRequest 82C 0 CODE 0 text23 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 _DISPLAY_rpt 3070 0 STRCODE 0 stringtext8 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_controlTransferState D2 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_controlTransferState D3 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBCtrlTrfTxService 162A 0 CODE 0 text37 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hclrtext 0 0 ABS 0 clrtext -
 USBDeviceInit@i 74 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBDeviceInit@p 71 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _ANSELC 18E 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_idle_rate D6 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_LED_pkt_ready 12B 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_idle_rate 12F 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_LED_pkt_ready 12A 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBCtrlEPServiceComplete 1D58 0 CODE 0 text14 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__end_of_SlaveinitSPI 1000 0 CODE 0 text3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__end_of_SlaveinitSPI 2CB8 0 CODE 0 text3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 ?_USBTransferOnePacket 70 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBStdGetStatusHandler 1546 0 CODE 0 text19 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _SetupPkt 60 0 ABS 1 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1211,16 +1214,16 @@ __end_of_USBCtrlEPAllowStatusStage 162A 0 CODE 0 text35 dist/LPCUSBDK_16F1455/pr
 _USBCtrlTrfRxService 1D58 0 CODE 0 text34 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBStdFeatureReqHandler@pUEP E1 0 BANK1 1 cstackBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBCtrlTrfRxService@byteToRead 75 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__end_of_BUTTON_Enable 1032 0 CODE 0 text26 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-___stackhi 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-___stacklo 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-__end_of_USBCtrlTrfOutHandler FEE 0 CODE 0 text33 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBBusIsSuspended CF 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__end_of_BUTTON_Enable 102E 0 CODE 0 text26 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+___stackhi 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+___stacklo 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+__end_of_USBCtrlTrfOutHandler 109E 0 CODE 0 text33 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBBusIsSuspended D0 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _LED_On 2E22 0 CODE 0 text28 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_LED_Off 2E22 0 CODE 0 text29 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_LED_rpt 3038 0 STRCODE 0 stringtext6 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 memcpy@tmp 77 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBDeferOUTDataStagePackets C7 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBDeferOUTDataStagePackets C8 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _APP_DeviceJoystickInitialize 2F4A 0 CODE 0 text30 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Lstringtext10 0 0 ABS 0 stringtext10 -
 _haptic_in A0 0 ABS 1 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1231,8 +1234,8 @@ __end_of_USBCheckStdRequest 18FC 0 CODE 0 text16 dist/LPCUSBDK_16F1455/productio
 _display_output 21B0 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _device_dsc 309C 0 STRCODE 0 stringtext9 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_memcpy 3000 0 CODE 0 text12 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__end_of_memset F7E 0 CODE 0 text18 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBTicksSinceSuspendEnd C6 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__end_of_memset F94 0 CODE 0 text18 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBTicksSinceSuspendEnd C7 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_SYSTEM_Initialize 2D9C 0 CODE 0 text24 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBDeviceInit 2000 0 CODE 0 text10 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBStdGetDscHandler 18FC 0 CODE 0 text20 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1249,7 +1252,7 @@ _TRISC1 471 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.produ
 _TRISC2 472 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _TRISC3 473 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBEnableEndpoint 2EF4 0 CODE 0 text31 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+___int_sp 0 0 STACK 2 stack C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
 _UIEbits E92 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _UIRbits E90 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hbank0 0 0 ABS 0 bank0 -
@@ -1312,11 +1315,11 @@ __Hbank28 0 0 BANK28 1 bank28 -
 __Hbank29 0 0 BANK29 1 bank29 -
 __Hbank30 0 0 BANK30 1 bank30 -
 __Hbank31 0 0 BANK31 1 bank31 -
-_display_pkt_ready 12C 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_display_pkt_ready 12B 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hbigram 0 0 ABS 0 bigram -
 __Hmaintext 0 0 ABS 0 maintext -
 _USBCheckStdRequest 1804 0 CODE 0 text16 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__end_of_spiTask C38 0 CODE 0 text1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__end_of_spiTask C4E 0 CODE 0 text1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBIncrement1msInternalTimers 2D20 0 CODE 0 text9 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBStdFeatureReqHandler@p E4 0 BANK1 1 cstackBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hcommon 0 0 ABS 0 common -
@@ -1425,25 +1428,25 @@ __S0 186C 0 ABS 0 - -
 __S1 1BE 0 ABS 0 - -
 _APP_LEDUpdateUSBStatus 13A6 0 CODE 0 text27 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBWakeFromSuspend 2D9C 0 CODE 0 text6 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_APP_DeviceJoystickTasks C38 0 CODE 0 text38 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_APP_DeviceJoystickTasks C4E 0 CODE 0 text38 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBStdFeatureReqHandler 5E 0 CODE 0 text21 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_BothEP0OutUOWNsSet CD 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__end_of_APP_DeviceJoystickTasks DEA 0 CODE 0 text38 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_BothEP0OutUOWNsSet CE 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__end_of_APP_DeviceJoystickTasks E00 0 CODE 0 text38 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _UCONbits E8E 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBCtrlTrfRxService@i 74 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _SYS_InterruptHigh 8 0 CODE 0 intentry dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBStdFeatureReqHandler 32C 0 CODE 0 text21 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _SYSTEM_Initialize 2D5A 0 CODE 0 text24 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBAlternateInterface 1BB 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBDeviceState D5 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBDeviceState D6 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBDeviceTasks 5CE 0 CODE 0 text5 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_luminosity 1BA 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_luminosity 1B9 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_DISPLAY_rpt 309C 0 STRCODE 0 stringtext8 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBStdGetDscHandler 1A06 0 CODE 0 text20 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __end_of_USBCtrlTrfSetupHandler 1240 0 CODE 0 text13 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _last_DSP_OUT BF 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
 _USBEnableEndpoint 2EAA 0 CODE 0 text31 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
 __LbssBANK2 0 0 ABS 0 bssBANK2 -
@@ -1463,7 +1466,7 @@ _USBCtrlTrfInHandler 1714 0 CODE 0 text36 dist/LPCUSBDK_16F1455/production\pic16
 _PIE2bits 92 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _last_HAP_OUT 1B6 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _memcpy 2FA4 0 CODE 0 text12 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_memset DEA 0 CODE 0 text18 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_memset E00 0 CODE 0 text18 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBConfigureEndpoint@handle 76 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext10 1EAC 0 CODE 0 text10 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext11 1240 0 CODE 0 text11 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1473,7 +1476,7 @@ __ptext14 1C20 0 CODE 0 text14 dist/LPCUSBDK_16F1455/production\pic16f1455_firmw
 __ptext15 12E8 0 CODE 0 text15 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext16 1804 0 CODE 0 text16 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext17 1A06 0 CODE 0 text17 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__ptext18 DEA 0 CODE 0 text18 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__ptext18 E00 0 CODE 0 text18 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext19 146C 0 CODE 0 text19 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext20 18FC 0 CODE 0 text20 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext21 5E 0 CODE 0 text21 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1481,19 +1484,19 @@ __ptext22 1124 0 CODE 0 text22 dist/LPCUSBDK_16F1455/production\pic16f1455_firmw
 __ptext23 82C 0 CODE 0 text23 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext24 2D5A 0 CODE 0 text24 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext25 2E66 0 CODE 0 text25 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__ptext26 100E 0 CODE 0 text26 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__ptext26 100A 0 CODE 0 text26 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext27 13A6 0 CODE 0 text27 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext28 2E22 0 CODE 0 text28 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext29 2DDE 0 CODE 0 text29 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext30 2F4A 0 CODE 0 text30 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext31 2EAA 0 CODE 0 text31 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext32 109E 0 CODE 0 text32 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__ptext33 F7E 0 CODE 0 text33 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__ptext33 102E 0 CODE 0 text33 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext34 1D58 0 CODE 0 text34 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext35 1546 0 CODE 0 text35 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext36 1714 0 CODE 0 text36 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext37 162A 0 CODE 0 text37 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__ptext38 C38 0 CODE 0 text38 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__ptext38 C4E 0 CODE 0 text38 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext39 1B12 0 CODE 0 text39 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _leds_output 2130 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_configDescriptor1 20D2 0 STRCODE 0 stringtext3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1520,7 +1523,7 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-__pmaintext 1032 0 CODE 0 maintext dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__pmaintext F94 0 CODE 0 maintext dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Lbigram 0 0 ABS 0 bigram -
 __end_of_APP_DeviceJoystickInitialize 2FA4 0 CODE 0 text30 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USB_CD_Ptr 30D4 0 STRCODE 0 stringtext2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1532,13 +1535,13 @@ __Lconfig 0 0 CONFIG 4 config -
 _LATCbits 10E 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBTransferOnePacket 1C20 0 CODE 0 text39 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBDeviceInit@i_722 73 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_RemoteWakeup D0 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_RemoteWakeup D1 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _LED_Off 2DDE 0 CODE 0 text29 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _LED_rpt 3000 0 STRCODE 0 stringtext6 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBDeviceTasks 82C 0 CODE 0 text5 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _ep_data_out 1AC 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 LED_Enable@led 72 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_errors_ctr2_to_PIC 1B9 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_errors_ctr2_to_PIC C6 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBEnableEndpoint@p 7A 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USBConfigureEndpoint 1124 0 CODE 0 text32 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBCtrlEPAllowDataStage 12E8 0 CODE 0 text15 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1548,7 +1551,7 @@ __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
-_USBCtrlTrfOutHandler F7E 0 CODE 0 text33 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBCtrlTrfOutHandler 102E 0 CODE 0 text33 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __HcstackBANK1 0 0 ABS 0 cstackBANK1 -
 _PIR2bits 12 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Lend_init 10 0 CODE 0 end_init -
@@ -1558,23 +1561,23 @@ USBStdSetCfgHandler@p E0 0 BANK1 1 cstackBANK1 dist/LPCUSBDK_16F1455/production\
 end_of_initialization 56 0 CODE 0 cinit dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hintentry 10 0 CODE 0 intentry -
 _pkt_requests C5 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBDeferStatusStagePacket CB 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBDeferStatusStagePacket CC 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USER_USB_CALLBACK_EVENT_HANDLER 1124 0 CODE 0 text22 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 4 0 CODE 0 reset_vec -
 _inPipes B8 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_shortPacketStatus D3 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_shortPacketStatus D4 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_USB_CD_Ptr 30D8 0 STRCODE 0 stringtext2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBTransferOnePacket@ep 78 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __HbssBANK1 0 0 ABS 0 bssBANK1 -
 __HbssBANK2 0 0 ABS 0 bssBANK2 -
 __HbssBANK3 0 0 ABS 0 bssBANK3 -
-_endpoint_number CE 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_endpoint_number CF 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBConfigureEndpoint@EPNum 75 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USB_SD_Ptr 30C0 0 STRCODE 0 stringtext1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext1 A5A 0 CODE 0 text1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext2 32C 0 CODE 0 text2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__ptext3 FEE 0 CODE 0 text3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__ptext3 2CA6 0 CODE 0 text3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext4 2CB8 0 CODE 0 text4 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext5 5CE 0 CODE 0 text5 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __ptext6 2D9C 0 CODE 0 text6 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1590,7 +1593,7 @@ __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 _configDescriptor1 2000 0 STRCODE 0 stringtext3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBStdFeatureReqHandler@current_ep_data E3 0 BANK1 1 cstackBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_pBDTEntryEP0OutCurrent D4 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_pBDTEntryEP0OutCurrent D5 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 USBTransferOnePacket@data 71 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
 _pBDTEntryOut 1A0 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1603,8 +1606,8 @@ __Hstringtext6 0 0 ABS 0 stringtext6 -
 __Hstringtext7 0 0 ABS 0 stringtext7 -
 __Hstringtext8 0 0 ABS 0 stringtext8 -
 __Hstringtext9 0 0 ABS 0 stringtext9 -
-___heap_hi 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
-___heap_lo 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsiq4.o
+___heap_hi 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
+___heap_lo 0 0 ABS 0 - C:\Users\Dutu\AppData\Local\Temp\xcAsvv4.o
 _last_LED_OUT 1B4 0 BANK3 1 bssBANK3 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USBStdSetCfgHandler 1A06 0 CODE 0 text17 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of__initialization 56 0 CODE 0 cinit dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1614,7 +1617,7 @@ USBCtrlTrfTxService@byteToSend 72 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/
 _USTATcopy D7 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
 _outPipes 120 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBStatusStageTimeoutCounter CC 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBStatusStageTimeoutCounter CD 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 LED_On@led 72 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _SSPCON1 215 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1622,18 +1625,18 @@ _SSPSTAT 214 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.prod
 _HAPTIC_rpt 20D2 0 STRCODE 0 stringtext4 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hend_init 14 0 CODE 0 end_init -
 __end_of_USB_SD_Ptr 30CC 0 STRCODE 0 stringtext1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-__end_of_main 109E 0 CODE 0 maintext dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+__end_of_main 1000 0 CODE 0 maintext dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _SSPOV 10AE 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _UADDR E96 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _USTAT E8F 0 ABS 0 - dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_sd000 30D4 0 STRCODE 0 stringtext10 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_sd001 21E8 0 STRCODE 0 stringtext5 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_sd002 3070 0 STRCODE 0 stringtext7 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_hap_OUT_pkt_ready 129 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_hap_OUT_pkt_ready 128 0 BANK2 1 bssBANK2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 _USBStdGetStatusHandler 146C 0 CODE 0 text19 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBDeferINDataStagePackets C8 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBDeferINDataStagePackets C9 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _last_HAP_IN C1 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 LED_Off@led 72 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _sd000 30CC 0 STRCODE 0 stringtext10 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
@@ -1650,9 +1653,9 @@ USBConfigureEndpoint@direction 70 0 COMMON 1 cstackCOMMON dist/LPCUSBDK_16F1455/
 _MasterinitSPI 2CB8 0 CODE 0 text4 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 _LED_Enable 2E66 0 CODE 0 text25 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 __end_of_spiWrite 5CE 0 CODE 0 text2 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBStatusStageEnabledFlag1 CA 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_USBStatusStageEnabledFlag2 C9 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
-_BUTTON_Enable 100E 0 CODE 0 text26 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBStatusStageEnabledFlag1 CB 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_USBStatusStageEnabledFlag2 CA 0 BANK1 1 bssBANK1 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
+_BUTTON_Enable 100A 0 CODE 0 text26 dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -1687,6 +1690,7 @@ _BDT 1 20 40
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
+text3 0 1653 2CA6 9 2
 text4 0 165C 2CB8 C 2
 text6 0 16CE 2D9C 21 2
 text7 0 1674 2CE8 1C 2
@@ -1705,19 +1709,19 @@ text20 0 C7E 18FC 85 2
 text22 0 892 1124 46 2
 text24 0 16AD 2D5A 21 2
 text25 0 1733 2E66 22 2
-text26 0 807 100E 12 2
+text26 0 805 100A 12 2
 text27 0 9D3 13A6 63 2
 text28 0 1711 2E22 22 2
 text29 0 16EF 2DDE 22 2
 text30 0 17A5 2F4A 2D 2
 text31 0 1755 2EAA 25 2
 text32 0 84F 109E 43 2
+text33 0 817 102E 38 2
 text34 0 EAC 1D58 AA 2
 text35 0 AA3 1546 72 2
 text36 0 B8A 1714 78 2
 text37 0 B15 162A 75 2
 text39 0 D89 1B12 87 2
-maintext 0 819 1032 36 2
 cstackCOMMON 1 70 70 E 1
 stringtext3 0 1000 2000 F4 2
 stringtext6 0 1800 3000 6C 2

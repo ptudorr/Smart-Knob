@@ -1,5 +1,6 @@
 ﻿  main.c
 E:\Smart-Knob\usb_service\usb_service\main.c(282,75): warning C4244: '=': conversion from 'time_t' to 'uint32_t', possible loss of data
+E:\Smart-Knob\usb_service\usb_service\main.c(322,62): warning C4244: '=': conversion from 'uint16_t' to 'unsigned char', possible loss of data
 E:\Smart-Knob\usb_service\usb_service\main.c(390,53): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
 E:\Smart-Knob\usb_service\usb_service\main.c(396,63): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
 E:\Smart-Knob\usb_service\usb_service\main.c(402,49): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
@@ -22,6 +23,6 @@ libusb-1.0.lib(windows_common.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was n
 libusb-1.0.lib(hotplug.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(hotplug.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
 libusb-1.0.lib(sync.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(sync.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
 libusb-1.0.lib(threads_windows.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(threads_windows.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
-libusb-1.0.lib(windows_winusb.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(windows_winusb.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
+libusb-1.0.lib(windows_winusb.obj) : warning LNK4099: PDB '' was not found with 'libusb-1.0.lib(windows_winusb.obj)' or at ''; linking object as if no debug info
 libusb-1.0.lib(windows_usbdk.obj) : warning LNK4099: PDB 'libusb-1.0.pdb' was not found with 'libusb-1.0.lib(windows_usbdk.obj)' or at 'E:\Smart-Knob\usb_service\x64\Debug\libusb-1.0.pdb'; linking object as if no debug info
   usb_service.vcxproj -> E:\Smart-Knob\usb_service\x64\Debug\usb_service.exe

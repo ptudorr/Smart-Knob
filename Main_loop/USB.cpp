@@ -25,6 +25,7 @@ uint8_t luminosity;//first control byte to send
 uint8_t errors_ctr2_to_PIC;//second control byte to send
 
 uint16_t cntrusb;
+uint8_t firstTransfer;
 
 uint32_t TESTPKT[16];
 uint8_t received = 0;
@@ -128,8 +129,12 @@ int nr=0;
     delayMicroseconds(1);
     pkt_requests = SPI.transfer(luminosity);
     delayMicroseconds(1);
+    errors_ctr2_to_PIC |= firstTransfer;
+    if(firstTransfer){
+      pkt_requests = REQUEST_OUT;
+    }
     ctrl2_from_PIC = SPI.transfer(errors_ctr2_to_PIC);
-
+    errors_ctr2_to_PIC = 0;
     
     if(pkt_requests & REQUEST_HAPTIC_IN){
       //send HAPTIC_IN_BUFFER_SIZE bytes
@@ -165,12 +170,14 @@ int nr=0;
       saveRegs();
       //we are sure CS is HIGH
       //delayMicroseconds(20);
+      //int xdvf = (SPI1W0+SPI1W1+SPI1W2+SPI1W3+SPI1W4+SPI1W5+SPI1W6+SPI1W7+SPI1W8+SPI1W9+SPI1W10+SPI1W11+SPI1W12+SPI1W13+SPI1W14+SPI1W15);
       initSPISlave();
       //delayMicroseconds(70);
       uint8_t crnr, cnt = GET_TRANSFER_NUMBER;
       //wait for transfer
       do{
         crnr = GET_TRANSFER_NUMBER;
+        //Serial.print(crnr);Serial.print(' ');
       }while(crnr == cnt);
       //Serial.println(crnr);
       //Serial.println(cnt);
@@ -188,8 +195,8 @@ int nr=0;
       Serial.println(SPI1W11,HEX);
       Serial.println(SPI1W12,HEX);
       Serial.println(SPI1W13,HEX);
-      Serial.println(SPI1W14,HEX);*/
-      //Serial.println(SPI1W15,HEX);
+      Serial.println(SPI1W14,HEX);
+      Serial.println(SPI1W15,HEX);*/
       //Serial.println(micros() - crtm);
       //Serial.println();
       
@@ -206,18 +213,21 @@ int nr=0;
       micros();
       ///now we are master again
       //while we wait for PIC to become slave we can copy the received packet
-      if(pkt_requests & REQUEST_DISPLAY_OUT){
+      if(pkt_requests == REQUEST_DISPLAY_OUT){
         copyPKT(TESTPKT,0);copyPKT(TESTPKT,1);copyPKT(TESTPKT,2);copyPKT(TESTPKT,3);
         copyPKT(TESTPKT,4);copyPKT(TESTPKT,5);copyPKT(TESTPKT,6);copyPKT(TESTPKT,7);
         copyPKT(TESTPKT,8);copyPKT(TESTPKT,9);copyPKT(TESTPKT,10);copyPKT(TESTPKT,11);
-        copyPKT(TESTPKT,12);copyPKT(TESTPKT,13);copyPKT(TESTPKT,14);copyPKT(TESTPKT,15); 
+        copyPKT(TESTPKT,12);copyPKT(TESTPKT,13);copyPKT(TESTPKT,14);copyPKT(TESTPKT,15);
+        received=1;
       }
+      /*if(pkt_requests == REQUEST_DISPLAY_OUT){
+      }*/
       //delayMicroseconds(30);
       //Serial.println(TESTPKT[4],HEX);
       //PIC in now slave
       //we select it once more to send 0x00 to it to "empty" the buffer
       GPOC = (1<<PIC_CS_PIN);
-      received=1;
+      firstTransfer=0;
     }
     
 
@@ -236,4 +246,12 @@ int nr=0;
   #ifdef DEBUG_TIMING
     delayMicroseconds(175);
   #endif
+}
+
+
+void initializeUSB(){
+  saveRegs();
+  initSPISlave();
+  loadRegs();
+  firstTransfer = 1;
 }

@@ -11,6 +11,7 @@
 #define BEGIN_TRANSFER 0x55
 #define ACK1 0x76
 
+#define DUMMY_OUT_TRANSFER 0x01
 
 //OUT_type 2 bits, IS_OUT 1 bit, IS_IN1 bit
 #define REQUEST_HAPTIC_IN   0x01  //0001

@@ -10,14 +10,14 @@
  Intel Hex-file ranges:
   0h - 3h		(dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.hex)
   8h - FFFh		(dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.hex)
-  100Eh - 21E7h		(dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.hex)
-  2CB8h - 30D7h		(dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.hex)
+  100Ah - 21E7h		(dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.hex)
+  2CA6h - 30D7h		(dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.hex)
   10000h - 10007h		(dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.hex)
   1000Eh - 10011h		(dist/LPCUSBDK_16F1455/production\pic16f1455_firmware.production.hex)
  Unused ranges:
   4h - 7h
-  1000h - 100Dh
-  21E8h - 2CB7h
+  1000h - 1009h
+  21E8h - 2CA5h
   30D8h - FFFFh
   10008h - 1000Dh
 
@@ -284,7 +284,7 @@
 00000FD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000FE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000FF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001000 | -- -- -- -- -- -- -- -- -- -- -- -- -- -- H1 H1
+00001000 | -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1
 00001010 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001020 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001030 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
@@ -572,7 +572,8 @@
 000021D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000021E0 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-00002CB0 | -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1
+00002CA0 | -- -- -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00002CB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00002CC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00002CD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00002CE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

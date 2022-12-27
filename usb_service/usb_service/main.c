@@ -319,8 +319,8 @@ void cb_DSP_OUT(struct libusb_transfer* transfer)
 		buf_dsp[2 * i + 1] = 0xff & (crcol>>8);
 	}*/
 	for (int i = 0;i < 32;i++) {
-		buf_dsp[2 * i] = 0xff  /* & floare_soare[64 * nrl + 32 * nrc + i] */ ;
-		buf_dsp[2 * i + 1] = 0xff /*& (floare_soare[64 * nrl + 32 * nrc + i] >> 8)*/;
+		buf_dsp[2 * i] = /*0xaa*/    rick[64 * nrl + 32 * nrc + i] ;
+		buf_dsp[2 * i + 1] = /*0x55*/  (rick[64 * nrl + 32 * nrc + i] >> 8);
 	}
 	if (nrc == 0) {
 		nrc++;
@@ -330,7 +330,7 @@ void cb_DSP_OUT(struct libusb_transfer* transfer)
 		nrl++;
 		if (nrl == 64)nrl = 0;
 	}
-	
+	//getchar();
 	libusb_submit_transfer(dsp_dsp_out);
 
 }
